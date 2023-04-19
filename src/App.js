@@ -1,26 +1,25 @@
-import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import { useSelector } from "react-redux";
+import FacebookLogin from "react-facebook-login";
+import GoogleLogin from "react-google-login";
 
 function App() {
   const value = useSelector((state) => state);
   console.log(value);
+  const responseFacebook = (response) => {
+    console.log(response);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="facebookstyle">
+        <FacebookLogin
+          appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+          fields="name,email,picture"
+          callback={responseFacebook}
+          cssClass="my-custom-class"
+        />
+      </div>
     </div>
   );
 }
