@@ -1,0 +1,90 @@
+.nav_wrapper {
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 6rem;
+  @media screen and (max-width: 855px) {
+    padding: 2rem 2rem;
+  }
+  .nav_left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    @media screen and (max-width: 710px) {
+      gap: 0.8rem;
+    }
+    .nav_navLinks {
+      cursor: pointer;
+      * {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 19px;
+        line-height: 30px;
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+        &:hover {
+          color: #ff0020;
+        }
+      }
+    }
+  }
+  .nav_right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    @media screen and (max-width: 710px) {
+      gap: 0.8rem;
+    }
+    .nav_signin {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      padding: 0 1rem;
+      border: 2px solid #ffffff;
+      border-radius: 9999px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #ffffff;
+      cursor: pointer;
+      background-color: unset;
+      transition: font-size 0.2s ease-in-out;
+      &:hover {
+        font-size: 17px;
+      }
+    }
+    .nav_signup {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      padding: 0 1rem;
+      background: #ff0020 !important;
+      border: none;
+      border-radius: 9999px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #ffffff;
+      cursor: pointer;
+      background-color: unset;
+      transition: font-size 0.2s ease-in-out;
+      &:hover {
+        font-size: 17px;
+      }
+    }
+  }
+}
