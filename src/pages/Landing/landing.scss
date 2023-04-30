@@ -31,8 +31,17 @@
     }
     .loading_Icon {
       z-index: 6;
-      transform: translateY(50px);
-      overflow: visible;
+      position: fixed;
+      top: 900px;
+      transition: top 1s ease-in-out;
+    }
+    @keyframes bounce {
+      0% {
+        transform: translateY(20);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
     }
   }
 }
