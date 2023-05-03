@@ -12,20 +12,23 @@ const Landing = () => {
   const iconref = useRef(null);
   const navigate = useNavigate();
   useEffect(() => {
-    if (window.innerWidth <= 664) {
-      setTimeOutId(
-        window.setTimeout(() => {
-          iconref.current.style.top = "-200px";
-        }, 4000)
-      );
-      setTimeOutId1(
-        window.setTimeout(() => {
-          navigate("/auth");
-        }, 6000)
-      );
-      iconref.current.style.top = "300px";
-      iconref.current.style.animation = "bounce .4s 8 alternate";
-    }
+    const handleSize = () => {
+      if (window.innerWidth <= 664) {
+        setTimeOutId(
+          window.setTimeout(() => {
+            iconref.current.style.top = "-200px";
+          }, 4000)
+        );
+        setTimeOutId1(
+          window.setTimeout(() => {
+            navigate("/auth");
+          }, 8000)
+        );
+        iconref.current.style.top = "300px";
+        iconref.current.style.animation = "bounce .4s 8 alternate";
+      }
+    };
+    handleSize();
     return () => {
       window.clearTimeout(timeoutid);
       window.clearTimeout(timeoutid1);

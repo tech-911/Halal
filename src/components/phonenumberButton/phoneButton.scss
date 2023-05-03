@@ -1,0 +1,29 @@
+.phone_wrapper {
+  z-index: 2;
+  .phone_button {
+    cursor: pointer;
+    width: 400px;
+    height: 44px;
+    border-radius: 50px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1e1e1e;
+    background: #ffffff;
+    @media screen and (max-width: 438px) {
+      width: 300px;
+    }
+    .phone_icon {
+      color: #1e1e1e;
+      font-size: 22px;
+      margin-right: 0.5rem;
+    }
+  }
+}
