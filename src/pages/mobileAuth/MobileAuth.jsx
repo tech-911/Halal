@@ -14,6 +14,7 @@ import GoogleButton from "../../components/googleButton/GoogleButton";
 import FacebookButton from "../../components/facebookButton/FacebookButton";
 import PhonenumberButton from "../../components/phonenumberButton/PhonenumberButton";
 import { Link } from "react-router-dom";
+import { cloudinary } from "../../BaseUrls/base";
 const MobileAuth = () => {
   const settings = {
     dots: false,
@@ -28,12 +29,36 @@ const MobileAuth = () => {
   return (
     <div className="mobauth_wrap">
       <Slider className="mobauth_carousel" {...settings}>
-        <img className="mobauth_carItems" src={back1} alt="back1" />
-        <img className="mobauth_carItems" src={back2} alt="back2" />
-        <img className="mobauth_carItems" src={back3} alt="back3" />
-        <img className="mobauth_carItems" src={back4} alt="back4" />
-        <img className="mobauth_carItems" src={back5} alt="back5" />
-        <img className="mobauth_carItems" src={back6} alt="back6" />
+        <img
+          className="mobauth_carItems"
+          src={`${cloudinary}/3_iffi1d.png`}
+          alt="back1"
+        />
+        <img
+          className="mobauth_carItems"
+          src={`${cloudinary}/6_updn7v.png`}
+          alt="back2"
+        />
+        <img
+          className="mobauth_carItems"
+          src={`${cloudinary}/4_m5hioz.png`}
+          alt="back3"
+        />
+        <img
+          className="mobauth_carItems"
+          src={`${cloudinary}/1_r9s2xv.png`}
+          alt="back4"
+        />
+        <img
+          className="mobauth_carItems"
+          src={`${cloudinary}/2_awthix.png`}
+          alt="back5"
+        />
+        <img
+          className="mobauth_carItems"
+          src={`${cloudinary}/5_k3vzxj.png`}
+          alt="back6"
+        />
       </Slider>
       <div className="mobauth_header_image">
         <img src={headerResImage} alt="headerResImage" />
