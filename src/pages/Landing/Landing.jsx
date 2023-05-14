@@ -6,11 +6,15 @@ import Ready from "../../components/ready/Ready";
 import loadingBackground from "../../assets/png/mobileLoading.png";
 import loadingIcon from "../../assets/svg/LoadingIcon.svg";
 import { useNavigate } from "react-router-dom";
+import PopupAuth from "../../components/popupAuth/PopupAuth";
 const Landing = () => {
   const [timeoutid, setTimeOutId] = useState(0);
   const [timeoutid1, setTimeOutId1] = useState(0);
   const iconref = useRef(null);
   const navigate = useNavigate();
+  const [open, setOpen] = useState(0);
+  const [type, setType] = useState("signin");
+  console.log(type, open);
   useEffect(() => {
     const handleSize = () => {
       if (window.innerWidth <= 664) {
@@ -21,7 +25,7 @@ const Landing = () => {
         );
         setTimeOutId1(
           window.setTimeout(() => {
-            navigate("/auth");
+            navigate("/signup");
           }, 8000)
         );
         iconref.current.style.top = "300px";
@@ -36,9 +40,10 @@ const Landing = () => {
   }, []);
   return (
     <div className="Landing_wrapper">
-      <Header />
+      <Header open={open} setOpen={setOpen} type={type} setType={setType} />
       <OurStory />
       <Ready />
+      {open ? <PopupAuth open={open} setOpen={setOpen} type={type} /> : ""}
       <div className="Landing_loading">
         <img
           className="loading_background"

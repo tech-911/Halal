@@ -2,7 +2,7 @@ import "./facebookButton.scss";
 import FacebookLogin from "react-facebook-login";
 import { FaFacebook } from "react-icons/fa";
 
-const FacebookButton = ({ option }) => {
+const FacebookButton = ({ option, border }) => {
   const responseFacebook = (response) => {
     console.log("FacebookUser: ", response);
   };
@@ -16,13 +16,13 @@ const FacebookButton = ({ option }) => {
           fields="name,email,picture"
           scope="public_profile,email"
           callback={responseFacebook}
-          cssClass="facebookbutton"
+          cssClass={`facebookbutton ${border ? "facebook_border" : ""}`}
           icon=<FaFacebook className="facebook_icon" />
           textButton="Signup with Facebook"
         />
       )}
       {option === "signin" && (
-        <button className="facebookbutton">
+        <button className={`facebookbutton ${border ? "facebook_border" : ""}`}>
           <FaFacebook className="facebook_icon" />
           Signin with Facebook
         </button>

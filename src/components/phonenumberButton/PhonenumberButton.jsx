@@ -1,7 +1,7 @@
 import React from "react";
 import "./phoneButton.scss";
 import { BsFillChatLeftTextFill } from "react-icons/bs";
-const PhonenumberButton = ({ option }) => {
+const PhonenumberButton = ({ option, border }) => {
   const phoneSignin = () => {
     console.log("phoneSignin");
   };
@@ -11,7 +11,7 @@ const PhonenumberButton = ({ option }) => {
   return (
     <div className="phone_wrapper">
       <button
-        className="phone_button"
+        className={`phone_button ${border ? "phone_border" : ""}`}
         onClick={option === "signin" ? phoneSignin : phoneSignup}
       >
         <BsFillChatLeftTextFill className="phone_icon" />

@@ -11,7 +11,7 @@ import Section2 from "../../assets/png/section2home.png";
 import Google from "../../assets/svg/google.svg";
 import Apple from "../../assets/svg/apple.svg";
 
-const Header = () => {
+const Header = ({ open, setOpen, type, setType }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -30,7 +30,7 @@ const Header = () => {
         <img src={Hero3} alt="hero3" />
       </Slider>
       <div className="header_nav">
-        <Nav />
+        <Nav open={open} setOpen={setOpen} type={type} setType={setType} />
       </div>
       <div className="header_section2">
         <img src={Section2} alt="section2" />

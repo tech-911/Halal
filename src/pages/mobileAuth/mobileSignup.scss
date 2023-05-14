@@ -1,0 +1,86 @@
+.mobauth_carItems {
+  //   width: 100% !important;
+  height: 950px;
+  width: 100%;
+  //   object-fit: cover;
+}
+.mobauth_wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .mobauth_carousel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .mobauth_header_image {
+    z-index: 1;
+    margin-top: 8rem;
+    cursor: pointer;
+
+    // img {
+    //   filter: brightness(370%) contrast(1000%);
+    // }
+  }
+  .mobauth_authmethods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 15rem;
+  }
+  .mobauth_terms {
+    margin-top: 2rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 400px;
+    @media screen and (max-width: 438px) {
+      width: 300px;
+    }
+    .mobauth_terms_listings {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      color: #ffffff;
+      text-align: center;
+      a {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #ffffff;
+        text-align: center;
+      }
+    }
+    .mobauth_check_exist {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 36px;
+      color: #ffffff;
+      a {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 36px;
+        color: #ffffff;
+        text-decoration: none;
+      }
+    }
+  }
+}

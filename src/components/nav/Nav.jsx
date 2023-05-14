@@ -1,8 +1,25 @@
 import React from "react";
 import "./nav.scss";
 import Logo from "../../assets/png/logo.png";
+import { useNavigate } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ open, setOpen, type, setType }) => {
+  const handleSignIn = () => {
+    setType("signin");
+    if (open) {
+      setOpen(0);
+    } else {
+      setOpen(1);
+    }
+  };
+  const handleSignup = () => {
+    setType("signup");
+    if (open) {
+      setOpen(0);
+    } else {
+      setOpen(1);
+    }
+  };
   return (
     <div className="nav_wrapper">
       <div className="nav_left">
@@ -21,8 +38,12 @@ const Nav = () => {
         </p>
       </div>
       <div className="nav_right">
-        <button className="nav_signin">Sign In</button>
-        <button className="nav_signup">Sign Up</button>
+        <button onClick={handleSignIn} className="nav_signin">
+          Sign In
+        </button>
+        <button onClick={handleSignup} className="nav_signup">
+          Sign Up
+        </button>
       </div>
     </div>
   );

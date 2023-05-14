@@ -1,10 +1,10 @@
-.mobauth_carItems {
+.mobsignin_carItems {
   //   width: 100% !important;
   height: 950px;
   width: 100%;
   //   object-fit: cover;
 }
-.mobauth_wrap {
+.mobsignin_wrap {
   position: relative;
   width: 100%;
   height: 100%;
@@ -13,7 +13,7 @@
   align-items: center;
   overflow-y: scroll;
   overflow-x: hidden;
-  .mobauth_carousel {
+  .mobsignin_carousel {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,20 +21,21 @@
     height: 100%;
     z-index: 1;
   }
-  .mobauth_header_image {
+  .mobsignin_header_image {
+    cursor: pointer;
     z-index: 1;
     margin-top: 8rem;
     // img {
     //   filter: brightness(370%) contrast(1000%);
     // }
   }
-  .mobauth_authmethods {
+  .mobsignin_authmethods {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     margin-top: 15rem;
   }
-  .mobauth_terms {
+  .mobsignin_terms {
     margin-top: 2rem;
     z-index: 2;
     display: flex;
@@ -45,7 +46,7 @@
     @media screen and (max-width: 438px) {
       width: 300px;
     }
-    .mobauth_terms_listings {
+    .mobsignin_terms_listings {
       font-family: "Roboto";
       font-style: normal;
       font-weight: 400;
@@ -63,7 +64,7 @@
         text-align: center;
       }
     }
-    .mobauth_check_exist {
+    .mobsignin_check_exist {
       font-family: "Roboto";
       font-style: normal;
       font-weight: 700;
