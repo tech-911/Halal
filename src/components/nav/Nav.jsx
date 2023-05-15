@@ -1,24 +1,16 @@
 import React from "react";
 import "./nav.scss";
 import Logo from "../../assets/png/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authModalAction } from "../../redux/slices/authModalSlice";
 
-const Nav = ({ open, setOpen, type, setType }) => {
+const Nav = () => {
+  const dispatch = useDispatch();
   const handleSignIn = () => {
-    setType("signin");
-    if (open) {
-      setOpen(0);
-    } else {
-      setOpen(1);
-    }
+    dispatch(authModalAction({ method: "signin", open: 1 }));
   };
   const handleSignup = () => {
-    setType("signup");
-    if (open) {
-      setOpen(0);
-    } else {
-      setOpen(1);
-    }
+    dispatch(authModalAction({ method: "signup", open: 1 }));
   };
   return (
     <div className="nav_wrapper">

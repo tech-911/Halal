@@ -10,8 +10,10 @@ import Hero3 from "../../assets/png/headerCarousel/Hero3.png";
 import Section2 from "../../assets/png/section2home.png";
 import Google from "../../assets/svg/google.svg";
 import Apple from "../../assets/svg/apple.svg";
+import { useDispatch } from "react-redux";
+import { authModalAction } from "../../redux/slices/authModalSlice";
 
-const Header = ({ open, setOpen, type, setType }) => {
+const Header = () => {
   const settings = {
     dots: false,
     infinite: true,
@@ -22,6 +24,7 @@ const Header = ({ open, setOpen, type, setType }) => {
     autoplay: true,
     autoplaySpeed: 3000,
   };
+  const dispatch = useDispatch();
   return (
     <div className="header_wrapper">
       <Slider className="header_carousel" {...settings}>
@@ -30,7 +33,7 @@ const Header = ({ open, setOpen, type, setType }) => {
         <img src={Hero3} alt="hero3" />
       </Slider>
       <div className="header_nav">
-        <Nav open={open} setOpen={setOpen} type={type} setType={setType} />
+        <Nav />
       </div>
       <div className="header_section2">
         <img src={Section2} alt="section2" />
@@ -52,7 +55,14 @@ const Header = ({ open, setOpen, type, setType }) => {
             alt="Apple"
           />
         </div>
-        <button className="header_create_account">Create Account</button>
+        <button
+          onClick={() => {
+            dispatch(authModalAction({ method: "signup", open: 1 }));
+          }}
+          className="header_create_account"
+        >
+          Create Account
+        </button>
       </div>
     </div>
   );

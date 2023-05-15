@@ -4,15 +4,20 @@ import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import counterReducer from "./slices/sample1";
+import authModalSlice from "./slices/authModalSlice";
+import phoneModalSlice from "./slices/phoneModalSlice";
+import otpModalSlice from "./slices/otpModalSlice";
 
 const reducers = combineReducers({
-  counterReducer,
+  authModalSlice,
+  phoneModalSlice,
+  otpModalSlice,
 });
 
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["authModalSlice", "phoneModalSlice", " otpModalSlice"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

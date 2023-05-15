@@ -7,14 +7,19 @@ import loadingBackground from "../../assets/png/mobileLoading.png";
 import loadingIcon from "../../assets/svg/LoadingIcon.svg";
 import { useNavigate } from "react-router-dom";
 import PopupAuth from "../../components/popupAuth/PopupAuth";
+import { useSelector } from "react-redux";
+import PhoneNumber from "../../components/phoneNumber/PhoneNumber";
+import OTPComponent from "../../components/OTP/OTP";
+
 const Landing = () => {
   const [timeoutid, setTimeOutId] = useState(0);
   const [timeoutid1, setTimeOutId1] = useState(0);
   const iconref = useRef(null);
   const navigate = useNavigate();
-  const [open, setOpen] = useState(0);
-  const [type, setType] = useState("signin");
-  console.log(type, open);
+  const { open } = useSelector((state) => state.authModalSlice);
+  const { isOpen } = useSelector((state) => state.phoneModalSlice);
+  const { otpOpen } = useSelector((state) => state.otpModalSlice);
+
   useEffect(() => {
     const handleSize = () => {
       if (window.innerWidth <= 664) {
@@ -40,10 +45,12 @@ const Landing = () => {
   }, []);
   return (
     <div className="Landing_wrapper">
-      <Header open={open} setOpen={setOpen} type={type} setType={setType} />
+      <Header />
       <OurStory />
       <Ready />
-      {open ? <PopupAuth open={open} setOpen={setOpen} type={type} /> : ""}
+      {open ? <PopupAuth /> : ""}
+      {isOpen ? <PhoneNumber /> : ""}
+      {otpOpen ? <OTPComponent /> : ""}
       <div className="Landing_loading">
         <img
           className="loading_background"

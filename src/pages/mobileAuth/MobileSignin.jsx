@@ -16,6 +16,10 @@ import PhonenumberButton from "../../components/phonenumberButton/PhonenumberBut
 import { Link, useNavigate } from "react-router-dom";
 import { cloudinary } from "../../BaseUrls/base";
 import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import PopupAuth from "../../components/popupAuth/PopupAuth";
+import PhoneNumber from "../../components/phoneNumber/PhoneNumber";
+import OTPComponent from "../../components/OTP/OTP";
 const MobileSignin = () => {
   const settings = {
     dots: false,
@@ -28,6 +32,9 @@ const MobileSignin = () => {
     autoplaySpeed: 3000,
   };
   const navigate = useNavigate();
+  const { open } = useSelector((state) => state.authModalSlice);
+  const { isOpen } = useSelector((state) => state.phoneModalSlice);
+  const { otpOpen } = useSelector((state) => state.otpModalSlice);
   return (
     <div className="mobsignin_wrap">
       <Slider className="mobsignin_carousel" {...settings}>
@@ -63,14 +70,11 @@ const MobileSignin = () => {
         />
       </Slider>
       <div className="mobsignin_header_image">
-        <img
-          onClick={() => {
-            navigate("/");
-          }}
-          src={headerResImage}
-          alt="headerResImage"
-        />
+        <img src={headerResImage} alt="headerResImage" />
       </div>
+      {open ? <PopupAuth /> : ""}
+      {isOpen ? <PhoneNumber /> : ""}
+      {otpOpen ? <OTPComponent /> : ""}
       <div className="mobsignin_authmethods">
         <GoogleButton option={"signin"} />
         <FacebookButton option={"signin"} />

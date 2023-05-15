@@ -1,0 +1,179 @@
+.phoneno_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.658);
+  @media screen and (max-width: 664px) {
+    // display: none;
+  }
+  .phoneno_pop {
+    padding: 2rem;
+    z-index: 100;
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media screen and (max-width: 664px) {
+      width: 100%;
+      height: 100%;
+      border-radius: unset;
+    }
+    .phoneno_close {
+      font-size: 22px;
+      color: black;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      @media screen and (max-width: 664px) {
+        display: none;
+      }
+    }
+    .phoneno_back {
+      font-size: 25px;
+      color: #1e1e1e;
+      position: absolute;
+      top: 45px;
+      left: 30px;
+      cursor: pointer;
+      @media screen and (min-width: 664px) {
+        display: none;
+      }
+    }
+
+    .phoneno_image_head {
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+    .phoneno_headtext {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 36px;
+      text-align: center;
+      color: #21262e;
+      margin-bottom: 2rem;
+    }
+    .phoneno_number_wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      width: 100%;
+      height: 50px;
+      margin-bottom: 1.5rem;
+      .phoneno_select1 {
+        height: 100%;
+        background: #f0f2f4;
+        border-radius: 4px;
+        border: none;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        letter-spacing: 1px;
+        color: #21262e;
+        padding: 0.3rem;
+        outline: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      .phoneno_input2_wrap {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.1rem;
+        width: 100%;
+        height: 100%;
+        .phoneno_country_code {
+          height: 100%;
+          width: 65px;
+          background: #f0f2f4;
+          border-radius: 4px 0px 0px 4px;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 22px;
+          text-align: center;
+          letter-spacing: 1px;
+          color: #21262e;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+        }
+        .phoneno_phonenumber_input {
+          width: 100%;
+          background: #f0f2f4;
+          border-radius: 0px 4px 4px 0px;
+          height: 100%;
+          border: none;
+          outline: none;
+          padding: 1rem;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 22px;
+          letter-spacing: 1px;
+          color: #21262e;
+        }
+      }
+    }
+    .phoneno_instr {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: #8f8f8f;
+      width: 400px;
+      text-align: center;
+      margin-bottom: 2rem;
+      //   @media screen and (max-width: 440px) {
+      //     width: 300px;
+      //   }
+      @media screen and (max-width: 664px) {
+        text-align: left;
+        width: 100%;
+      }
+    }
+
+    .phoneno_button {
+      background: #e9ebee;
+      border-radius: 22px;
+      width: 100%;
+      height: 50px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 21px;
+      text-align: center;
+      letter-spacing: 0.1px;
+      color: #7c8591;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
