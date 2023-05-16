@@ -7,17 +7,24 @@ import logger from "redux-logger";
 import authModalSlice from "./slices/authModalSlice";
 import phoneModalSlice from "./slices/phoneModalSlice";
 import otpModalSlice from "./slices/otpModalSlice";
+import termsModalSlice from "./slices/termsModalSlice";
 
 const reducers = combineReducers({
   authModalSlice,
   phoneModalSlice,
   otpModalSlice,
+  termsModalSlice,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["authModalSlice", "phoneModalSlice", " otpModalSlice"],
+  blacklist: [
+    "authModalSlice",
+    "phoneModalSlice",
+    " otpModalSlice",
+    "termsModalSlice",
+  ],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

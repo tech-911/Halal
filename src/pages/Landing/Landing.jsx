@@ -10,6 +10,7 @@ import PopupAuth from "../../components/popupAuth/PopupAuth";
 import { useSelector } from "react-redux";
 import PhoneNumber from "../../components/phoneNumber/PhoneNumber";
 import OTPComponent from "../../components/OTP/OTP";
+import Terms from "../../components/terms/Terms";
 
 const Landing = () => {
   const [timeoutid, setTimeOutId] = useState(0);
@@ -19,6 +20,7 @@ const Landing = () => {
   const { open } = useSelector((state) => state.authModalSlice);
   const { isOpen } = useSelector((state) => state.phoneModalSlice);
   const { otpOpen } = useSelector((state) => state.otpModalSlice);
+  const { termsOpen } = useSelector((state) => state.termsModalSlice);
 
   useEffect(() => {
     const handleSize = () => {
@@ -51,6 +53,7 @@ const Landing = () => {
       {open ? <PopupAuth /> : ""}
       {isOpen ? <PhoneNumber /> : ""}
       {otpOpen ? <OTPComponent /> : ""}
+      {termsOpen ? <Terms /> : ""}
       <div className="Landing_loading">
         <img
           className="loading_background"

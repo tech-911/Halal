@@ -4,6 +4,7 @@ import { CgCloseO } from "react-icons/cg";
 import { SlArrowLeft } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
 import { otpModalAction } from "../../redux/slices/otpModalSlice";
+import { termsModalAction } from "../../redux/slices/termsModalSlice";
 import { phoneModalAction } from "../../redux/slices/phoneModalSlice";
 import mobileAuthHeadImg from "../../assets/png/mobileAuthHead.png";
 import { useNavigate } from "react-router-dom";
@@ -54,6 +55,10 @@ const OTP = () => {
     dispatch(otpModalAction({ otpOpen: 0 }));
     dispatch(phoneModalAction({ method: method, isOpen: 1 }));
   };
+  const handleAgreement = () => {
+    dispatch(otpModalAction({ otpOpen: 0 }));
+    dispatch(termsModalAction({ termsOpen: 1 }));
+  };
 
   return (
     <div
@@ -102,7 +107,9 @@ const OTP = () => {
         <p onClick={handleUpdateContact} className="otp_contact_update">
           Update Contact Info
         </p>
-        <button className={`otp_button`}>Continue</button>
+        <button onClick={handleAgreement} className={`otp_button`}>
+          Continue
+        </button>
       </div>
     </div>
   );
