@@ -7,6 +7,7 @@ import MobileSignin from "./pages/mobileAuth/MobileSignin";
 import Register from "./pages/Register/Register";
 import RegisterMobile2 from "./pages/Register/RegisterMobile2";
 import RegisterMobile3 from "./pages/Register/RegisterMobile3";
+import Terms from "./pages/Terms_and_Services/Terms";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/register2" element={<RegisterMobile2 />} />
         <Route path="/register3" element={<RegisterMobile3 />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
     </div>
   );
