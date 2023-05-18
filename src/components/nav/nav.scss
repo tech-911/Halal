@@ -1,3 +1,6 @@
+.nav_border {
+  border-bottom: 1px solid rgba(180, 173, 216, 0.2);
+}
 .nav_wrapper {
   z-index: 2;
   display: flex;
@@ -35,6 +38,11 @@
         }
       }
     }
+    .nav_navLinks_black {
+      * {
+        color: black;
+      }
+    }
   }
   .nav_right {
     display: flex;
@@ -65,6 +73,10 @@
       &:hover {
         font-size: 17px;
       }
+    }
+    .nav_sigin_red {
+      border: 2px solid #ff0020 !important;
+      color: #ff0020 !important;
     }
     .nav_signup {
       display: flex;

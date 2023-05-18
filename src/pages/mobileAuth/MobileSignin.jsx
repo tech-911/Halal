@@ -20,6 +20,8 @@ import { useSelector } from "react-redux";
 import PopupAuth from "../../components/popupAuth/PopupAuth";
 import PhoneNumber from "../../components/phoneNumber/PhoneNumber";
 import OTPComponent from "../../components/OTP/OTP";
+import Terms from "../../components/terms/Terms";
+
 const MobileSignin = () => {
   const settings = {
     dots: false,
@@ -35,6 +37,7 @@ const MobileSignin = () => {
   const { open } = useSelector((state) => state.authModalSlice);
   const { isOpen } = useSelector((state) => state.phoneModalSlice);
   const { otpOpen } = useSelector((state) => state.otpModalSlice);
+  const { termsOpen } = useSelector((state) => state.termsModalSlice);
   return (
     <div className="mobsignin_wrap">
       <Slider className="mobsignin_carousel" {...settings}>
@@ -75,6 +78,8 @@ const MobileSignin = () => {
       {open ? <PopupAuth /> : ""}
       {isOpen ? <PhoneNumber /> : ""}
       {otpOpen ? <OTPComponent /> : ""}
+      {termsOpen ? <Terms /> : ""}
+
       <div className="mobsignin_authmethods">
         <GoogleButton option={"signin"} />
         <FacebookButton option={"signin"} />

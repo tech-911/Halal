@@ -1,0 +1,57 @@
+.photo_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  .photo_header {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 36px;
+    color: #1e1e1e;
+    margin-bottom: 1.5rem;
+  }
+  .photo_box_wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1rem;
+    margin-bottom: 2rem;
+    .photo_box1_wrap {
+      .photo_box1 {
+        width: 130px;
+        height: 176px;
+        background: #ffffff;
+        border: 3px dashed #444444;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        @media screen and (max-width: 484px) {
+          height: 135.74px;
+          width: 100.26px;
+        }
+        .photo_icon1 {
+          font-size: 22px;
+          color: black;
+        }
+      }
+      .photo_input1 {
+        display: none;
+      }
+    }
+  }
+
+  .photo_text {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    color: #1e1e1e;
+    align-self: center;
+  }
+}

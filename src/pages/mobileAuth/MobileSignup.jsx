@@ -19,6 +19,8 @@ import { useSelector } from "react-redux";
 import PopupAuth from "../../components/popupAuth/PopupAuth";
 import PhoneNumber from "../../components/phoneNumber/PhoneNumber";
 import OTPComponent from "../../components/OTP/OTP";
+import Terms from "../../components/terms/Terms";
+
 const MobileSignup = () => {
   const settings = {
     dots: false,
@@ -34,6 +36,7 @@ const MobileSignup = () => {
   const { open } = useSelector((state) => state.authModalSlice);
   const { isOpen } = useSelector((state) => state.phoneModalSlice);
   const { otpOpen } = useSelector((state) => state.otpModalSlice);
+  const { termsOpen } = useSelector((state) => state.termsModalSlice);
   return (
     <div className="mobauth_wrap">
       <Slider className="mobauth_carousel" {...settings}>
@@ -74,6 +77,7 @@ const MobileSignup = () => {
       {open ? <PopupAuth /> : ""}
       {isOpen ? <PhoneNumber /> : ""}
       {otpOpen ? <OTPComponent /> : ""}
+      {termsOpen ? <Terms /> : ""}
 
       <div className="mobauth_authmethods">
         <GoogleButton option={"signup"} />

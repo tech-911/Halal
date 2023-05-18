@@ -3,9 +3,11 @@ import "./nav.scss";
 import Logo from "../../assets/png/logo.png";
 import { useDispatch } from "react-redux";
 import { authModalAction } from "../../redux/slices/authModalSlice";
+import { useNavigate } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ border, theme }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSignIn = () => {
     dispatch(authModalAction({ method: "signin", open: 1 }));
   };
@@ -13,24 +15,48 @@ const Nav = () => {
     dispatch(authModalAction({ method: "signup", open: 1 }));
   };
   return (
-    <div className="nav_wrapper">
+    <div className={`nav_wrapper ${border ? "nav_border" : ""}`}>
       <div className="nav_left">
-        <img className="nav_logo" src={Logo} alt="logo" />
-        <p className="nav_navLinks">
+        <img
+          onClick={() => navigate("/")}
+          className="nav_logo"
+          src={Logo}
+          alt="logo"
+        />
+        <p
+          className={`nav_navLinks ${
+            theme === "black" ? "nav_navLinks_black" : ""
+          }`}
+        >
           <a href="/home">About</a>
         </p>
-        <p className="nav_navLinks">
+        <p
+          className={`nav_navLinks ${
+            theme === "black" ? "nav_navLinks_black" : ""
+          }`}
+        >
           <a href="/home">Help</a>
         </p>
-        <p className="nav_navLinks">
+        <p
+          className={`nav_navLinks ${
+            theme === "black" ? "nav_navLinks_black" : ""
+          }`}
+        >
           <a href="/home">Premium</a>
         </p>
-        <p className="nav_navLinks">
+        <p
+          className={`nav_navLinks ${
+            theme === "black" ? "nav_navLinks_black" : ""
+          }`}
+        >
           <a href="/home">Counseling</a>
         </p>
       </div>
       <div className="nav_right">
-        <button onClick={handleSignIn} className="nav_signin">
+        <button
+          onClick={handleSignIn}
+          className={`nav_signin ${theme === "black" ? "nav_sigin_red" : ""}`}
+        >
           Sign In
         </button>
         <button onClick={handleSignup} className="nav_signup">

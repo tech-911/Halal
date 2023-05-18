@@ -6,13 +6,14 @@ import { otpModalAction } from "../../redux/slices/otpModalSlice";
 import { termsModalAction } from "../../redux/slices/termsModalSlice";
 import mobileAuthHeadImg from "../../assets/png/mobileAuthHead.png";
 import "./terms.scss";
+import { useNavigate } from "react-router-dom";
 
 const Terms = () => {
   const dispatch = useDispatch();
   const { otpOpen } = useSelector((state) => state.otpModalSlice);
   const { method, isOpen } = useSelector((state) => state.phoneModalSlice);
   const targetRef = useRef(null);
-
+  const navigate = useNavigate();
   const handleBodyClose = (e) => {
     if (e.target === targetRef.current) {
       dispatch(termsModalAction({ termsOpen: 0 }));
@@ -20,7 +21,10 @@ const Terms = () => {
       return;
     }
   };
-
+  const handleRegister = () => {
+    dispatch(termsModalAction({ termsOpen: 0 }));
+    navigate("/register");
+  };
   return (
     <div
       className="terms_wrapper"
@@ -39,7 +43,7 @@ const Terms = () => {
         <SlArrowLeft
           className="terms_back"
           onClick={() => {
-            dispatch(otpModalAction({ otpOpen: 0 }));
+            dispatch(termsModalAction({ termsOpen: 0 }));
           }}
         />
         <img
@@ -76,7 +80,7 @@ const Terms = () => {
             you all the best in your search for your perfect match.
           </p>
         </div>
-        <div className="terms_button_wrap">
+        <div onClick={() => handleRegister()} className="terms_button_wrap">
           <button className={`terms_button`}>I Agree</button>
         </div>
       </div>

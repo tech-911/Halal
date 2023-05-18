@@ -1,0 +1,210 @@
+@mixin regmob2_labels {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #1e1e1e;
+}
+@mixin regmob2_input {
+  border: 2px solid #b4b4b4;
+  border-radius: 100px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: start;
+  letter-spacing: 1px;
+  color: #696969;
+  height: 57px;
+  width: 100%;
+  @media screen and (min-width: 1327px) {
+    width: 519px;
+  }
+
+  &::placeholder {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: start;
+    // letter-spacing: 1px;
+    color: #696969;
+  }
+}
+.regmob2_wrapper {
+  position: relative;
+  @media screen and (max-width: 830px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .regmob2_back {
+    font-size: 25px;
+    color: #1e1e1e;
+    position: absolute;
+    top: 55px;
+    left: 30px;
+    cursor: pointer;
+    @media screen and (min-width: 831px) {
+      display: none;
+    }
+  }
+
+  .regmob2_image_head {
+    margin: 3rem 0rem 2rem;
+    @media screen and (min-width: 831px) {
+      display: none;
+    }
+    // cursor: pointer;
+  }
+  .regmob2_body {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 6rem;
+    @media screen and (max-width: 884px) {
+      padding: 2rem 2rem;
+    }
+    @media screen and (max-width: 830px) {
+      width: 100%;
+    }
+
+    .regmob2_sub_body {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 5rem;
+      width: 100%;
+      .regmob2_left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+        .regmob2_input_location_wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
+          width: 100%;
+
+          .regmob2_location_label {
+            @include regmob2_labels;
+          }
+          .regmob2_location_input {
+            @include regmob2_input;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+        .regmob2_input_profession_wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
+          width: 100%;
+
+          .regmob2_profession_label {
+            @include regmob2_labels;
+          }
+          .regmob2_profession_input {
+            @include regmob2_input;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+        .regmob2_input_email_wrap {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
+          width: 100%;
+
+          .regmob2_email_label {
+            @include regmob2_labels;
+          }
+          .regmob2_email_input {
+            @include regmob2_input;
+            padding-left: 3.5rem;
+            padding-right: 2rem;
+          }
+          .regmob2_email_icon {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            color: #8f8f8f;
+            font-size: 22px;
+          }
+        }
+        .regmob2_input_phone_wrap {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
+          width: 100%;
+
+          .regmob2_phone_label {
+            @include regmob2_labels;
+          }
+          .regmob2_phone_input {
+            @include regmob2_input;
+            padding-left: 3.5rem;
+            padding-right: 2rem;
+          }
+          .regmob2_phone_icon {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            color: #8f8f8f;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+
+    .regmob2_button_wrap_mobile {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 2rem;
+      align-self: center;
+      margin-top: 4rem;
+      @media screen and (min-width: 831px) {
+        display: none;
+      }
+      .regmob2_button_mobile {
+        background: #e9ebee;
+        border-radius: 22px;
+        width: 100%;
+        height: 100%;
+        max-height: 50px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 21px;
+        text-align: center;
+        letter-spacing: 0.1px;
+        color: #7c8591;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+        &:hover {
+          background: #ff0020;
+          color: white;
+        }
+      }
+    }
+  }
+}
