@@ -8,12 +8,18 @@ import authModalSlice from "./slices/authModalSlice";
 import phoneModalSlice from "./slices/phoneModalSlice";
 import otpModalSlice from "./slices/otpModalSlice";
 import termsModalSlice from "./slices/termsModalSlice";
+import preloadModalSlice from "./slices/preloadModalSlice";
+import authDataSlice from "./slices/authDataSlice";
+import registerDataSlice from "./slices/registerDataSlice";
 
 const reducers = combineReducers({
   authModalSlice,
   phoneModalSlice,
   otpModalSlice,
   termsModalSlice,
+  preloadModalSlice,
+  authDataSlice,
+  registerDataSlice,
 });
 
 const persistConfig = {
@@ -24,6 +30,7 @@ const persistConfig = {
     "phoneModalSlice",
     " otpModalSlice",
     "termsModalSlice",
+    "preloadModalSlice",
   ],
 };
 

@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import PhoneNumber from "../../components/phoneNumber/PhoneNumber";
 import OTPComponent from "../../components/OTP/OTP";
 import Terms from "../../components/terms/Terms";
+import Preloader from "../../components/preLoader/Preloader";
 
 const Landing = () => {
   const [timeoutid, setTimeOutId] = useState(0);
@@ -21,6 +22,7 @@ const Landing = () => {
   const { isOpen } = useSelector((state) => state.phoneModalSlice);
   const { otpOpen } = useSelector((state) => state.otpModalSlice);
   const { termsOpen } = useSelector((state) => state.termsModalSlice);
+  const { preloadOpen } = useSelector((state) => state.preloadModalSlice);
 
   useEffect(() => {
     const handleSize = () => {
@@ -54,6 +56,7 @@ const Landing = () => {
       {isOpen ? <PhoneNumber /> : ""}
       {otpOpen ? <OTPComponent /> : ""}
       {termsOpen ? <Terms /> : ""}
+      {preloadOpen ? <Preloader /> : ""}
       <div className="Landing_loading">
         <img
           className="loading_background"

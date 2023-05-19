@@ -20,6 +20,7 @@ import PopupAuth from "../../components/popupAuth/PopupAuth";
 import PhoneNumber from "../../components/phoneNumber/PhoneNumber";
 import OTPComponent from "../../components/OTP/OTP";
 import Terms from "../../components/terms/Terms";
+import Preloader from "../../components/preLoader/Preloader";
 
 const MobileSignup = () => {
   const settings = {
@@ -37,6 +38,7 @@ const MobileSignup = () => {
   const { isOpen } = useSelector((state) => state.phoneModalSlice);
   const { otpOpen } = useSelector((state) => state.otpModalSlice);
   const { termsOpen } = useSelector((state) => state.termsModalSlice);
+  const { preloadOpen } = useSelector((state) => state.preloadModalSlice);
   return (
     <div className="mobauth_wrap">
       <Slider className="mobauth_carousel" {...settings}>
@@ -78,6 +80,7 @@ const MobileSignup = () => {
       {isOpen ? <PhoneNumber /> : ""}
       {otpOpen ? <OTPComponent /> : ""}
       {termsOpen ? <Terms /> : ""}
+      {preloadOpen ? <Preloader /> : ""}
 
       <div className="mobauth_authmethods">
         <GoogleButton option={"signup"} />

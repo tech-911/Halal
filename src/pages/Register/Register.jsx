@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./register.scss";
 import Nav from "../../components/nav/Nav";
 import { FaUser } from "react-icons/fa";
@@ -12,47 +12,143 @@ import { useDispatch, useSelector } from "react-redux";
 import { otpModalAction } from "../../redux/slices/otpModalSlice";
 import { termsModalAction } from "../../redux/slices/termsModalSlice";
 import { phoneModalAction } from "../../redux/slices/phoneModalSlice";
+import { baseUrlAuth } from "../../BaseUrls/base";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Preloader from "../../components/preLoader/Preloader";
+import { preloadModalAction } from "../../redux/slices/preloadModalSlice";
+import { registerDataAction } from "../../redux/slices/registerDataSlice";
+import axios from "axios";
 const Register = () => {
-  const maleRef = useRef(null);
-  const femaleRef = useRef(null);
-  const [genderState, setGenderState] = useState(1);
+  const [genderState, setGenderState] = useState("");
+  const [disabled, setDisabled] = useState(0);
   const dispatch = useDispatch();
+  const { preloadOpen } = useSelector((state) => state.preloadModalSlice);
   const navigate = useNavigate();
+  let [photo, setPhoto] = useState([]);
+  let [data, setData] = useState({
+    name: "",
+    dob: "",
+    gender: "",
+    height: "",
+    marital_status: "",
+    location: "",
+    profession: "",
+    email: "",
+    phone_number: "",
+  });
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [genderState]);
   const handleLogin = () => {
     dispatch(authModalAction({ method: "signin", open: 1 }));
     navigate("/");
   };
   const handleGender = (gender) => {
-    setGenderState((state) => !state);
     if (gender === "male") {
-      if (genderState) {
-        maleRef.current.style.color = "white";
-        maleRef.current.style.background = "#ff0020";
-        maleRef.current.style.border = "none";
-      } else {
-        maleRef.current.style.color = "#696969";
-        maleRef.current.style.background = "unset";
-        maleRef.current.style.border = "2px solid #b4b4b4";
-      }
+      setGenderState("male");
+      setData({ ...data, gender: "male" });
     } else if (gender === "female") {
-      if (genderState) {
-        femaleRef.current.style.color = "white";
-        femaleRef.current.style.background = "#ff0020";
-        femaleRef.current.style.border = "none";
-      } else {
-        femaleRef.current.style.color = "#696969";
-        femaleRef.current.style.background = "unset";
-        femaleRef.current.style.border = "2px solid #b4b4b4";
-      }
+      setGenderState("female");
+      setData({ ...data, gender: "female" });
     }
   };
   const handleBack = () => {
     dispatch(termsModalAction({ termsOpen: 1 }));
     navigate("/");
   };
-  console.log(genderState);
+
+  const handleInput = (e) => {
+    const newData = { ...data };
+    newData[e.target.id] = e.target.value;
+    setData(newData);
+    console.log(newData);
+  };
+
+  let {
+    name,
+    dob,
+    gender,
+    height,
+    marital_status,
+    location,
+    profession,
+    email,
+    phone_number,
+  } = data;
+
+  const handleRegister = async () => {
+    if (
+      name === "" &&
+      dob === "" &&
+      gender === "" &&
+      height === "" &&
+      marital_status === "" &&
+      location === "" &&
+      profession === "" &&
+      email === "" &&
+      phone_number === "" &&
+      photo.length === 0
+    ) {
+      toast.error(`Error: Fill all fields`, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return;
+    }
+    setDisabled(1);
+    dispatch(preloadModalAction({ preloadOpen: 1 }));
+    let formData = new FormData();
+    photo.forEach((value, id) => {
+      formData.append("image", value);
+    });
+    formData.append("name", name);
+    formData.append("dob", dob);
+    formData.append("gender", gender);
+    formData.append("height", height);
+    formData.append("marital_status", marital_status);
+    formData.append("location", location);
+    formData.append("profession", profession);
+    formData.append("email", email);
+    formData.append("phone_no", phone_number);
+    try {
+      const res = await axios.post(`${baseUrlAuth}/register`, formData);
+      dispatch(preloadModalAction({ preloadOpen: 0 }));
+
+      console.log(res);
+      setDisabled(0);
+    } catch (err) {
+      console.log(err);
+      setDisabled(0);
+    }
+  };
+  const handleMobNext = () => {
+    if (
+      name === "" &&
+      dob === "" &&
+      gender === "" &&
+      height === "" &&
+      marital_status === ""
+    ) {
+      toast.error(`Error: Fill all fields`, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return;
+    }
+    dispatch(
+      registerDataAction({
+        full_name: data.name,
+        dob: data.dob,
+        gender: data.gender,
+        height: data.height,
+        marital_status: data.marital_status,
+      })
+    );
+    navigate("/register2");
+  };
   return (
     <div className="reg_wrapper">
+      {preloadOpen ? <Preloader /> : ""}
+      <ToastContainer />
       <div className="reg_nav">
         <Nav border={true} theme={"black"} />
       </div>
@@ -80,6 +176,11 @@ const Register = () => {
                 type="text"
                 id="name"
                 className="reg_name_input"
+                required
+                value={name}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
               />
               <FaUser className="reg_name_icon" />
             </div>
@@ -89,9 +190,14 @@ const Register = () => {
               </label>
               <input
                 placeholder="Date of birth"
-                type="text"
+                type="date"
                 id="dob"
                 className="reg_dob_input"
+                required
+                value={dob}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
               />
               <MdEmail className="reg_dob_icon" />
             </div>
@@ -102,15 +208,17 @@ const Register = () => {
               <div className="reg_gender_wrap" id="gender">
                 <button
                   onClick={() => handleGender("male")}
-                  ref={maleRef}
-                  className="reg_male"
+                  className={`reg_male ${
+                    genderState === "male" ? "reg_gender_active" : ""
+                  }`}
                 >
                   Male
                 </button>
                 <button
                   onClick={() => handleGender("female")}
-                  ref={femaleRef}
-                  className="reg_female"
+                  className={`reg_female ${
+                    genderState === "female" ? "reg_gender_active" : ""
+                  }`}
                 >
                   Female
                 </button>
@@ -125,6 +233,11 @@ const Register = () => {
                 type="text"
                 id="height"
                 className="reg_height_input"
+                required
+                value={height}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
               />
             </div>
             <div className="reg_input_marstatus_wrap">
@@ -134,8 +247,13 @@ const Register = () => {
               <input
                 placeholder="Never married"
                 type="text"
-                id="marstatus"
+                id="marital_status"
                 className="reg_marstatus_input"
+                required
+                value={marital_status}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
               />
             </div>
             <div className="reg_input_location_wrap">
@@ -147,6 +265,11 @@ const Register = () => {
                 type="text"
                 id="location"
                 className="reg_location_input"
+                required
+                value={location}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
               />
             </div>
             <div className="reg_input_profession_wrap">
@@ -158,12 +281,17 @@ const Register = () => {
                 type="text"
                 id="profession"
                 className="reg_profession_input"
+                required
+                value={profession}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
               />
             </div>
           </div>
           <div className="reg_right">
             <div className="reg_photos_wrap">
-              <PhotoInput />
+              <PhotoInput photo={photo} setPhoto={setPhoto} />
             </div>
             <div className="reg_input_email_wrap">
               <label className="reg_email_label" htmlFor="email">
@@ -174,6 +302,11 @@ const Register = () => {
                 type="email"
                 id="email"
                 className="reg_email_input"
+                required
+                value={email}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
               />
               <MdEmail className="reg_email_icon" />
             </div>
@@ -184,19 +317,32 @@ const Register = () => {
               <input
                 placeholder="+234"
                 type="number"
-                id="phone"
+                id="phone_number"
                 className="reg_phone_input"
+                required
+                value={phone_number}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
               />
               <MdOutlinePhoneAndroid className="reg_phone_icon" />
             </div>
           </div>
         </div>
         <div className="reg_button_wrap">
-          <button className={`reg_button`}>I Agree</button>
+          <button
+            onClick={() => {
+              handleRegister();
+            }}
+            className={`reg_button ${disabled ? "reg_button_inactive" : ""}`}
+            disabled={disabled ? 1 : 0}
+          >
+            Create Account
+          </button>
         </div>
         <div className="reg_button_wrap_mobile">
           <button
-            onClick={() => navigate("/register2")}
+            onClick={() => handleMobNext()}
             className={`reg_button_mobile`}
           >
             Next
