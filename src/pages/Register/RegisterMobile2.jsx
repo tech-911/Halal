@@ -124,13 +124,13 @@ const RegisterMobile2 = () => {
               <MdEmail className="regmob2_email_icon" />
             </div>
             <div className="regmob2_input_phone_wrap">
-              <label className="regmob2_phone_label" htmlFor="phone">
+              <label className="regmob2_phone_label" htmlFor="phone_number">
                 Your Phone Number
               </label>
               <input
                 placeholder="+234"
                 type="number"
-                id="phone"
+                id="phone_number"
                 className="regmob2_phone_input"
                 required
                 value={phone_number}
