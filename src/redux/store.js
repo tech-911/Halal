@@ -11,6 +11,7 @@ import termsModalSlice from "./slices/termsModalSlice";
 import preloadModalSlice from "./slices/preloadModalSlice";
 import authDataSlice from "./slices/authDataSlice";
 import registerDataSlice from "./slices/registerDataSlice";
+import userDataSlice from "./slices/userDataSlice";
 
 const reducers = combineReducers({
   authModalSlice,
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   preloadModalSlice,
   authDataSlice,
   registerDataSlice,
+  userDataSlice,
 });
 
 const persistConfig = {

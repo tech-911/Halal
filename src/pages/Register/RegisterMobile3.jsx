@@ -63,7 +63,6 @@ const RegisterMobile3 = () => {
     formData.append("phone_no", phone_number);
     try {
       const res = await axios.post(`${baseUrlAuth}/register`, formData);
-
       console.log(res);
       setDisabled(0);
       dispatch(preloadModalAction({ preloadOpen: 0 }));

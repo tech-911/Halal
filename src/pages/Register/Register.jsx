@@ -76,19 +76,19 @@ const Register = () => {
     email,
     phone_number,
   } = data;
-
+  console.log(photo.length);
   const handleRegister = async () => {
     if (
-      name === "" &&
-      dob === "" &&
-      gender === "" &&
-      height === "" &&
-      marital_status === "" &&
-      location === "" &&
-      profession === "" &&
-      email === "" &&
-      phone_number === "" &&
-      photo.length === 0
+      name === "" ||
+      dob === "" ||
+      gender === "" ||
+      height === "" ||
+      marital_status === "" ||
+      location === "" ||
+      profession === "" ||
+      email === "" ||
+      phone_number === "" ||
+      photo.length < 2
     ) {
       toast.error(`Error: Fill all fields`, {
         position: toast.POSITION.TOP_RIGHT,
@@ -117,8 +117,12 @@ const Register = () => {
       console.log(res);
       setDisabled(0);
     } catch (err) {
+      toast.error(`Error: ${err?.message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       console.log(err);
       setDisabled(0);
+      dispatch(preloadModalAction({ preloadOpen: 0 }));
     }
   };
   const handleMobNext = () => {
