@@ -7,17 +7,36 @@ import { baseUrlUserActions } from "../../../BaseUrls/base";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import NigeriaFlag from "../../../assets/png/nigeriaflag.png";
-import { GiBodyHeight } from "react-icons/gi";
+import { GiBodyHeight, GiBigDiamondRing } from "react-icons/gi";
 import {
   MdKeyboardArrowRight,
   MdKeyboardArrowLeft,
   MdLocationPin,
   MdDateRange,
+  MdOutlineBlock,
 } from "react-icons/md";
-import { RiShoppingBagFill } from "react-icons/ri";
+import { FiHeart } from "react-icons/fi";
+import { RiShoppingBagFill, RiFlagLine } from "react-icons/ri";
 import { AiTwotoneHeart } from "react-icons/ai";
 import { BsFillChatRightFill } from "react-icons/bs";
 import { CgClose } from "react-icons/cg";
+import child from "../../../assets/png/profileIcons/child.png";
+import relation from "../../../assets/png/profileIcons/relation.png";
+import bloodgroup from "../../../assets/png/profileIcons/bloodGroup.png";
+import genoType from "../../../assets/png/profileIcons/genotype.png";
+import skinColor from "../../../assets/png/profileIcons/skinColor.png";
+import Religiosity from "../../../assets/png/profileIcons/religion.png";
+import prayStatus from "../../../assets/png/profileIcons/pray.png";
+import drinkStatus from "../../../assets/png/profileIcons/drink.png";
+import smokeStatus from "../../../assets/png/profileIcons/smoke.png";
+import education from "../../../assets/png/profileIcons/education.png";
+import work from "../../../assets/png/profileIcons/work.png";
+import listen from "../../../assets/png/profileIcons/twemoji_ear.png";
+import create from "../../../assets/png/profileIcons/noto_artist-palette.png";
+import fun from "../../../assets/png/profileIcons/moji.png";
+import coffee from "../../../assets/png/profileIcons/twemoji_teacup-without-handle.png";
+import flag from "../../../assets/png/profileIcons/nigFlag.png";
+import lang from "../../../assets/png/profileIcons/language.png";
 import InfoWidget from "../../../components/infoWidget/InfoWidget";
 const UserHome = () => {
   const slickRef = useRef(null);
@@ -27,8 +46,6 @@ const UserHome = () => {
   const [arrow, setArrow] = useState(0);
   const [count, setCount] = useState(0);
   const [drop, setDrop] = useState(0);
-
-  console.log(drop);
 
   const { user } = useSelector((state) => state.userDataSlice);
   const [position, setPosition] = useState(0);
@@ -201,21 +218,15 @@ const UserHome = () => {
               text={"226cm (7'5)"}
             />
             <InfoWidget
-              Icon={<GiBodyHeight className="infowid_icon" />}
-              text={"226cm (7'5)"}
+              Icon={<GiBigDiamondRing className="infowid_icon" />}
+              text={"Divorced"}
             />
-            <InfoWidget
-              Icon={<GiBodyHeight className="infowid_icon" />}
-              text={"226cm (7'5)"}
-            />
+            <InfoWidget img={child} text={"Children"} />
             <InfoWidget
               Icon={<MdDateRange className="infowid_icon" />}
               text={data[position]?.marital_status}
             />
-            <InfoWidget
-              Icon={<GiBodyHeight className="infowid_icon" />}
-              text={"226cm (7'5)"}
-            />
+            <InfoWidget img={relation} text={"Relationship"} />
           </div>
         </div>
         <div className="udrop_bio">
@@ -236,6 +247,67 @@ const UserHome = () => {
             serious. I'm a 24-year-old woman who's driven and ambitious, but
             also looking for someone who can accept me for who I am. Let's build
             something real together."
+          </div>
+        </div>
+        <div className="udrop_health">
+          <h2 className="udrop_health_head">Health/Appearance</h2>
+          <div className="udrop_health_items">
+            <InfoWidget img={bloodgroup} text={"Blood Group B"} />
+            <InfoWidget img={genoType} text={"Genotype: AA"} />
+            <InfoWidget img={skinColor} text={"Skin Color: Fair skin"} />
+          </div>
+        </div>
+        <div className="udrop_religion">
+          <h2 className="udrop_religion_head">Religiosity</h2>
+          <div className="udrop_religion_items">
+            <InfoWidget img={Religiosity} text={"Very practicing"} />
+            <InfoWidget img={prayStatus} text={"Always pray"} />
+            <InfoWidget img={drinkStatus} text={"I don't drink"} />
+            <InfoWidget img={smokeStatus} text={"I don't smoke"} />
+          </div>
+        </div>
+        <div className="udrop_education">
+          <h2 className="udrop_education_head">Education/Profession</h2>
+          <div className="udrop_education_items">
+            <InfoWidget img={education} text={"Doctorate"} />
+            <InfoWidget img={work} text={"Product Manager"} />
+          </div>
+        </div>
+        <div className="udrop_personality">
+          <h2 className="udrop_personality_head">Personality</h2>
+          <div className="udrop_personality_items">
+            <InfoWidget img={listen} text={"Active Listener"} />
+            <InfoWidget img={create} text={"Creative"} />
+            <InfoWidget img={fun} text={"Funny"} />
+          </div>
+        </div>
+        <div className="udrop_interest">
+          <h2 className="udrop_interest_head">Interest</h2>
+          <div className="udrop_interest_items">
+            <InfoWidget img={listen} text={"Films & Cinema"} />
+            <InfoWidget img={create} text={"Design"} />
+            <InfoWidget img={coffee} text={"Coffee"} />
+          </div>
+        </div>
+        <div className="udrop_language">
+          <h2 className="udrop_language_head">Language and Ethnicity</h2>
+          <div className="udrop_language_items">
+            <InfoWidget img={flag} text={"Nigerian West Africa"} />
+            <InfoWidget img={lang} text={"English"} />
+          </div>
+        </div>
+        <div className="udrop_action_wrap">
+          <div className="udrop_block">
+            <MdOutlineBlock className="udrop_block_icon" />
+            <p className="udrop_block_text">Block</p>
+          </div>
+          <div className="udrop_report">
+            <RiFlagLine className="udrop_report_icon" />
+            <p className="udrop_report_text">Report</p>
+          </div>
+          <div className="udrop_fav">
+            <FiHeart className="udrop_fav_icon" />
+            <p className="udrop_fav_text">Add to Favorite</p>
           </div>
         </div>
       </div>
