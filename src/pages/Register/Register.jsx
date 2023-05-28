@@ -11,7 +11,7 @@ import mobileAuthHeadImg from "../../assets/png/mobileAuthHead.png";
 import { useDispatch, useSelector } from "react-redux";
 import { otpModalAction } from "../../redux/slices/otpModalSlice";
 import { termsModalAction } from "../../redux/slices/termsModalSlice";
-import { phoneModalAction } from "../../redux/slices/phoneModalSlice";
+import { userDataAction } from "../../redux/slices/userDataSlice";
 import { baseUrlAuth } from "../../BaseUrls/base";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,6 +24,7 @@ const Register = () => {
   const [disabled, setDisabled] = useState(0);
   const dispatch = useDispatch();
   const { preloadOpen } = useSelector((state) => state.preloadModalSlice);
+  const { user } = useSelector((state) => state.userDataSlice);
   const navigate = useNavigate();
   let [photo, setPhoto] = useState([]);
   let [data, setData] = useState({
@@ -76,7 +77,7 @@ const Register = () => {
     email,
     phone_number,
   } = data;
-  console.log(photo.length);
+  // console.log(photo.length);
   const handleRegister = async () => {
     if (
       name === "" ||
@@ -112,9 +113,25 @@ const Register = () => {
     formData.append("phone_no", phone_number);
     try {
       const res = await axios.post(`${baseUrlAuth}/register`, formData);
-      dispatch(preloadModalAction({ preloadOpen: 0 }));
-
-      console.log(res);
+      if (user && user?.token) {
+        dispatch(preloadModalAction({ preloadOpen: 0 }));
+        navigate("/main");
+      } else {
+        try {
+          const userRes = await axios.post(`${baseUrlAuth}/login`, {
+            email: res.email,
+          });
+          dispatch(userDataAction({ user: userRes.data }));
+          dispatch(preloadModalAction({ preloadOpen: 0 }));
+          navigate("/main");
+        } catch (err) {
+          console.log(err);
+          dispatch(preloadModalAction({ preloadOpen: 0 }));
+          toast.error(`Error!. Try again.`, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      }
       setDisabled(0);
     } catch (err) {
       toast.error(`Error: ${err?.message}`, {

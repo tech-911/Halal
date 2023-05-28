@@ -263,6 +263,11 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    width: 448px !important;
+    @media screen and (max-width: 799px) {
+      width: 100%;
+      border-radius: unset;
+    }
     .udrop_name {
       font-family: "Roboto";
       font-style: normal;

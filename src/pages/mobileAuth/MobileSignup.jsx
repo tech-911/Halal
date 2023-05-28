@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -39,6 +39,13 @@ const MobileSignup = () => {
   const { otpOpen } = useSelector((state) => state.otpModalSlice);
   const { termsOpen } = useSelector((state) => state.termsModalSlice);
   const { preloadOpen } = useSelector((state) => state.preloadModalSlice);
+  const { user } = useSelector((state) => state.userDataSlice);
+
+  useEffect(() => {
+    if (user && user?.token) {
+      navigate("/main");
+    }
+  }, []);
   return (
     <div className="mobauth_wrap">
       <Slider className="mobauth_carousel" {...settings}>

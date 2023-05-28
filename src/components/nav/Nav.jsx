@@ -1,12 +1,13 @@
 import React from "react";
 import "./nav.scss";
 import Logo from "../../assets/png/logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authModalAction } from "../../redux/slices/authModalSlice";
 import { useNavigate } from "react-router-dom";
 
 const Nav = ({ border, theme }) => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.userDataSlice);
   const navigate = useNavigate();
   const handleSignIn = () => {
     dispatch(authModalAction({ method: "signin", open: 1 }));
@@ -52,17 +53,24 @@ const Nav = ({ border, theme }) => {
           <a href="/home">Counseling</a>
         </p>
       </div>
-      <div className="nav_right">
-        <button
-          onClick={handleSignIn}
-          className={`nav_signin ${theme === "black" ? "nav_sigin_red" : ""}`}
-        >
-          Sign In
-        </button>
-        <button onClick={handleSignup} className="nav_signup">
-          Sign Up
-        </button>
-      </div>
+      {!user?.token ? (
+        <div className="nav_right">
+          <button
+            onClick={handleSignIn}
+            className={`nav_signin ${theme === "black" ? "nav_sigin_red" : ""}`}
+          >
+            Sign In
+          </button>
+          <button onClick={handleSignup} className="nav_signup">
+            Sign Up
+          </button>
+        </div>
+      ) : (
+        <div onClick={() => navigate("/main")} className="nav_profile_route">
+          <img src={user?.photo[0]} alt="profile" className="nav_profile_img" />
+          <p className="nav_profile_name">{user?.name}</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -102,4 +102,38 @@
       }
     }
   }
+  .nav_profile_route {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 100px;
+    width: fit-content;
+    max-width: 185px;
+    overflow: hidden;
+    height: 44px;
+    background: #1e1e1e;
+    padding: 0rem 0.7rem 0rem;
+    cursor: pointer;
+    .nav_profile_img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+    .nav_profile_name {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: 1px;
+      color: #ffffff;
+      white-space: nowrap;
+      max-width: 130px;
+      overflow: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
 }

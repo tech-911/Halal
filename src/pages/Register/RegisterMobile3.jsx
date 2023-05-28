@@ -6,6 +6,7 @@ import PhotoInput from "../../components/photoInput/PhotoInput";
 import { SlArrowLeft } from "react-icons/sl";
 import mobileAuthHeadImg from "../../assets/png/mobileAuthHead.png";
 import { useDispatch, useSelector } from "react-redux";
+import { userDataAction } from "../../redux/slices/userDataSlice";
 import { otpModalAction } from "../../redux/slices/otpModalSlice";
 import { termsModalAction } from "../../redux/slices/termsModalSlice";
 import { phoneModalAction } from "../../redux/slices/phoneModalSlice";
@@ -26,6 +27,7 @@ const RegisterMobile3 = () => {
     navigate(-1);
   };
   const { preloadOpen } = useSelector((state) => state.preloadModalSlice);
+  const { user } = useSelector((state) => state.userDataSlice);
   const {
     full_name,
     dob,
@@ -63,9 +65,26 @@ const RegisterMobile3 = () => {
     formData.append("phone_no", phone_number);
     try {
       const res = await axios.post(`${baseUrlAuth}/register`, formData);
-      console.log(res);
+      if (user && user?.token) {
+        dispatch(preloadModalAction({ preloadOpen: 0 }));
+        navigate("/main");
+      } else {
+        try {
+          const userRes = await axios.post(`${baseUrlAuth}/login`, {
+            email: res.email,
+          });
+          dispatch(userDataAction({ user: userRes.data }));
+          dispatch(preloadModalAction({ preloadOpen: 0 }));
+          navigate("/main");
+        } catch (err) {
+          console.log(err);
+          dispatch(preloadModalAction({ preloadOpen: 0 }));
+          toast.error(`Error!. Try again.`, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      }
       setDisabled(0);
-      dispatch(preloadModalAction({ preloadOpen: 0 }));
     } catch (err) {
       toast.error(`Error: ${err?.message}`, {
         position: toast.POSITION.TOP_RIGHT,
