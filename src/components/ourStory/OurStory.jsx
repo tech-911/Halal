@@ -25,9 +25,10 @@ const OurStory = () => {
         with others who share your vision for a happy and fulfilling life.
       </p>
       <p className="story_sub2">
-        Join our <span className="story_community">community</span> today and start your journey towards
-        finding a compatible partner who shares your values and beliefs,and who
-        will provide the love, support, and companionship you deserve."
+        Join our <span className="story_community">community</span> today and
+        start your journey towards finding a compatible partner who shares your
+        values and beliefs,and who will provide the love, support, and
+        companionship you deserve."
       </p>
     </div>
   );

@@ -6,12 +6,15 @@ import { MdTravelExplore } from "react-icons/md";
 import Matches from "./matches/Matches";
 import { useSelector } from "react-redux";
 import profileDefault from "../../assets/png/profileDefault.png";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import ExploreSide from "../exploreSide/ExploreSide";
+import EditSide from "../../components/editSide/EditSide";
 const DesktopSideMenu = () => {
-  const [view, setView] = useState("home");
   const { user } = useSelector((state) => state.userDataSlice);
   const [photo, setPhoto] = useState(profileDefault);
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(location.pathname === "/main/explore");
   useEffect(() => {
     let profilePhoto = user.photo.filter((value) => {
       return (
@@ -20,6 +23,10 @@ const DesktopSideMenu = () => {
     });
     setPhoto(profilePhoto[0] || profilePhoto[1]);
   }, []);
+
+  const handleExplore = () => {
+    navigate("/main/explore/0");
+  };
   return (
     <div className="deskside_wrapper">
       <div className="deskside_header">
@@ -29,7 +36,7 @@ const DesktopSideMenu = () => {
           </div>
           <p className="deskside_name">{user?.name || "unknown"}</p>
         </div>
-        <div className="deskside_explore">
+        <div onClick={handleExplore} className="deskside_explore">
           <MdTravelExplore className="deskside_explore_icon" />
         </div>
         <div className="deskside_consel">
@@ -39,7 +46,17 @@ const DesktopSideMenu = () => {
           <BsFillChatRightFill className="deskside_chat_icon" />
         </div>
       </div>
-      <div className="deskside_outlet">{view === "home" && <Matches />}</div>
+      <div
+        className={`deskside_outlet ${
+          location.pathname === "/main/edit" ? "deskside_padding_remove" : ""
+        }`}
+      >
+        {(location.pathname === "/main" ||
+          location.pathname === "/main/" ||
+          location.pathname === "/main/home") && <Matches />}
+        {location.pathname.includes(`/main/explore`) && <ExploreSide />}
+        {location.pathname === `/main/edit` && <EditSide />}
+      </div>
     </div>
   );
 };

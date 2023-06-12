@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: fit-content;
+  width: 100%;
   .photo_header {
     font-family: "Roboto";
     font-style: normal;
@@ -17,9 +17,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem 1rem;
     margin-bottom: 2rem;
+    width: 100%;
     .photo_box1_wrap {
       .photo_box1 {
-        width: 130px;
+        // width: 130px;
         height: 176px;
         background: #ffffff;
         border: 3px dashed #444444;
@@ -33,7 +34,7 @@
         overflow: hidden;
         @media screen and (max-width: 484px) {
           height: 135.74px;
-          width: 100.26px;
+          // width: 100.26px;
         }
         .photo_icon1 {
           font-size: 22px;

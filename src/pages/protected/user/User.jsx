@@ -2,7 +2,7 @@ import React from "react";
 import "./user.scss";
 import MobileMenue from "../../../components/mobileMenue/MobileMenue";
 import DesktopSideMenu from "../../../components/desktopSideMenu/DesktopSideMenu";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const User = () => {
   return (

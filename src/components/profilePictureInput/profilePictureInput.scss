@@ -1,0 +1,50 @@
+.profpic_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  .profpic_wrap {
+    position: relative;
+    .profpic_circle {
+      // overflow: hidden;
+      width: 150px;
+      height: 150px;
+      border-radius: 100px;
+      background: #d9d9d9;
+      border: 5px solid #ff0020;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      &::after {
+        content: url();
+        width: 38px;
+        height: 38px;
+        background-color: white;
+        border-radius: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        cursor: pointer;
+      }
+      .profpic_photo {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .profpic_profile_name {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.802236px;
+    color: #000000;
+  }
+}

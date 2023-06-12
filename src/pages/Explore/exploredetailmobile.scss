@@ -35,20 +35,20 @@
   gap: 0.8rem;
   flex-wrap: wrap;
 }
-.userhome_container {
+.exploredetmob_container {
   width: fit-content;
   height: fit-content;
   // border-top-left-radius: 8px;
   // border-top-right-radius: 8px;
   border-radius: 8px;
-  // overflow: hidden;
+//   overflow: hidden;
   position: relative;
   @media screen and (max-width: 799px) {
     width: 100%;
     border-radius: unset;
   }
 
-  .userhome_wrapper {
+  .exploredetmob_wrapper {
     height: 851px;
     width: 448px;
     border-radius: 8px;
@@ -59,11 +59,11 @@
       border-radius: unset;
     }
 
-    .userhome_carousel {
+    .exploredetmob_carousel {
       width: 100%;
       height: 100%;
     }
-    .userhome_arrow_wrap {
+    .exploredetmob_arrow_wrap {
       position: absolute;
       top: 388px;
       left: 0px;
@@ -72,8 +72,8 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      .userhome_arrowleft,
-      .userhome_arrowright {
+      .exploredetmob_arrowleft,
+      .exploredetmob_arrowright {
         color: rgba(255, 255, 255, 0.479);
         cursor: pointer;
         font-size: 42px;
@@ -81,14 +81,14 @@
           color: white;
         }
       }
-      .userhome_arrowleft_off {
+      .exploredetmob_arrowleft_off {
         color: rgba(255, 255, 255, 0);
       }
-      .userhome_arrowright_off {
+      .exploredetmob_arrowright_off {
         display: none;
       }
     }
-    .userhome_body {
+    .exploredetmob_body {
       position: absolute;
       bottom: 0px;
       left: 0px;
@@ -101,7 +101,7 @@
         rgba(30, 30, 30, 0) 0%,
         #1e1e1e 93.23%
       );
-      .userhome_name {
+      .exploredetmob_name {
         width: 100%;
         font-family: "Roboto";
         font-style: normal;
@@ -113,7 +113,7 @@
         color: #ffffff;
         margin-bottom: 1rem;
       }
-      .userhome_details {
+      .exploredetmob_details {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -121,16 +121,16 @@
         gap: 1rem;
         margin-bottom: 1rem;
 
-        .userhome_location_wrap {
+        .exploredetmob_location_wrap {
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: 0.5rem;
-          .userhome_location_icon {
+          .exploredetmob_location_icon {
             color: white;
             font-size: 22px;
           }
-          .userhome_location_name {
+          .exploredetmob_location_name {
             font-family: "Roboto";
             font-style: normal;
             font-weight: 700;
@@ -141,7 +141,7 @@
             color: #ffffff;
           }
         }
-        .userhome_moredetails {
+        .exploredetmob_moredetails {
           width: 50px;
           height: 32px;
           background: #ff0020;
@@ -161,13 +161,13 @@
           cursor: pointer;
         }
       }
-      .userhome_occupation_wrap {
+      .exploredetmob_occupation_wrap {
         width: 100%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         margin-bottom: 1.5rem;
-        .userhome_occupation {
+        .exploredetmob_occupation {
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -177,11 +177,11 @@
           background: #444444;
           border-radius: 100px;
           padding: 0rem 1rem 0rem;
-          .userhome_occupation_icon {
+          .exploredetmob_occupation_icon {
             color: white;
             font-size: 22px;
           }
-          .userhome_occupation_name {
+          .exploredetmob_occupation_name {
             font-family: "Roboto";
             font-style: normal;
             font-weight: 500;
@@ -196,34 +196,34 @@
         }
       }
 
-      .userhome_actions_wrap {
+      .exploredetmob_actions_wrap {
         width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
         gap: 4rem;
-        .userhome_like,
-        .userhome_chat,
-        .userhome_reject {
+        .exploredetmob_like,
+        .exploredetmob_chat,
+        .exploredetmob_reject {
           @include action_button_wrap;
           cursor: pointer;
-          .userhome_likeicon {
+          .exploredetmob_likeicon {
             color: white;
             font-size: 30px;
           }
-          .userhome_chaticon {
+          .exploredetmob_chaticon {
             color: white;
             font-size: 25px;
           }
-          .userhome_rejecticon {
+          .exploredetmob_rejecticon {
             color: white;
             font-size: 30px;
           }
         }
       }
     }
-    .userhome_goback {
+    .exploredetmob_goback {
       position: absolute;
       top: 805px;
       right: 20px;
@@ -246,18 +246,18 @@
       cursor: pointer;
     }
   }
-  .userhome_drop_close {
+  .exploredetmob_drop_close {
     height: 0px;
     overflow: hidden;
     transition: height 0.5s ease-in-out;
     padding: unset !important;
   }
-  .userhome_drop_open {
+  .exploredetmob_drop_open {
     height: fit-content;
     overflow: hidden;
     transition: height 0.5s ease-in-out;
   }
-  .userhome_drop {
+  .exploredetmob_drop {
     overflow: hidden;
     background-color: white;
     display: flex;
@@ -268,7 +268,7 @@
       width: 100%;
       border-radius: unset;
     }
-    .udrop_name {
+    .expdetdropmob_name {
       font-family: "Roboto";
       font-style: normal;
       font-weight: 700;
@@ -278,13 +278,13 @@
       letter-spacing: 1px;
       color: #1e1e1e;
     }
-    .udrop_about {
+    .expdetdropmob_about {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 1rem;
       margin-top: 1.5rem;
-      .udrop_about_head {
+      .expdetdropmob_about_head {
         font-family: "Roboto";
         font-style: normal;
         font-weight: 600;
@@ -293,7 +293,7 @@
         letter-spacing: 1px;
         color: #1e1e1e;
       }
-      .udrop_about_items {
+      .expdetdropmob_about_items {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -301,13 +301,13 @@
         flex-wrap: wrap;
       }
     }
-    .udrop_bio {
+    .expdetdropmob_bio {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 1rem;
       margin-top: 1.5rem;
-      .udrop_bio_head {
+      .expdetdropmob_bio_head {
         font-family: "Roboto";
         font-style: normal;
         font-weight: 600;
@@ -316,7 +316,7 @@
         letter-spacing: 1px;
         color: #1e1e1e;
       }
-      .udrop_bio_items {
+      .expdetdropmob_bio_items {
         font-family: "Roboto";
         font-style: normal;
         font-weight: 400;
@@ -329,13 +329,13 @@
         padding: 1rem;
       }
     }
-    .udrop_describe {
+    .expdetdropmob_describe {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 1rem;
       margin-top: 1.5rem;
-      .udrop_describe_head {
+      .expdetdropmob_describe_head {
         font-family: "Roboto";
         font-style: normal;
         font-weight: 600;
@@ -344,7 +344,7 @@
         letter-spacing: 1px;
         color: #1e1e1e;
       }
-      .udrop_describe_items {
+      .expdetdropmob_describe_items {
         font-family: "Roboto";
         font-style: normal;
         font-weight: 400;
@@ -357,78 +357,78 @@
         padding: 1rem;
       }
     }
-    .udrop_health {
+    .expdetdropmob_health {
       @include sections_layout_group;
-      .udrop_health_head {
+      .expdetdropmob_health_head {
         @include sections_layout_head;
       }
-      .udrop_health_items {
+      .expdetdropmob_health_items {
         @include sections_layout_item;
       }
     }
-    .udrop_religion {
+    .expdetdropmob_religion {
       @include sections_layout_group;
-      .udrop_religion_head {
+      .expdetdropmob_religion_head {
         @include sections_layout_head;
       }
-      .udrop_religion_items {
+      .expdetdropmob_religion_items {
         @include sections_layout_item;
       }
     }
-    .udrop_education {
+    .expdetdropmob_education {
       @include sections_layout_group;
-      .udrop_education_head {
+      .expdetdropmob_education_head {
         @include sections_layout_head;
       }
-      .udrop_education_items {
+      .expdetdropmob_education_items {
         @include sections_layout_item;
       }
     }
-    .udrop_personality {
+    .expdetdropmob_personality {
       @include sections_layout_group;
-      .udrop_personality_head {
+      .expdetdropmob_personality_head {
         @include sections_layout_head;
       }
-      .udrop_personality_items {
+      .expdetdropmob_personality_items {
         @include sections_layout_item;
       }
     }
-    .udrop_interest {
+    .expdetdropmob_interest {
       @include sections_layout_group;
-      .udrop_interest_head {
+      .expdetdropmob_interest_head {
         @include sections_layout_head;
       }
-      .udrop_interest_items {
+      .expdetdropmob_interest_items {
         @include sections_layout_item;
       }
     }
-    .udrop_language {
+    .expdetdropmob_language {
       @include sections_layout_group;
-      .udrop_language_head {
+      .expdetdropmob_language_head {
         @include sections_layout_head;
       }
-      .udrop_language_items {
+      .expdetdropmob_language_items {
         @include sections_layout_item;
       }
     }
-    .udrop_action_wrap {
+    .expdetdropmob_action_wrap {
       display: flex;
       flex-direction: row;
       align-items: flex-start;
       justify-content: center;
       gap: 4rem;
       margin: 5rem 0rem;
-      .udrop_block {
+      .expdetdropmob_block {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0.6rem;
         cursor: pointer;
-        .udrop_block_icon {
+        .expdetdropmob_block_icon {
           font-size: 25px;
           color: #ff0000;
         }
-        .udrop_block_text {
+        .expdetdropmob_block_text {
           font-family: "Montserrat";
           font-style: normal;
           font-weight: 400;
@@ -437,17 +437,17 @@
           color: #ff0000;
         }
       }
-      .udrop_report {
+      .expdetdropmob_report {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0.6rem;
         cursor: pointer;
-        .udrop_report_icon {
+        .expdetdropmob_report_icon {
           font-size: 25px;
           color: #008000;
         }
-        .udrop_report_text {
+        .expdetdropmob_report_text {
           font-family: "Montserrat";
           font-style: normal;
           font-weight: 400;
@@ -456,17 +456,17 @@
           color: #008000;
         }
       }
-      .udrop_fav {
+      .expdetdropmob_fav {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0.6rem;
         cursor: pointer;
-        .udrop_fav_icon {
+        .expdetdropmob_fav_icon {
           font-size: 25px;
           color: #444444;
         }
-        .udrop_fav_text {
+        .expdetdropmob_fav_text {
           font-family: "Montserrat";
           font-style: normal;
           font-weight: 400;
@@ -479,7 +479,7 @@
   }
 }
 
-.userhome_item {
+.exploredetmob_item {
   width: 100%;
   height: 851px;
 }

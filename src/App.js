@@ -13,10 +13,14 @@ import User from "./pages/protected/user/User";
 import UserHome from "./pages/protected/home/UserHome";
 // import { Navigate } from "react-router-dom";
 import Private_route from "./privateRoute";
+import Explore from "./pages/Explore/Explore";
+import EditPreview from "./components/editandpreview/EditPreview";
+import ExploreDetailMobile from "./pages/Explore/ExploreDetailMobile";
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   const { user } = useSelector((state) => state.userDataSlice);
-  console.log(user);
+  // console.log(user);
   return (
     <div className="App">
       <Routes>
@@ -28,7 +32,7 @@ const App = () => {
         <Route path="/register2" element={<RegisterMobile2 />} />
         <Route path="/register3" element={<RegisterMobile3 />} />
         <Route path="/terms" element={<Terms />} />
-        //--------------------Protected Routes-----------------------------
+        //--------------------Protected Routes-----------------------------↓
         <Route
           path="/main"
           element={
@@ -53,8 +57,40 @@ const App = () => {
               </Private_route>
             }
           />
+          <Route
+            path="/main/profile"
+            element={
+              <Private_route link={"/"}>
+                <Profile />
+              </Private_route>
+            }
+          />
+          <Route
+            path="/main/edit"
+            element={
+              <Private_route link={"/"}>
+                <EditPreview />
+              </Private_route>
+            }
+          />
+          <Route
+            path="/main/explore/:id"
+            element={
+              <Private_route link={"/"}>
+                <Explore />
+              </Private_route>
+            }
+          />
+          <Route
+            path="/main/exploremob/:mobid"
+            element={
+              <Private_route link={"/"}>
+                <ExploreDetailMobile />
+              </Private_route>
+            }
+          />
         </Route>
-        //--------------------Protected Routes-----------------------------
+        //--------------------Protected Routes-----------------------------↑
       </Routes>
     </div>
   );

@@ -15,7 +15,10 @@ const MobileMenue = () => {
         className={`mobmen_item1`}
       />
       <BsFillChatRightFill className={`mobmen_item2`} />
-      <MdTravelExplore className={`mobmen_item3`} />
+      <MdTravelExplore
+        onClick={() => navigate("/main/explore/0")}
+        className={`mobmen_item3`}
+      />
       <TiUser className={`mobmen_item4`} />
       <div className={`mobmen_item5`}>
         <HiUser className={`mobmen_item5_sub`} />

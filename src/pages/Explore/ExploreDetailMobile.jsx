@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./userHome.scss";
+import "./exploredetailmobile.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { baseUrlUserActions } from "../../../BaseUrls/base";
+import { baseUrlUserActions } from "../../BaseUrls/base";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import NigeriaFlag from "../../../assets/png/nigeriaflag.png";
+import NigeriaFlag from "../../assets/png/nigeriaflag.png";
 import { GiBodyHeight, GiBigDiamondRing } from "react-icons/gi";
 import {
   MdKeyboardArrowRight,
@@ -22,35 +22,36 @@ import { RiShoppingBagFill, RiFlagLine } from "react-icons/ri";
 import { AiTwotoneHeart } from "react-icons/ai";
 import { BsFillChatRightFill } from "react-icons/bs";
 import { CgClose } from "react-icons/cg";
-import child from "../../../assets/png/profileIcons/child.png";
-import relation from "../../../assets/png/profileIcons/relation.png";
-import bloodgroup from "../../../assets/png/profileIcons/bloodGroup.png";
-import genoType from "../../../assets/png/profileIcons/genotype.png";
-import skinColor from "../../../assets/png/profileIcons/skinColor.png";
-import Religiosity from "../../../assets/png/profileIcons/religion.png";
-import prayStatus from "../../../assets/png/profileIcons/pray.png";
-import drinkStatus from "../../../assets/png/profileIcons/drink.png";
-import smokeStatus from "../../../assets/png/profileIcons/smoke.png";
-import education from "../../../assets/png/profileIcons/education.png";
-import work from "../../../assets/png/profileIcons/work.png";
-import listen from "../../../assets/png/profileIcons/twemoji_ear.png";
-import create from "../../../assets/png/profileIcons/noto_artist-palette.png";
-import fun from "../../../assets/png/profileIcons/moji.png";
-import coffee from "../../../assets/png/profileIcons/twemoji_teacup-without-handle.png";
-import flag from "../../../assets/png/profileIcons/nigFlag.png";
-import lang from "../../../assets/png/profileIcons/language.png";
-import InfoWidget from "../../../components/infoWidget/InfoWidget";
-const UserHome = () => {
+import child from "../../assets/png/profileIcons/child.png";
+import relation from "../../assets/png/profileIcons/relation.png";
+import bloodgroup from "../../assets/png/profileIcons/bloodGroup.png";
+import genoType from "../../assets/png/profileIcons/genotype.png";
+import skinColor from "../../assets/png/profileIcons/skinColor.png";
+import Religiosity from "../../assets/png/profileIcons/religion.png";
+import prayStatus from "../../assets/png/profileIcons/pray.png";
+import drinkStatus from "../../assets/png/profileIcons/drink.png";
+import smokeStatus from "../../assets/png/profileIcons/smoke.png";
+import education from "../../assets/png/profileIcons/education.png";
+import work from "../../assets/png/profileIcons/work.png";
+import listen from "../../assets/png/profileIcons/twemoji_ear.png";
+import create from "../../assets/png/profileIcons/noto_artist-palette.png";
+import fun from "../../assets/png/profileIcons/moji.png";
+import coffee from "../../assets/png/profileIcons/twemoji_teacup-without-handle.png";
+import flag from "../../assets/png/profileIcons/nigFlag.png";
+import lang from "../../assets/png/profileIcons/language.png";
+import InfoWidget from "../../components/infoWidget/InfoWidget";
+import { useParams } from "react-router-dom";
+const ExploreDetailMobile = () => {
   const slickRef = useRef(null);
-
-  //   console.log(slickRef);
-  const [data, setData] = useState([]);
+  const exploreData = useSelector((state) => state.exploreDataSlice);
+  console.log(exploreData);
+  const { mobid: paramsid } = useParams();
+  const [data, setData] = useState(exploreData);
   const [arrow, setArrow] = useState(0);
   const [count, setCount] = useState(0);
   const [drop, setDrop] = useState(0);
-
   const { user } = useSelector((state) => state.userDataSlice);
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = useState(paramsid);
   const settings = {
     dots: false,
     infinite: false,
@@ -62,47 +63,11 @@ const UserHome = () => {
     autoplaySpeed: 3000,
   };
   useEffect(() => {
-    if (user.gender === "male") {
-      axios
-        .post(
-          `${baseUrlUserActions}/getallusersbygender`,
-          {
-            gender: "female",
-          },
-          {
-            headers: {
-              "auth-token": user.token,
-            },
-          }
-        )
-        .then((res) => {
-          setData(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (user?.gender === "female") {
-      axios
-        .post(
-          `${baseUrlUserActions}/getallusersbygender`,
-          {
-            gender: "male",
-          },
-          {
-            headers: {
-              "auth-token": user.token,
-            },
-          }
-        )
-        .then((res) => {
-          setData(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, []);
-
+    setData(exploreData);
+  }, [exploreData]);
+  useEffect(() => {
+    setPosition(paramsid);
+  }, [paramsid]);
   const Next = () => {
     if (arrow < 1) {
       setArrow(1);
@@ -138,13 +103,6 @@ const UserHome = () => {
           },
         }
       );
-      setPosition((state) => {
-        if (state < data.length) {
-          return state + 1;
-        } else {
-          return state;
-        }
-      });
     } catch (err) {
       console.log(err);
       if (err?.response?.data?.message === "user already liked") {
@@ -160,89 +118,89 @@ const UserHome = () => {
   };
 
   return (
-    <div className="userhome_container">
+    <div className="exploredetmob_container">
       <ToastContainer />
-      <div className="userhome_wrapper ">
-        <Slider className="userhome_carousel" {...settings} ref={slickRef}>
+      <div className="exploredetmob_wrapper ">
+        <Slider className="exploredetmob_carousel" {...settings} ref={slickRef}>
           {data[position]?.photo.map((value, id) => {
             return (
               <img
                 key={id}
-                className="userhome_item"
+                className="exploredetmob_item"
                 src={value}
                 alt={`profile${id}`}
               />
             );
           })}
         </Slider>
-        <div className="userhome_arrow_wrap">
+        <div className="exploredetmob_arrow_wrap">
           <MdKeyboardArrowLeft
             onClick={Prev}
-            className={`userhome_arrowleft ${
-              arrow ? "" : "userhome_arrowleft_off"
+            className={`exploredetmob_arrowleft ${
+              arrow ? "" : "exploredetmob_arrowleft_off"
             }`}
           />
 
           <MdKeyboardArrowRight
             onClick={Next}
-            className={`userhome_arrowright`}
+            className={`exploredetmob_arrowright`}
           />
         </div>
         {drop ? (
           ""
         ) : (
-          <div className="userhome_body">
-            <h1 className="userhome_name">
+          <div className="exploredetmob_body">
+            <h1 className="exploredetmob_name">
               {data[position]?.name.split(" ")[0]}
             </h1>
-            <div className="userhome_details">
-              <div className="userhome_location_wrap">
-                <MdLocationPin className="userhome_location_icon" />
+            <div className="exploredetmob_details">
+              <div className="exploredetmob_location_wrap">
+                <MdLocationPin className="exploredetmob_location_icon" />
                 <img
                   src={NigeriaFlag}
                   alt="ng_flag"
-                  className="userhome_flag"
+                  className="exploredetmob_flag"
                 />
-                <p className="userhome_location_name">
+                <p className="exploredetmob_location_name">
                   {data[position]?.location}
                 </p>
               </div>
               <button
                 onClick={() => setDrop(!drop)}
-                className="userhome_moredetails"
+                className="exploredetmob_moredetails"
               >
                 View
               </button>
             </div>
-            <div className="userhome_occupation_wrap">
-              <div className="userhome_occupation">
-                <RiShoppingBagFill className="userhome_occupation_icon" />
-                <p className="userhome_occupation_name">
+            <div className="exploredetmob_occupation_wrap">
+              <div className="exploredetmob_occupation">
+                <RiShoppingBagFill className="exploredetmob_occupation_icon" />
+                <p className="exploredetmob_occupation_name">
                   {data[position]?.profession}
                 </p>
               </div>
             </div>
-            <div className="userhome_actions_wrap">
+            <div className="exploredetmob_actions_wrap">
               <div
                 onClick={() => handleReact("like")}
-                className="userhome_like"
+                className="exploredetmob_like"
               >
-                <AiTwotoneHeart className="userhome_likeicon" />
+                <AiTwotoneHeart className="exploredetmob_likeicon" />
               </div>
-              <div className="userhome_chat">
-                <BsFillChatRightFill className="userhome_chaticon" />
+              <div className="exploredetmob_chat">
+                <BsFillChatRightFill className="exploredetmob_chaticon" />
               </div>
               <div
                 onClick={() => handleReact("unlike")}
-                className="userhome_reject"
+                className="exploredetmob_reject"
               >
-                <CgClose className="userhome_rejecticon" />
+                <CgClose className="exploredetmob_rejecticon" />
               </div>
             </div>
           </div>
         )}
         {drop ? (
-          <button onClick={() => setDrop(!drop)} className="userhome_goback">
+          <button onClick={() => setDrop(!drop)} className="exploredetmob_goback">
             Go Back
           </button>
         ) : (
@@ -250,14 +208,16 @@ const UserHome = () => {
         )}
       </div>
       <div
-        className={`userhome_drop ${
-          !drop ? "userhome_drop_close" : "userhome_drop_open"
+        className={`exploredetmob_drop ${
+          !drop ? "exploredetmob_drop_close" : "exploredetmob_drop_open"
         }`}
       >
-        <h1 className="udrop_name">{data[position]?.name.split(" ")[0]}</h1>
-        <div className="udrop_about">
-          <h2 className="udrop_about_head">About me</h2>
-          <div className="udrop_about_items">
+        <h1 className="expdetdropmob_name">
+          {data[position]?.name.split(" ")[0]}
+        </h1>
+        <div className="expdetdropmob_about">
+          <h2 className="expdetdropmob_about_head">About me</h2>
+          <div className="expdetdropmob_about_items">
             <InfoWidget
               Icon={<GiBodyHeight className="infowid_icon" />}
               text={"226cm (7'5)"}
@@ -274,9 +234,9 @@ const UserHome = () => {
             <InfoWidget img={relation} text={"Relationship"} />
           </div>
         </div>
-        <div className="udrop_bio">
-          <h2 className="udrop_bio_head">Bio</h2>
-          <div className="udrop_bio_items">
+        <div className="expdetdropmob_bio">
+          <h2 className="expdetdropmob_bio_head">Bio</h2>
+          <div className="expdetdropmob_bio_items">
             "Divorcee, single mom, and product manager looking for someone who
             understands the complexities of life and is ready for something
             serious. I'm a 24-year-old woman who's driven and ambitious, but
@@ -284,9 +244,11 @@ const UserHome = () => {
             something real together."
           </div>
         </div>
-        <div className="udrop_describe">
-          <h2 className="udrop_describe_head">Describe the person you want</h2>
-          <div className="udrop_describe_items">
+        <div className="expdetdropmob_describe">
+          <h2 className="expdetdropmob_describe_head">
+            Describe the person you want
+          </h2>
+          <div className="expdetdropmob_describe_items">
             "Divorcee, single mom, and product manager looking for someone who
             understands the complexities of life and is ready for something
             serious. I'm a 24-year-old woman who's driven and ambitious, but
@@ -294,65 +256,65 @@ const UserHome = () => {
             something real together."
           </div>
         </div>
-        <div className="udrop_health">
-          <h2 className="udrop_health_head">Health/Appearance</h2>
-          <div className="udrop_health_items">
+        <div className="expdetdropmob_health">
+          <h2 className="expdetdropmob_health_head">Health/Appearance</h2>
+          <div className="expdetdropmob_health_items">
             <InfoWidget img={bloodgroup} text={"Blood Group B"} />
             <InfoWidget img={genoType} text={"Genotype: AA"} />
             <InfoWidget img={skinColor} text={"Skin Color: Fair skin"} />
           </div>
         </div>
-        <div className="udrop_religion">
-          <h2 className="udrop_religion_head">Religiosity</h2>
-          <div className="udrop_religion_items">
+        <div className="expdetdropmob_religion">
+          <h2 className="expdetdropmob_religion_head">Religiosity</h2>
+          <div className="expdetdropmob_religion_items">
             <InfoWidget img={Religiosity} text={"Very practicing"} />
             <InfoWidget img={prayStatus} text={"Always pray"} />
             <InfoWidget img={drinkStatus} text={"I don't drink"} />
             <InfoWidget img={smokeStatus} text={"I don't smoke"} />
           </div>
         </div>
-        <div className="udrop_education">
-          <h2 className="udrop_education_head">Education/Profession</h2>
-          <div className="udrop_education_items">
+        <div className="expdetdropmob_education">
+          <h2 className="expdetdropmob_education_head">Education/Profession</h2>
+          <div className="expdetdropmob_education_items">
             <InfoWidget img={education} text={"Doctorate"} />
             <InfoWidget img={work} text={"Product Manager"} />
           </div>
         </div>
-        <div className="udrop_personality">
-          <h2 className="udrop_personality_head">Personality</h2>
-          <div className="udrop_personality_items">
+        <div className="expdetdropmob_personality">
+          <h2 className="expdetdropmob_personality_head">Personality</h2>
+          <div className="expdetdropmob_personality_items">
             <InfoWidget img={listen} text={"Active Listener"} />
             <InfoWidget img={create} text={"Creative"} />
             <InfoWidget img={fun} text={"Funny"} />
           </div>
         </div>
-        <div className="udrop_interest">
-          <h2 className="udrop_interest_head">Interest</h2>
-          <div className="udrop_interest_items">
+        <div className="expdetdropmob_interest">
+          <h2 className="expdetdropmob_interest_head">Interest</h2>
+          <div className="expdetdropmob_interest_items">
             <InfoWidget img={listen} text={"Films & Cinema"} />
             <InfoWidget img={create} text={"Design"} />
             <InfoWidget img={coffee} text={"Coffee"} />
           </div>
         </div>
-        <div className="udrop_language">
-          <h2 className="udrop_language_head">Language and Ethnicity</h2>
-          <div className="udrop_language_items">
+        <div className="expdetdropmob_language">
+          <h2 className="expdetdropmob_language_head">Language and Ethnicity</h2>
+          <div className="expdetdropmob_language_items">
             <InfoWidget img={flag} text={"Nigerian West Africa"} />
             <InfoWidget img={lang} text={"English"} />
           </div>
         </div>
-        <div className="udrop_action_wrap">
-          <div className="udrop_block">
-            <MdOutlineBlock className="udrop_block_icon" />
-            <p className="udrop_block_text">Block</p>
+        <div className="expdetdropmob_action_wrap">
+          <div className="expdetdropmob_block">
+            <MdOutlineBlock className="expdetdropmob_block_icon" />
+            <p className="expdetdropmob_block_text">Block</p>
           </div>
-          <div className="udrop_report">
-            <RiFlagLine className="udrop_report_icon" />
-            <p className="udrop_report_text">Report</p>
+          <div className="expdetdropmob_report">
+            <RiFlagLine className="expdetdropmob_report_icon" />
+            <p className="expdetdropmob_report_text">Report</p>
           </div>
-          <div className="udrop_fav">
-            <FiHeart className="udrop_fav_icon" />
-            <p className="udrop_fav_text">Add to Favorite</p>
+          <div className="expdetdropmob_fav">
+            <FiHeart className="expdetdropmob_fav_icon" />
+            <p className="expdetdropmob_fav_text">Add to Favorite</p>
           </div>
         </div>
       </div>
@@ -360,4 +322,4 @@ const UserHome = () => {
   );
 };
 
-export default UserHome;
+export default ExploreDetailMobile;

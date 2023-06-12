@@ -5,9 +5,9 @@
   flex-direction: column;
   align-items: center;
   .deskside_header {
-    padding: 0rem 0.4rem;
+    padding: .7rem 0.4rem;
     width: 100%;
-    height: 87px;
+    // height: 87px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -101,5 +101,10 @@
   }
   .deskside_outlet {
     padding: 1rem;
+    width: 100%;
+    height: 100%;
+  }
+    .deskside_padding_remove {
+    padding: unset !important;
   }
 }
