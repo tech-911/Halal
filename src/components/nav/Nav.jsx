@@ -10,7 +10,7 @@ const Nav = ({ border, theme }) => {
   const { user } = useSelector((state) => state.userDataSlice);
   const navigate = useNavigate();
   let photo = [];
-  if (user.photo) {
+  if (user) {
     photo = user?.photo?.filter((value) => {
       return value.length !== "" || value !== "";
     });
