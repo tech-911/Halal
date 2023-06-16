@@ -9,9 +9,12 @@ const Nav = ({ border, theme }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userDataSlice);
   const navigate = useNavigate();
-  const photo = user.photo.filter((value) => {
-    return value.length !== "" || value !== "";
-  });
+  let photo = [];
+  if (user.photo) {
+    photo = user?.photo?.filter((value) => {
+      return value.length !== "" || value !== "";
+    });
+  }
   const handleSignIn = () => {
     dispatch(authModalAction({ method: "signin", open: 1 }));
   };
