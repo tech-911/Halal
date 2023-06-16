@@ -5,8 +5,11 @@
   gap: 1.5rem;
   .profpic_wrap {
     position: relative;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
     .profpic_circle {
-      // overflow: hidden;
+      overflow: hidden;
       width: 150px;
       height: 150px;
       border-radius: 100px;
@@ -16,24 +19,29 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      &::after {
-        content: url();
-        width: 38px;
-        height: 38px;
-        background-color: white;
-        border-radius: 100px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-        cursor: pointer;
-      }
+      // &::after {
+      //   content: url("../../assets/png/profilepencile.png");
+      // }
       .profpic_photo {
         width: 100%;
         height: 100%;
+      }
+    }
+    .profpic_edit {
+      width: 38px;
+      height: 38px;
+      background-color: white;
+      border-radius: 100px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 10px;
+      bottom: 0px;
+      cursor: pointer;
+      .profpic_edit_icon{
+        font-size: 20px;
       }
     }
   }

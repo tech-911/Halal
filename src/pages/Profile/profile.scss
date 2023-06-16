@@ -10,7 +10,7 @@
     justify-content: center;
     width: 90%;
     position: relative;
-    margin-top: 1rem;
+    margin-top: 3rem;
     .prof_home {
       cursor: pointer;
       position: absolute;
@@ -25,5 +25,12 @@
       letter-spacing: 0.802236px;
       color: #1e1e1e;
     }
+  }
+  .prof_pic_space {
+    margin-top: 2.5rem;
+  }
+  .prof_options {
+    width: 100%;
+    padding-top: 3rem;
   }
 }

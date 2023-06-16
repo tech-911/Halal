@@ -9,6 +9,9 @@ const Nav = ({ border, theme }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userDataSlice);
   const navigate = useNavigate();
+  const photo = user.photo.filter((value) => {
+    return value.length !== "" || value !== "";
+  });
   const handleSignIn = () => {
     dispatch(authModalAction({ method: "signin", open: 1 }));
   };
@@ -67,7 +70,7 @@ const Nav = ({ border, theme }) => {
         </div>
       ) : (
         <div onClick={() => navigate("/main")} className="nav_profile_route">
-          <img src={user?.photo[0]} alt="profile" className="nav_profile_img" />
+          <img src={photo[0]} alt="profile" className="nav_profile_img" />
           <p className="nav_profile_name">{user?.name}</p>
         </div>
       )}

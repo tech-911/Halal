@@ -20,7 +20,7 @@ const MobileMenue = () => {
         className={`mobmen_item3`}
       />
       <TiUser className={`mobmen_item4`} />
-      <div className={`mobmen_item5`}>
+      <div onClick={() => navigate("/main/profile")} className={`mobmen_item5`}>
         <HiUser className={`mobmen_item5_sub`} />
       </div>
     </div>
