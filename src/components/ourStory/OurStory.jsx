@@ -5,7 +5,7 @@ const OurStory = () => {
   return (
     <div className="story_wrapper">
       <h1 className="story_head">Our Story</h1>
-      <h2 className="story_sub">
+      <h2 className="story_sub leading-10">
         Welcome to Halal Matchmaking, the first and only halal matchmaking
         platform that's dedicated to helping Muslim singles find their perfect
         match. Our platform offers a safe and welcoming environment for all,

@@ -28,28 +28,28 @@ const Header = () => {
   return (
     <div className="header_wrapper">
       <Slider className="header_carousel" {...settings}>
-        <img src={Hero1} alt="hero1" />
-        <img src={Hero2} alt="hero2" />
-        <img src={Hero3} alt="hero3" />
+        <img src={Hero1} alt="hero1" className="w-full  h-[1100px] object-cover" />
+        <img src={Hero2} alt="hero2"  className="w-full h-[1100px] object-cover" />
+        <img src={Hero3} alt="hero3"  className="w-full h-[1100px] object-cover" />
       </Slider>
       <div className="header_nav">
         <Nav />
       </div>
-      <div className="header_section2">
-        <img src={Section2} alt="section2" />
+      <div className="sm:pl-[2rem] lg:pl-[4rem] h-[110px] w-[300px] lg:h-[130px] lg:w-[350px] z-[1]">
+        <img src={Section2} className="w-full h-full" alt="section2" />
       </div>
       <h1 className="header_section3">Connecting Muslims Worldwide</h1>
       <div className="header_section4">
         <h1 className="header_download_title">Download App</h1>
         <div className="header_download_wrap">
           <img
-            className="header_google"
+            className="w-[170px]"
             draggable="false"
             src={Google}
             alt="google"
           />
           <img
-            className="header_apple"
+            className="w-[170px]"
             draggable="false"
             src={Apple}
             alt="Apple"
