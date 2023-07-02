@@ -3,6 +3,7 @@ import "./userHome.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import profile from "../../../assets/png/img.jpeg"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { baseUrlUserActions } from "../../../BaseUrls/base";
@@ -48,7 +49,7 @@ const UserHome = () => {
   const [arrow, setArrow] = useState(0);
   const [count, setCount] = useState(0);
   const [drop, setDrop] = useState(0);
-
+  const [height, setHeight] = useState();
   const { user } = useSelector((state) => state.userDataSlice);
   const [position, setPosition] = useState(0);
   const settings = {
@@ -61,6 +62,8 @@ const UserHome = () => {
     autoplay: false,
     autoplaySpeed: 3000,
   };
+
+  {/**
   useEffect(() => {
     if (user.gender === "male") {
       axios
@@ -102,6 +105,16 @@ const UserHome = () => {
         });
     }
   }, []);
+
+*/}
+
+useEffect(() => {
+  console.log("this is window height", window.innerHeight);
+
+  window.innerWidth > 768
+    ? setHeight(Math.floor(0.9 * window.innerHeight))
+    : setHeight(Math.floor(0.95 * window.innerHeight));
+}, [window.innerHeight]);
 
   const Next = () => {
     if (arrow < 1) {
@@ -162,14 +175,18 @@ const UserHome = () => {
   return (
     <div className="userhome_container">
       <ToastContainer />
-      <div className="userhome_wrapper ">
+      <div 
+       style={{ height: `${height}px` }}
+      className="userhome_wrapper ">
+        {/***data[position]?.photo */}
         <Slider className="userhome_carousel" {...settings} ref={slickRef}>
-          {data[position]?.photo.map((value, id) => {
+          {[1,2,3,4].map((value, id) => {
             return (
               <img
                 key={id}
-                className="userhome_item"
-                src={value}
+                
+                className="userhome_item object-fill"
+                src={profile }
                 alt={`profile${id}`}
               />
             );

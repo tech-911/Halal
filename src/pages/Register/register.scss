@@ -19,17 +19,21 @@
   text-align: start;
   letter-spacing: 1px;
   color: #696969;
-  height: 57px;
+  height: 50px;
   width: 100%;
   @media screen and (min-width: 1327px) {
     width: 519px;
+  }
+  @media screen and (max-width:624px) {
+    height:44px;
+    font-size:14px;
   }
 
   &::placeholder {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    
     line-height: 22px;
     text-align: start;
     // letter-spacing: 1px;
@@ -56,7 +60,7 @@
     color: #1e1e1e;
     position: absolute;
     top: 55px;
-    left: 30px;
+    left: 10px;
     cursor: pointer;
     @media screen and (min-width: 831px) {
       display: none;
@@ -73,9 +77,9 @@
   .reg_body {
     display: flex;
     flex-direction: column;
-    padding: 2rem 6rem;
+    padding: 2rem 4rem;
     @media screen and (max-width: 884px) {
-      padding: 2rem 2rem;
+      padding: 2rem 1rem;
     }
     @media screen and (max-width: 830px) {
       width: 100%;
@@ -83,8 +87,8 @@
     .reg_head {
       font-family: "Roboto";
       font-style: normal;
-      font-weight: 700;
-      font-size: 40px;
+      font-weight: 500;
+      font-size: 30px;
       line-height: 36px;
       text-align: center;
       text-transform: uppercase;
@@ -113,6 +117,7 @@
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+         // align-items: center;
           gap: 0.8rem;
           width: 100%;
           .reg_name_label {
@@ -125,7 +130,10 @@
           }
           .reg_name_icon {
             position: absolute;
-            top: 50px;
+            top: 48px;
+            @media screen and (max-width:624px) {
+              top:45px;
+            }
             left: 20px;
             color: #8f8f8f;
             font-size: 22px;
@@ -148,7 +156,10 @@
           }
           .reg_dob_icon {
             position: absolute;
-            top: 50px;
+            top: 48px;
+            @media screen and (max-width:624px) {
+              top:45px;
+            }
             left: 20px;
             color: #8f8f8f;
             font-size: 22px;
@@ -181,7 +192,7 @@
               text-align: start;
               letter-spacing: 1px;
               color: #696969;
-              height: 57px;
+              height: 50px;
               width: 118px;
               background-color: unset;
               display: flex;
@@ -189,6 +200,10 @@
               align-items: center;
               justify-content: center;
               cursor: pointer;
+              @media screen and (max-width:624px) {
+                height:44px;
+
+              }
               transition: background 0.3s ease-in-out;
               &:hover {
                 background: #ff0020;
@@ -300,7 +315,10 @@
           }
           .reg_email_icon {
             position: absolute;
-            top: 50px;
+            top: 48px;
+            @media screen and (max-width:624px) {
+              top:45px;
+            }
             left: 20px;
             color: #8f8f8f;
             font-size: 22px;
@@ -324,7 +342,10 @@
           }
           .reg_phone_icon {
             position: absolute;
-            top: 50px;
+            top: 48px;
+            @media screen and (max-width:624px) {
+              top:45px;
+            }
             left: 20px;
             color: #8f8f8f;
             font-size: 22px;
@@ -415,7 +436,7 @@
       gap: 0.4rem;
       font-family: "Roboto";
       font-style: normal;
-      font-weight: 700;
+      font-weight: 500;
       font-size: 20px;
       line-height: 36px;
       text-align: center;
@@ -426,11 +447,11 @@
       span {
         font-family: "Roboto";
         font-style: normal;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 20px;
         line-height: 36px;
         text-align: center;
-        color: #1e1e1e;
+        color:blue;
         cursor: pointer;
 
         &:hover {

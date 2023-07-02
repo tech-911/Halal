@@ -14,6 +14,7 @@ const ProfilePictureInput = () => {
     <div className="profpic_wrapper">
       <div className="profpic_wrap">
         <div className="profpic_circle">
+          
           <img src={photo[0]} alt="profilephoto" className="profpic_photo" />
         </div>
         <div
@@ -24,7 +25,7 @@ const ProfilePictureInput = () => {
         </div>
       </div>
 
-      <h1 className="profpic_profile_name">{`${user.name}, ${"25"}`}</h1>
+      <h1 className="profpic_profile_name">{`${user?.name}, ${"25"}`}</h1>
     </div>
   );
 };

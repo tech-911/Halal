@@ -137,7 +137,7 @@ const Preview = ({ ismore, setismore, isEdit }) => {
           })}
         </div>
 
-        <div className="gradient-bg lg:space-y-3 space-y-2 rounded-b-md pb-[45px] p-2">
+        <div className="absolute bottom-1 inset-x-0 gradient-bg lg:space-y-3 space-y-2 rounded-b-md pb-[45px] p-2">
           <button
             onClick={() => {
               setismore(!ismore);
@@ -156,7 +156,7 @@ const Preview = ({ ismore, setismore, isEdit }) => {
               <span>23</span>
             </div>
 
-            <div className="about-user w-fit text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
+            <div className="about-user flex w-fit text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
               <IoMdBriefcase className="text-[15px] md:text-[20px]" />
               <span className="w-[110px] text-ellipsis whitespace-nowrap overflow-hidden">
                 Business Analyst
@@ -164,28 +164,28 @@ const Preview = ({ ismore, setismore, isEdit }) => {
             </div>
 
             <div className="w-full flex  items-center gap-[8px]">
-              <div className="about-user w-fit text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
+              <div className="about-user flex w-fit text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
                 <GiBigDiamondRing className="text-[15px] md:text-[20px]" />
                 <span className="w-[110px] text-ellipsis whitespace-nowrap overflow-hidden">
                   Divorced
                 </span>
               </div>
 
-              <div className="about-user w-fit  text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
+              <div className="about-user flex w-fit  text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
                 <GiBodyHeight className="text-[15px] md:text-[20px]" />
                 <span className="w-[110px] text-ellipsis whitespace-nowrap overflow-hidden">
                   123m
                 </span>
               </div>
 
-              <div className="about-user  w-fit text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
+              <div className="about-user flex  w-fit text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
                 <TbDna className="text-[15px] md:text-[20px]" />
                 <span className="w-[110px] text-ellipsis whitespace-nowrap overflow-hidden">
                   Genotype: AA+
                 </span>
               </div>
 
-              <div className="about-user w-fit text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
+              <div className="about-user flex w-fit text-[12px] px-2 py-1 md:text-sm bg-gray-300 bg-opacity-40 rounded-2xl overflow-hidden text-white space-x-2">
                 <MdMosque className="text-[15px] md:text-[20px]" />
                 <span className="w-[110px] text-ellipsis whitespace-nowrap overflow-hidden">
                   Very practicing

@@ -49,7 +49,7 @@
   }
 
   .explore_wrapper {
-    height: 851px;
+    //height: 851px;
     width: 448px;
     border-radius: 8px;
     overflow: hidden;
@@ -64,10 +64,19 @@
     .explore_carousel {
       width: 100%;
       height: 100%;
+      .slick-list {
+        height:100%;
+        .slick-track {
+          height:100%;
+          div {
+            height:100%;
+          }
+        }
+      }
     }
     .explore_arrow_wrap {
       position: absolute;
-      top: 388px;
+      top: 45%;
       left: 0px;
       width: 100%;
       display: flex;
@@ -227,7 +236,7 @@
     }
     .explore_goback {
       position: absolute;
-      top: 805px;
+      top: 80%;
       right: 20px;
       width: 71px;
       height: 32px;
@@ -622,5 +631,5 @@
 
 .explore_item {
   width: 100%;
-  height: 851px;
+  height: 100%;
 }

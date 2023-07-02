@@ -50,36 +50,38 @@ const MobileSignup = () => {
     <div className="mobauth_wrap">
       <Slider className="mobauth_carousel" {...settings}>
         <img
-          className="mobauth_carItems"
+          className="mobauth_carItems object-cover"
           src={`${cloudinary}/3_iffi1d.png`}
           alt="back1"
         />
         <img
-          className="mobauth_carItems"
+          className="mobauth_carItems object-cover"
           src={`${cloudinary}/6_updn7v.png`}
           alt="back2"
         />
         <img
-          className="mobauth_carItems"
+          className="mobauth_carItems object-cover"
           src={`${cloudinary}/4_m5hioz.png`}
           alt="back3"
         />
         <img
-          className="mobauth_carItems"
+          className="mobauth_carItems object-cover"
           src={`${cloudinary}/1_r9s2xv.png`}
           alt="back4"
         />
         <img
-          className="mobauth_carItems"
+          className="mobauth_carItems object-cover"
           src={`${cloudinary}/2_awthix.png`}
           alt="back5"
         />
         <img
-          className="mobauth_carItems"
+          className="mobauth_carItems object-cover"
           src={`${cloudinary}/5_k3vzxj.png`}
           alt="back6"
         />
       </Slider>
+
+      <div className="mob_wrap">
       <div className="mobauth_header_image">
         <img src={headerResImage} alt="headerResImage" />
       </div>
@@ -105,6 +107,8 @@ const MobileSignup = () => {
           Already have an account? <Link to="/signin">Log in</Link>
         </p>
       </div>
+      </div>
+     
     </div>
   );
 };

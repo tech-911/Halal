@@ -6,6 +6,7 @@ import Empty1 from "../../assets/png/emptyStatesImg/Fashion blogging-cuate.png";
 import Empty2 from "../../assets/png/emptyStatesImg/Popcorns-amico.png";
 import React, { useEffect, useRef, useState } from "react";
 import "./explore.scss";
+import profile from "../../assets/png/img.jpeg"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -54,6 +55,7 @@ const Explore = () => {
   const [arrow, setArrow] = useState(0);
   const [count, setCount] = useState(0);
   const [drop, setDrop] = useState(0);
+  const [height, setHeight] = useState();
   const { user } = useSelector((state) => state.userDataSlice);
   const [position, setPosition] = useState(paramsid);
   const [toggle, setToggle] = useState(0);
@@ -158,10 +160,21 @@ const Explore = () => {
     }
   };
 
+  useEffect(() => {
+    console.log("this is window height", window.innerHeight);
+  
+    window.innerWidth > 768
+      ? setHeight(Math.floor(0.9 * window.innerHeight))
+      : setHeight(Math.floor(0.95 * window.innerHeight));
+  }, [window.innerHeight]);
+
   return (
     <div className="explore_container">
       <ToastContainer />
-      <div className="explore_wrapper ">
+      {/** */}
+      <div 
+       style={{ height: `${height}px` }}
+      className="explore_wrapper ">
         <Slider className="explore_carousel" {...settings} ref={slickRef}>
           {data[position]?.photo.map((value, id) => {
             return (

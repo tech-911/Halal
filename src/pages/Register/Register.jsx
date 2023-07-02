@@ -369,7 +369,7 @@ const Register = () => {
             Next
           </button>
         </div>
-        <p className="reg_login">
+        <p className="reg_login ">
           Already have an account?{" "}
           <span onClick={() => handleLogin()}>Log in</span>
         </p>

@@ -81,6 +81,7 @@ const MobileSignin = () => {
           alt="back6"
         />
       </Slider>
+      <div className="mob_wrap">
       <div className="mobsignin_header_image">
         <img src={headerResImage} alt="headerResImage" />
       </div>
@@ -105,6 +106,8 @@ const MobileSignin = () => {
           Dont have an account? <Link to="/signup">SignUp</Link>
         </p>
       </div>
+      </div>
+  
     </div>
   );
 };

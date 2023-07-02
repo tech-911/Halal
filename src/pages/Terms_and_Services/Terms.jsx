@@ -40,12 +40,13 @@ const Terms = () => {
             dispatch(termsModalAction({ termsOpen: 0 }));
           }}
         />
-        <SlArrowLeft
+        <SlArrowLefty
           className="termsServ_back"
           onClick={() => {
             dispatch(termsModalAction({ termsOpen: 0 }));
           }}
         /> */}
+        <div className="overflow_wrap">
         <img
           className="termsServ_image_head"
           src={mobileAuthHeadImg}
@@ -84,6 +85,8 @@ const Terms = () => {
         <div onClick={() => handleRegister()} className="termsServ_button_wrap">
           <button className={`termsServ_button`}>I Agree</button>
         </div>
+        </div>
+     
       </div>
     </div>
   );
