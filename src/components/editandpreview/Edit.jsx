@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import PhotoInput from "../photoInput/PhotoInput";
 import { MdNavigateNext } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { baseUrlAuth } from "../../BaseUrls/base";
 
 const Edit = ({ isEdit }) => {
+  const { user } = useSelector((state) => state.userDataSlice);
+  console.log(user?.email);
   const [photo, setPhoto] = useState([]);
-  console.log(photo);
   const [data, setData] = useState({
     name: "",
     date: "",
@@ -73,7 +76,7 @@ const Edit = ({ isEdit }) => {
       <PhotoInput photo={photo} setPhoto={setPhoto} />
 
       <div className="my-5  text-[#1E1E1E] w-full flex flex-col">
-        <div className="font-bold text-[20px] text-[#000000] md:text-[17px]">
+        <div className="font-[roboto] font-bold text-[20px] text-[#000000] md:text-[17px]">
           About me
         </div>
         <div className="pt-2 md:pt-3 space-y-1 w-full">
@@ -249,7 +252,7 @@ const Edit = ({ isEdit }) => {
           />
         </div>
 
-        <div className="font-bold py-3 text-[20px] md:text-[17px]">
+        <div className="font-[roboto] font-bold py-3 text-[20px] md:text-[17px]">
           Health/Appearance
         </div>
 
@@ -312,7 +315,7 @@ const Edit = ({ isEdit }) => {
         </div>
 
         {/** */}
-        <div className="font-bold py-3 text-[20px] md:text-[17px]">
+        <div className="font-[roboto] font-bold py-3 text-[20px] md:text-[17px]">
           Religiosity
         </div>
 
@@ -393,7 +396,7 @@ const Edit = ({ isEdit }) => {
           />
         </div>
 
-        <div className="font-bold py-3 text-[20px] md:text-[17px]">
+        <div className="font-[roboto] font-bold py-3 text-[20px] md:text-[17px]">
           Interest and Personality
         </div>
 
@@ -436,7 +439,7 @@ const Edit = ({ isEdit }) => {
           />
         </div>
         {/** */}
-        <div className="font-bold py-3 text-[20px] md:text-[17px]">
+        <div className="font-[roboto] font-bold py-3 text-[20px] md:text-[17px]">
           Educaton/Profession
         </div>
 
@@ -479,7 +482,7 @@ const Edit = ({ isEdit }) => {
           />
         </div>
         {/** */}
-        <div className="font-bold py-3 text-[20px] md:text-[17px]">
+        <div className="font-[roboto] font-bold py-3 text-[20px] md:text-[17px]">
           Language and Ethnicity
         </div>
 
