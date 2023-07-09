@@ -1,7 +1,6 @@
 @mixin action_button_wrap {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  padding:12px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -220,14 +219,23 @@
           .userhome_likeicon {
             color: white;
             font-size: 30px;
+            @media screen and (max-width:600px) {
+              font-size: 22px;
+            }
           }
           .userhome_chaticon {
             color: white;
             font-size: 25px;
+            @media screen and (max-width:600px) {
+              font-size: 20px;
+            }
           }
           .userhome_rejecticon {
             color: white;
             font-size: 30px;
+            @media screen and (max-width:600px) {
+              font-size: 22px;
+            }
           }
         }
       }

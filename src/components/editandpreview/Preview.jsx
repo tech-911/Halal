@@ -78,7 +78,7 @@ const Preview = ({ ismore, setismore, isEdit }) => {
     } else {
       setslider(Math.floor(window.innerWidth));
     }
-  }, [slider]);
+  }, [slider, window.innerWidth]);
 
   function prev() {
     //console.log(this.idx)

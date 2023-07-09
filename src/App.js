@@ -1,4 +1,5 @@
-import "./App.scss";
+import React,{useState, createContext} from "react";
+import "./App.css";
 // import { useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
@@ -17,12 +18,16 @@ import Explore from "./pages/Explore/Explore";
 import EditPreview from "./components/editandpreview/EditPreview";
 import ExploreDetailMobile from "./pages/Explore/ExploreDetailMobile";
 import Profile from "./pages/Profile/Profile";
-
+export const StyleContext = createContext()
 const App = () => {
   const { user } = useSelector((state) => state.userDataSlice);
+  const [isHidden, setHidden] = useState(true)
   // console.log(user);
   return (
     <div className="App">
+      
+
+      <StyleContext.Provider value={{isHidden, setHidden}}>
       <Routes>
         <Route path="/home" element={<Landing />} />
         <Route path="/" element={<Landing />} />
@@ -81,7 +86,20 @@ const App = () => {
               </Private_route>
             }
           />
-          <Route
+        
+        </Route>
+        //--------------------Protected Routes-----------------------------↑
+      </Routes>
+      </StyleContext.Provider>
+    </div>
+  );
+};
+
+export default App;
+
+
+{/*
+  <Route
             path="/main/exploremob/:mobid"
             element={
               <Private_route link={"/"}>
@@ -89,11 +107,5 @@ const App = () => {
               </Private_route>
             }
           />
-        </Route>
-        //--------------------Protected Routes-----------------------------↑
-      </Routes>
-    </div>
-  );
-};
 
-export default App;
+*/}
