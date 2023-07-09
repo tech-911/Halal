@@ -19,12 +19,7 @@ import EditPreview from "./components/editandpreview/EditPreview";
 import ExploreDetailMobile from "./pages/Explore/ExploreDetailMobile";
 import Profile from "./pages/Profile/Profile";
 import Message from "./pages/Message/Message";
-<<<<<<< HEAD
-
-
-=======
 export const StyleContext = createContext()
->>>>>>> da9e8921535ee5c210b922746e566ccac77c7950
 const App = () => {
   const { user } = useSelector((state) => state.userDataSlice);
   const [isHidden, setHidden] = useState(true)
@@ -100,18 +95,6 @@ const App = () => {
               </Private_route>
             }
           />
-<<<<<<< HEAD
-           <Route
-            path="/main/message"
-            element={
-              <Private_route link={"/"}>
-                <Message />
-              </Private_route>
-            }
-          />
-=======
-        
->>>>>>> da9e8921535ee5c210b922746e566ccac77c7950
         </Route>
         
       </Routes>
