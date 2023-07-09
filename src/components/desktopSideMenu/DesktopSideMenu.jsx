@@ -47,7 +47,7 @@ const DesktopSideMenu = () => {
           <TiUser className="deskside_consel_icon" />
         </div>
         <div className="deskside_chat">
-          <BsFillChatRightFill className="deskside_chat_icon" />
+          <BsFillChatRightFill className="deskside_chat_icon" onClick={()=> navigate("/main/message")}/>
         </div>
       </div>
       <div
