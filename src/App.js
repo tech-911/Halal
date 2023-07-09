@@ -18,6 +18,7 @@ import Explore from "./pages/Explore/Explore";
 import EditPreview from "./components/editandpreview/EditPreview";
 import ExploreDetailMobile from "./pages/Explore/ExploreDetailMobile";
 import Profile from "./pages/Profile/Profile";
+import Message from "./pages/Message/Message";
 export const StyleContext = createContext()
 const App = () => {
   const { user } = useSelector((state) => state.userDataSlice);
@@ -83,6 +84,14 @@ const App = () => {
             element={
               <Private_route link={"/"}>
                 <Explore />
+              </Private_route>
+            }
+          />
+           <Route
+            path="/main/message"
+            element={
+              <Private_route link={"/"}>
+                <Message />
               </Private_route>
             }
           />
