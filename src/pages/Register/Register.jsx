@@ -79,19 +79,28 @@ const Register = () => {
   } = data;
   // console.log(photo.length);
   const handleRegister = async () => {
-    if (
-      name === "" ||
-      dob === "" ||
-      gender === "" ||
-      height === "" ||
-      marital_status === "" ||
-      location === "" ||
-      profession === "" ||
-      email === "" ||
-      phone_number === "" ||
-      photo.length < 2
-    ) {
-      toast.error(`Error: Fill all fields`, {
+
+    const validateData = {
+      name,
+      'Date of Birth':dob,
+      gender,
+      height,
+      'Marital Status': marital_status,
+      location,
+      profession,
+      email,
+      "Phone Number":phone_number,
+    }
+
+    for (let i in validateData) {
+      if (validateData[i] === '') {
+        toast.error(`${i} os required`, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+    }
+    if ( photo.length < 2) {
+      toast.error(`Image should not be less than two`, {
         position: toast.POSITION.TOP_RIGHT,
       });
       return;
@@ -370,7 +379,7 @@ const Register = () => {
             Next
           </button>
         </div>
-        <p className="reg_login">
+        <p className="reg_login ">
           Already have an account?{" "}
           <span onClick={() => handleLogin()}>Log in</span>
         </p>

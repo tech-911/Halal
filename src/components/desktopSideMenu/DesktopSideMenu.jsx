@@ -16,6 +16,7 @@ const DesktopSideMenu = () => {
   const navigate = useNavigate();
   const location = useLocation();
   // console.log(location.pathname === "/main/explore");
+
   useEffect(() => {
     let profilePhoto = user.photo.filter((value) => {
       return (
@@ -24,6 +25,8 @@ const DesktopSideMenu = () => {
     });
     setPhoto(profilePhoto[0] || profilePhoto[1]);
   }, []);
+
+
 
   const handleExplore = () => {
     navigate("/main/explore/0");

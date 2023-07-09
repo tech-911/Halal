@@ -7,6 +7,7 @@ const Private_route = ({ children, link }) => {
   if (!user || user?.status === "ongoing" || !user?.token) {
     // user is not authenticated
     return <Navigate to={link} />;
+    //return children;
   }
   return children;
 };

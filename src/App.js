@@ -1,4 +1,5 @@
-import "./App.scss";
+import React,{useState, createContext} from "react";
+import "./App.css";
 // import { useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
@@ -18,13 +19,21 @@ import EditPreview from "./components/editandpreview/EditPreview";
 import ExploreDetailMobile from "./pages/Explore/ExploreDetailMobile";
 import Profile from "./pages/Profile/Profile";
 import Message from "./pages/Message/Message";
+<<<<<<< HEAD
 
 
+=======
+export const StyleContext = createContext()
+>>>>>>> da9e8921535ee5c210b922746e566ccac77c7950
 const App = () => {
   const { user } = useSelector((state) => state.userDataSlice);
+  const [isHidden, setHidden] = useState(true)
   // console.log(user);
   return (
     <div className="App">
+      
+
+      <StyleContext.Provider value={{isHidden, setHidden}}>
       <Routes>
         <Route path="/home" element={<Landing />} />
         <Route path="/" element={<Landing />} />
@@ -83,14 +92,6 @@ const App = () => {
               </Private_route>
             }
           />
-          <Route
-            path="/main/exploremob/:mobid"
-            element={
-              <Private_route link={"/"}>
-                <ExploreDetailMobile />
-              </Private_route>
-            }
-          />
            <Route
             path="/main/message"
             element={
@@ -99,11 +100,37 @@ const App = () => {
               </Private_route>
             }
           />
+<<<<<<< HEAD
+           <Route
+            path="/main/message"
+            element={
+              <Private_route link={"/"}>
+                <Message />
+              </Private_route>
+            }
+          />
+=======
+        
+>>>>>>> da9e8921535ee5c210b922746e566ccac77c7950
         </Route>
         
       </Routes>
+      </StyleContext.Provider>
     </div>
   );
 };
 
 export default App;
+
+
+{/*
+  <Route
+            path="/main/exploremob/:mobid"
+            element={
+              <Private_route link={"/"}>
+                <ExploreDetailMobile />
+              </Private_route>
+            }
+          />
+
+*/}

@@ -1,7 +1,6 @@
 @mixin action_button_wrap {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  padding:12px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -49,7 +48,7 @@
   }
 
   .userhome_wrapper {
-    height: 851px;
+    //height: 851px;
     width: 448px;
     border-radius: 8px;
     overflow: hidden;
@@ -62,10 +61,19 @@
     .userhome_carousel {
       width: 100%;
       height: 100%;
+      .slick-list {
+        height:100%;
+        .slick-track {
+          height:100%;
+          div {
+            height:100%;
+          }
+        }
+      }
     }
     .userhome_arrow_wrap {
       position: absolute;
-      top: 388px;
+      top: 45%;
       left: 0px;
       width: 100%;
       display: flex;
@@ -211,21 +219,30 @@
           .userhome_likeicon {
             color: white;
             font-size: 30px;
+            @media screen and (max-width:600px) {
+              font-size: 22px;
+            }
           }
           .userhome_chaticon {
             color: white;
             font-size: 25px;
+            @media screen and (max-width:600px) {
+              font-size: 20px;
+            }
           }
           .userhome_rejecticon {
             color: white;
             font-size: 30px;
+            @media screen and (max-width:600px) {
+              font-size: 22px;
+            }
           }
         }
       }
     }
     .userhome_goback {
       position: absolute;
-      top: 805px;
+      top: 80%;
       right: 20px;
       width: 71px;
       height: 32px;
@@ -481,5 +498,5 @@
 
 .userhome_item {
   width: 100%;
-  height: 851px;
+  height: 100%;
 }

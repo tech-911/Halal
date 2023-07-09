@@ -23,8 +23,8 @@
       align-items: center;
       gap: 0.4rem;
       .deskside_profile {
-        width: 36px;
-        height: 36px;
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
         overflow: hidden;
         display: flex;
@@ -52,6 +52,8 @@
           display: none;
         }
         white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         cursor: default;
         @media screen and (max-width: 900px) {
           font-size: 12px;
@@ -63,8 +65,8 @@
     .deskside_explore,
     .deskside_consel,
     .deskside_chat {
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: #1e1e1e;
       display: flex;
@@ -73,8 +75,8 @@
       justify-content: center;
       cursor: pointer;
       @media screen and (max-width: 900px) {
-        width: 25px;
-        height: 25px;
+        width: 27px;
+        height: 27px;
       }
       .deskside_explore_icon,
       .deskside_chat_icon {

@@ -4,8 +4,9 @@ import { exploreDataAction } from "../../redux/slices/exploreDataSlice";
 import { useNavigate } from "react-router-dom";
 import Empty1 from "../../assets/png/emptyStatesImg/Fashion blogging-cuate.png";
 import Empty2 from "../../assets/png/emptyStatesImg/Popcorns-amico.png";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import "./explore.scss";
+import profile from "../../assets/png/img.jpeg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -46,6 +47,7 @@ import flag from "../../assets/png/profileIcons/nigFlag.png";
 import lang from "../../assets/png/profileIcons/language.png";
 import InfoWidget from "../../components/infoWidget/InfoWidget";
 import { useParams } from "react-router-dom";
+import { StyleContext } from "../../App";
 const Explore = () => {
   const slickRef = useRef(null);
   const exploreData = useSelector((state) => state.exploreDataSlice);
@@ -54,13 +56,16 @@ const Explore = () => {
   const [arrow, setArrow] = useState(0);
   const [count, setCount] = useState(0);
   const [drop, setDrop] = useState(0);
+  const [height, setHeight] = useState();
   const { user } = useSelector((state) => state.userDataSlice);
   const [position, setPosition] = useState(paramsid);
   const [toggle, setToggle] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isHidden, setHidden } = useContext(StyleContext);
 
   useEffect(() => {
+    //Post Liked me
     const getlikedme = async () => {
       try {
         const res = await axios.post(
@@ -73,6 +78,7 @@ const Explore = () => {
         console.log(err);
       }
     };
+    //Post I liked
     const getiliked = async () => {
       try {
         const res = await axios.post(
@@ -158,98 +164,123 @@ const Explore = () => {
     }
   };
 
-  return (
-    <div className="explore_container">
-      <ToastContainer />
-      <div className="explore_wrapper ">
-        <Slider className="explore_carousel" {...settings} ref={slickRef}>
-          {data[position]?.photo.map((value, id) => {
-            return (
-              <img
-                key={id}
-                className="explore_item"
-                src={value}
-                alt={`profile${id}`}
-              />
-            );
-          })}
-        </Slider>
-        <div className="explore_arrow_wrap">
-          <MdKeyboardArrowLeft
-            onClick={Prev}
-            className={`explore_arrowleft ${
-              arrow ? "" : "explore_arrowleft_off"
-            }`}
-          />
+  useEffect(() => {
+    console.log("this is window height", window.innerHeight);
 
-          <MdKeyboardArrowRight
-            onClick={Next}
-            className={`explore_arrowright`}
-          />
-        </div>
-        {drop ? (
-          ""
-        ) : (
-          <div className="explore_body">
-            <h1 className="explore_name">
-              {data[position]?.name.split(" ")[0]}
-            </h1>
-            <div className="explore_details">
-              <div className="explore_location_wrap">
-                <MdLocationPin className="explore_location_icon" />
-                <img src={NigeriaFlag} alt="ng_flag" className="explore_flag" />
-                <p className="explore_location_name">
-                  {data[position]?.location}
-                </p>
-              </div>
-              <button
-                onClick={() => setDrop(!drop)}
-                className="explore_moredetails"
-              >
-                View
-              </button>
-            </div>
-            <div className="explore_occupation_wrap">
-              <div className="explore_occupation">
-                <RiShoppingBagFill className="explore_occupation_icon" />
-                <p className="explore_occupation_name">
-                  {data[position]?.profession}
-                </p>
-              </div>
-            </div>
-            <div className="explore_actions_wrap">
-              <div onClick={() => handleReact("like")} className="explore_like">
-                <AiTwotoneHeart className="explore_likeicon" />
-              </div>
-              <div className="explore_chat">
-                <BsFillChatRightFill className="explore_chaticon" />
-              </div>
-              <div
-                onClick={() => handleReact("unlike")}
-                className="explore_reject"
-              >
-                <CgClose className="explore_rejecticon" />
-              </div>
-            </div>
+    window.innerWidth > 768
+      ? setHeight(Math.floor(0.9 * window.innerHeight))
+      : setHeight(Math.floor(0.95 * window.innerHeight));
+  }, [window.innerHeight]);
+
+  return (
+    <div className=" relative overflow-hidden  w-[100vw] md:w-[400px]">
+      <ToastContainer />
+      {/** */}
+      {data?.length === 0 && <div className=""></div>}
+      {data?.length !== 0 && (
+        <div
+          style={{ height: `${height}px` }}
+          className="relative rounded-b-md overflow-hidden "
+        >
+          <Slider
+            style={{ height: `${height}px` }}
+            className="w-full"
+            ref={slickRef}
+          >
+            {data[position]?.photo.map((value, id) => {
+              return (
+                <img
+                  key={id}
+                  className="rounded-b-md w-full h-full object-fill"
+                  src={value}
+                  alt={`profile${id}`}
+                />
+              );
+            })}
+          </Slider>
+          <div className="absolute top-[45%] w-full left-0 right-0 flex items-center justify-between max-[450px]:text-[30px] cursor-pointer text-[42px]">
+            <MdKeyboardArrowLeft
+              onClick={Prev}
+              className={`text-[#C0C0C0] hover:text-white ${arrow ? "" : ""}`}
+            />
+
+            <MdKeyboardArrowRight
+              onClick={Next}
+              className={`text-[#C0C0C0] hover:text-white`}
+            />
           </div>
-        )}
-        {drop ? (
-          <button onClick={() => setDrop(!drop)} className="explore_goback">
-            Go Back
-          </button>
-        ) : (
-          ""
-        )}
-      </div>
+          {isHidden ? (
+            <div className="absolute font-style rounded-b-md inset-x-0 bottom-0 pb-[2rem] px-[1rem] flex flex-col gradient-bg ">
+              <h1 className="font-style font-normal text-[34px] text-start mb-[1rem] text-white">
+                {data[position]?.name.split(" ")[0]}
+              </h1>
+              <div className="flex justify-between w-full gap-[1rem] mb-[1rem] items-center ">
+                <div className="flex items-center gap-2">
+                  <MdLocationPin className="text-white text-[22px]" />
+                  <img
+                    src={NigeriaFlag}
+                    alt="ng_flag"
+                    className="explore_flag"
+                  />
+                  <p className="font-style font-normal text-sm text-center text-white">
+                    {data[position]?.location}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setHidden(!isHidden)}
+                  className="rounded-xl flex justify-center items-center text-white px-2 py-1 text-sm bg-[#ff0020]"
+                >
+                  View
+                </button>
+              </div>
+              <div className="w-full flex items-start mb-[1rem]">
+                <div className="flex items-center justify-center text-white bg-[#444444] gap-2 px-2 py-1 rounded-xl">
+                  <RiShoppingBagFill className="text-white text-[22px]" />
+                  <p className="text-[13px]">{data[position]?.profession}</p>
+                </div>
+              </div>
+              <div className="w-full flex items-center justify-center space-x-[3rem]">
+                <div
+                  onClick={() => handleReact("like")}
+                  className="rounded-full p-2 text-white flex items-center justify-center bg-[#444444] hover:bg-[#ff0020] transition-all duration-200 transform ease-in"
+                >
+                  <AiTwotoneHeart className="text-[30px] max-[450px]:text-25px]" />
+                </div>
+                <div className="rounded-full p-2 text-white flex items-center justify-center bg-[#444444] hover:bg-[#ff0020] transition-all duration-200 transform ease-in">
+                  <BsFillChatRightFill className="text-[28px] max-[450px]:text-23px" />
+                </div>
+                <div
+                  onClick={() => handleReact("unlike")}
+                  className="rounded-full p-2 text-white flex items-center justify-center bg-[#444444] hover:bg-[#ff0020] transition-all duration-200 transform ease-in"
+                >
+                  <CgClose className="text-[30px] max-[450px]:text-25px" />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="w-full inset-x-0 absolute bottom-5 p-3 flex justify-end">
+            <button
+              onClick={() => setHidden(!isHidden)}
+              className="rounded-xl flex justify-center items-center text-white px-2 py-1 text-sm bg-[#ff0020]"
+            >
+              Go Back
+            </button>
+          </div>
+          )}
+        
+        </div>
+      )}
       <div
-        className={`explore_drop ${
-          !drop ? "explore_drop_close" : "explore_drop_open"
+        className={`bg-white w-full h-full font-style  flex-col p-2 ${
+          isHidden ? "hidden" : "flex"
         }`}
       >
-        <h1 className="expdrop_name">{data[position]?.name.split(" ")[0]}</h1>
-        <div className="expdrop_about">
-          <h2 className="expdrop_about_head">About me</h2>
-          <div className="expdrop_about_items">
+        <h1 className="font-medium text-[30px] text-start text-[#1e1e1e]">
+          {data[position]?.name.split(" ")[0]}
+        </h1>
+        <div className="flex flex-col justify-start space-y-[1rem]">
+          <h2 className="font-medium text-[20px] text-[#1e1e1e]">About me</h2>
+          <div className="flex items-center w-full flex-wrap gap-2 px-1">
             <InfoWidget
               Icon={<GiBodyHeight className="infowid_icon" />}
               text={"226cm (7'5)"}
@@ -266,9 +297,9 @@ const Explore = () => {
             <InfoWidget img={relation} text={"Relationship"} />
           </div>
         </div>
-        <div className="expdrop_bio">
-          <h2 className="expdrop_bio_head">Bio</h2>
-          <div className="expdrop_bio_items">
+        <div className="flex flex-col space-y-[0.5rem] mt-[1.5rem]">
+          <h2 className="font-medium text-[15px] text-[#1e1e1e]">Bio</h2>
+          <div className="text-[13px] leading-6 bg-[#e9e9e9] rounded-lg">
             "Divorcee, single mom, and product manager looking for someone who
             understands the complexities of life and is ready for something
             serious. I'm a 24-year-old woman who's driven and ambitious, but
@@ -276,11 +307,11 @@ const Explore = () => {
             something real together."
           </div>
         </div>
-        <div className="expdrop_describe">
-          <h2 className="expdrop_describe_head">
+        <div className="flex flex-col space-y-[0.5rem] mt-[1.5rem]">
+          <h2 className="font-medium text-[15px] text-[#1e1e1e]">
             Describe the person you want
           </h2>
-          <div className="expdrop_describe_items">
+          <div className="text-[13px] leading-6 bg-[#e9e9e9] rounded-lg">
             "Divorcee, single mom, and product manager looking for someone who
             understands the complexities of life and is ready for something
             serious. I'm a 24-year-old woman who's driven and ambitious, but
@@ -288,65 +319,69 @@ const Explore = () => {
             something real together."
           </div>
         </div>
-        <div className="expdrop_health">
-          <h2 className="expdrop_health_head">Health/Appearance</h2>
-          <div className="expdrop_health_items">
+        <div className="flex space-y-2   text-[#1e1e1e]  flex-col item-start mt-[1.5rem]">
+          <h2 className="font-medium text-[20px] ">Health/Appearance</h2>
+          <div className="flex flex-wrap items-center gap-3">
             <InfoWidget img={bloodgroup} text={"Blood Group B"} />
             <InfoWidget img={genoType} text={"Genotype: AA"} />
             <InfoWidget img={skinColor} text={"Skin Color: Fair skin"} />
           </div>
         </div>
-        <div className="expdrop_religion">
-          <h2 className="expdrop_religion_head">Religiosity</h2>
-          <div className="expdrop_religion_items">
+        <div className="flex space-y-2  text-[#1e1e1e]  flex-col item-start mt-[1.5rem]">
+          <h2 className="text-sm md:text-[15px] font-medium ">Religiosity</h2>
+          <div className="flex flex-wrap items-center gap-3">
             <InfoWidget img={Religiosity} text={"Very practicing"} />
             <InfoWidget img={prayStatus} text={"Always pray"} />
             <InfoWidget img={drinkStatus} text={"I don't drink"} />
             <InfoWidget img={smokeStatus} text={"I don't smoke"} />
           </div>
         </div>
-        <div className="expdrop_education">
-          <h2 className="expdrop_education_head">Education/Profession</h2>
-          <div className="expdrop_education_items">
+        <div className="flex space-y-2  text-[#1e1e1e]  flex-col item-start mt-[1.5rem]">
+          <h2 className="text-sm md:text-[15px] font-medium ">
+            Education/Profession
+          </h2>
+          <div className="flex flex-wrap items-center gap-3">
             <InfoWidget img={education} text={"Doctorate"} />
             <InfoWidget img={work} text={"Product Manager"} />
           </div>
         </div>
-        <div className="expdrop_personality">
-          <h2 className="expdrop_personality_head">Personality</h2>
-          <div className="expdrop_personality_items">
+        <div className="flex space-y-2  flex-col text-[#1e1e1e] item-start mt-[1.5rem]">
+          <h2 className="text-sm md:text-[15px] font-medium">Personality</h2>
+          <div className="flex flex-wrap items-center gap-3">
             <InfoWidget img={listen} text={"Active Listener"} />
             <InfoWidget img={create} text={"Creative"} />
             <InfoWidget img={fun} text={"Funny"} />
           </div>
         </div>
-        <div className="expdrop_interest">
-          <h2 className="expdrop_interest_head">Interest</h2>
-          <div className="expdrop_interest_items">
+        <div className="flex space-y-2  text-[#1e1e1e]   flex-col item-start mt-[1.5rem]">
+          <h2 className="text-sm md:text-[15px] font-medium">Interest</h2>
+          <div className="flex flex-wrap items-center gap-3">
             <InfoWidget img={listen} text={"Films & Cinema"} />
             <InfoWidget img={create} text={"Design"} />
             <InfoWidget img={coffee} text={"Coffee"} />
           </div>
         </div>
-        <div className="expdrop_language">
-          <h2 className="expdrop_language_head">Language and Ethnicity</h2>
-          <div className="expdrop_language_items">
+        <div className="flex space-y-2  text-[#1e1e1e]   flex-col item-start mt-[1.5rem]">
+          <h2 className="text-sm md:text-[15px] font-medium">
+            Language and Ethnicity
+          </h2>
+          <div className="flex flex-wrap items-center gap-3">
             <InfoWidget img={flag} text={"Nigerian West Africa"} />
             <InfoWidget img={lang} text={"English"} />
           </div>
         </div>
-        <div className="expdrop_action_wrap">
-          <div className="expdrop_block">
-            <MdOutlineBlock className="expdrop_block_icon" />
-            <p className="expdrop_block_text">Block</p>
+        <div className="flex gap-[3rem] justify-center my-[2rem] items-center">
+          <div className="flex flex-col items-center gap-2 cursor-pointer">
+            <MdOutlineBlock className="text-[25px] text-[#ff0000]" />
+            <p className="text-sm text-[#ff0000]">Block</p>
           </div>
-          <div className="expdrop_report">
-            <RiFlagLine className="expdrop_report_icon" />
-            <p className="expdrop_report_text">Report</p>
+          <div className="flex flex-col items-center gap-2 cursor-pointer">
+            <RiFlagLine className="text-[25px] text-[#008000]" />
+            <p className="text-sm text-[#008000]">Report</p>
           </div>
-          <div className="expdrop_fav">
-            <FiHeart className="expdrop_fav_icon" />
-            <p className="expdrop_fav_text">Add to Favorite</p>
+          <div className="flex flex-col items-center gap-2 cursor-pointer">
+            <FiHeart className="text-[25px] text-[#444444]" />
+            <p className="text-sm text-[#444444]">Add to Favorite</p>
           </div>
         </div>
       </div>
@@ -403,7 +438,7 @@ const Explore = () => {
               exploreData.map((value, id) => {
                 return (
                   <div
-                    onClick={() => navigate(`/main/exploremob/${id}`)}
+                    onClick={() => navigate(`/main/explore/${id}`)}
                     key={id + 1}
                     className="exploremob_widget_links"
                   >

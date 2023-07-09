@@ -50,6 +50,7 @@ const ExploreDetailMobile = () => {
   const [arrow, setArrow] = useState(0);
   const [count, setCount] = useState(0);
   const [drop, setDrop] = useState(0);
+  const [height, setHeight] = useState();
   const { user } = useSelector((state) => state.userDataSlice);
   const [position, setPosition] = useState(paramsid);
   const settings = {
@@ -116,11 +117,20 @@ const ExploreDetailMobile = () => {
       }
     }
   };
+  useEffect(() => {
+    console.log("this is window height", window.innerHeight);
+  
+    window.innerWidth > 768
+      ? setHeight(Math.floor(0.9 * window.innerHeight))
+      : setHeight(Math.floor(0.95 * window.innerHeight));
+  }, [window.innerHeight]);
 
   return (
     <div className="exploredetmob_container">
       <ToastContainer />
-      <div className="exploredetmob_wrapper ">
+      <div
+       style={{ height: `${height}px` }}
+      className="exploredetmob_wrapper ">
         <Slider className="exploredetmob_carousel" {...settings} ref={slickRef}>
           {data[position]?.photo.map((value, id) => {
             return (
