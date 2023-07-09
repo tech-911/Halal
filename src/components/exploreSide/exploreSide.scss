@@ -1,0 +1,126 @@
+.expside_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  .expside_head {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.802236px;
+    color: #1e1e1e;
+  }
+  .expside_toggle_wrap {
+    margin-top: 2.5rem;
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+    overflow: hidden;
+    border-radius: 100px;
+    background: rgba(255, 0, 32, 0.1);
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .expside_toggle1_active {
+      background: #ff0020;
+      color: white !important;
+    }
+    .expside_toggle1 {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.802236px;
+      color: #444444;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+    }
+    .expside_toggle2_active {
+      background: #ff0020;
+      color: white !important;
+    }
+    .expside_toggle2 {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.802236px;
+      color: #444444;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+    }
+  }
+  .expside_body_content {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    @media screen and (max-width: 900px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .expside_widget_links {
+      cursor: pointer;
+      width: fit-content;
+      height: fit-content;
+    }
+  }
+  .expside_body_content_empty {
+    .expside_emptyState_wrap {
+      margin-top: 8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      .expside_emptyimg1 {
+        height: auto;
+        max-width: 100%;
+      }
+      .expside_empty_head {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 29px;
+        letter-spacing: 0.802236px;
+        color: #000000;
+      }
+      .expside_empty_text {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        color: #000000;
+      }
+    }
+  }
+}

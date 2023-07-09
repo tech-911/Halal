@@ -1,0 +1,485 @@
+@mixin action_button_wrap {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #444444;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    background: #ff0020;
+  }
+}
+@mixin sections_layout_group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+@mixin sections_layout_head {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: 1px;
+  color: #1e1e1e;
+}
+@mixin sections_layout_item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.exploredetmob_container {
+  width: fit-content;
+  height: fit-content;
+  // border-top-left-radius: 8px;
+  // border-top-right-radius: 8px;
+  border-radius: 8px;
+//   overflow: hidden;
+  position: relative;
+  @media screen and (max-width: 799px) {
+    width: 100%;
+    border-radius: unset;
+  }
+
+  .exploredetmob_wrapper {
+    height: 851px;
+    width: 448px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    @media screen and (max-width: 799px) {
+      width: 100%;
+      border-radius: unset;
+    }
+
+    .exploredetmob_carousel {
+      width: 100%;
+      height: 100%;
+    }
+    .exploredetmob_arrow_wrap {
+      position: absolute;
+      top: 388px;
+      left: 0px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      .exploredetmob_arrowleft,
+      .exploredetmob_arrowright {
+        color: rgba(255, 255, 255, 0.479);
+        cursor: pointer;
+        font-size: 42px;
+        &:hover {
+          color: white;
+        }
+      }
+      .exploredetmob_arrowleft_off {
+        color: rgba(255, 255, 255, 0);
+      }
+      .exploredetmob_arrowright_off {
+        display: none;
+      }
+    }
+    .exploredetmob_body {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      padding: 0rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(
+        180deg,
+        rgba(30, 30, 30, 0) 0%,
+        #1e1e1e 93.23%
+      );
+      .exploredetmob_name {
+        width: 100%;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 34px;
+        line-height: 24px;
+        text-align: start;
+        letter-spacing: 1px;
+        color: #ffffff;
+        margin-bottom: 1rem;
+      }
+      .exploredetmob_details {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        .exploredetmob_location_wrap {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 0.5rem;
+          .exploredetmob_location_icon {
+            color: white;
+            font-size: 22px;
+          }
+          .exploredetmob_location_name {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+            letter-spacing: 1px;
+            color: #ffffff;
+          }
+        }
+        .exploredetmob_moredetails {
+          width: 50px;
+          height: 32px;
+          background: #ff0020;
+          border-radius: 100px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 22px;
+          letter-spacing: 1px;
+          color: #ffffff;
+          border: none;
+          cursor: pointer;
+        }
+      }
+      .exploredetmob_occupation_wrap {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        .exploredetmob_occupation {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 0.6rem;
+          height: 34px;
+          background: #444444;
+          border-radius: 100px;
+          padding: 0rem 1rem 0rem;
+          .exploredetmob_occupation_icon {
+            color: white;
+            font-size: 22px;
+          }
+          .exploredetmob_occupation_name {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 22px;
+            letter-spacing: 1px;
+            color: #ffffff;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+          }
+        }
+      }
+
+      .exploredetmob_actions_wrap {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        .exploredetmob_like,
+        .exploredetmob_chat,
+        .exploredetmob_reject {
+          @include action_button_wrap;
+          cursor: pointer;
+          .exploredetmob_likeicon {
+            color: white;
+            font-size: 30px;
+          }
+          .exploredetmob_chaticon {
+            color: white;
+            font-size: 25px;
+          }
+          .exploredetmob_rejecticon {
+            color: white;
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    .exploredetmob_goback {
+      position: absolute;
+      top: 805px;
+      right: 20px;
+      width: 71px;
+      height: 32px;
+      background: #ff0020;
+      border-radius: 100px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 22px;
+      letter-spacing: 1px;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  .exploredetmob_drop_close {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+    padding: unset !important;
+  }
+  .exploredetmob_drop_open {
+    height: fit-content;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+  .exploredetmob_drop {
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 448px;
+    @media screen and (max-width: 799px) {
+      width: 100%;
+      border-radius: unset;
+    }
+    .expdetdropmob_name {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 24px;
+      text-align: start;
+      letter-spacing: 1px;
+      color: #1e1e1e;
+    }
+    .expdetdropmob_about {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      .expdetdropmob_about_head {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 22px;
+        letter-spacing: 1px;
+        color: #1e1e1e;
+      }
+      .expdetdropmob_about_items {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+    }
+    .expdetdropmob_bio {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      .expdetdropmob_bio_head {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 22px;
+        letter-spacing: 1px;
+        color: #1e1e1e;
+      }
+      .expdetdropmob_bio_items {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: 1px;
+        color: #444444;
+        background: #e9e9e9;
+        border-radius: 9px;
+        padding: 1rem;
+      }
+    }
+    .expdetdropmob_describe {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      .expdetdropmob_describe_head {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 22px;
+        letter-spacing: 1px;
+        color: #1e1e1e;
+      }
+      .expdetdropmob_describe_items {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: 1px;
+        color: #444444;
+        background: #e9e9e9;
+        border-radius: 9px;
+        padding: 1rem;
+      }
+    }
+    .expdetdropmob_health {
+      @include sections_layout_group;
+      .expdetdropmob_health_head {
+        @include sections_layout_head;
+      }
+      .expdetdropmob_health_items {
+        @include sections_layout_item;
+      }
+    }
+    .expdetdropmob_religion {
+      @include sections_layout_group;
+      .expdetdropmob_religion_head {
+        @include sections_layout_head;
+      }
+      .expdetdropmob_religion_items {
+        @include sections_layout_item;
+      }
+    }
+    .expdetdropmob_education {
+      @include sections_layout_group;
+      .expdetdropmob_education_head {
+        @include sections_layout_head;
+      }
+      .expdetdropmob_education_items {
+        @include sections_layout_item;
+      }
+    }
+    .expdetdropmob_personality {
+      @include sections_layout_group;
+      .expdetdropmob_personality_head {
+        @include sections_layout_head;
+      }
+      .expdetdropmob_personality_items {
+        @include sections_layout_item;
+      }
+    }
+    .expdetdropmob_interest {
+      @include sections_layout_group;
+      .expdetdropmob_interest_head {
+        @include sections_layout_head;
+      }
+      .expdetdropmob_interest_items {
+        @include sections_layout_item;
+      }
+    }
+    .expdetdropmob_language {
+      @include sections_layout_group;
+      .expdetdropmob_language_head {
+        @include sections_layout_head;
+      }
+      .expdetdropmob_language_items {
+        @include sections_layout_item;
+      }
+    }
+    .expdetdropmob_action_wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 4rem;
+      margin: 5rem 0rem;
+      .expdetdropmob_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        cursor: pointer;
+        .expdetdropmob_block_icon {
+          font-size: 25px;
+          color: #ff0000;
+        }
+        .expdetdropmob_block_text {
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #ff0000;
+        }
+      }
+      .expdetdropmob_report {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        cursor: pointer;
+        .expdetdropmob_report_icon {
+          font-size: 25px;
+          color: #008000;
+        }
+        .expdetdropmob_report_text {
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #008000;
+        }
+      }
+      .expdetdropmob_fav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        cursor: pointer;
+        .expdetdropmob_fav_icon {
+          font-size: 25px;
+          color: #444444;
+        }
+        .expdetdropmob_fav_text {
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #444444;
+        }
+      }
+    }
+  }
+}
+
+.exploredetmob_item {
+  width: 100%;
+  height: 851px;
+}

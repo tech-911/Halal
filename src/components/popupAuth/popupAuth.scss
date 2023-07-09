@@ -1,0 +1,108 @@
+.popauth_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.658);
+  @media screen and (max-width: 664px) {
+    display: none;
+  }
+  .popauth_pop {
+    padding: 2rem;
+    z-index: 100;
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .popauth_close {
+      font-size: 22px;
+      color: black;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+    .popauth_image_head {
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+    .popauth_headtext {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 23px;
+      line-height: 36px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #1e1e1e;
+      margin-bottom: 1.5rem;
+    }
+    .popauth_terms_listings {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      color: #1e1e1e;
+      text-align: center;
+      width: 300px;
+
+      a {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #1e1e1e;
+        text-align: center;
+      }
+    }
+    .popauth_method {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .popauth_bottom_border {
+      width: 100%;
+      border-bottom: 1px solid #d4d8de;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .popauth_download_text {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 32px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #21262e;
+      margin-bottom: 1rem;
+    }
+    .popauth_download_wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+      .popauth_google {
+        cursor: pointer;
+      }
+      .popauth_apple {
+        cursor: pointer;
+      }
+    }
+  }
+}

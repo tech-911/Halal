@@ -1,0 +1,36 @@
+.prof_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .prof_head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    position: relative;
+    margin-top: 3rem;
+    .prof_home {
+      cursor: pointer;
+      position: absolute;
+      left: 0px;
+    }
+    .prof_head_text {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 23px;
+      letter-spacing: 0.802236px;
+      color: #1e1e1e;
+    }
+  }
+  .prof_pic_space {
+    margin-top: 2.5rem;
+  }
+  .prof_options {
+    width: 100%;
+    padding-top: 3rem;
+  }
+}
