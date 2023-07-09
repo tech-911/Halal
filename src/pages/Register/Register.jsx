@@ -113,13 +113,14 @@ const Register = () => {
     formData.append("phone_no", phone_number);
     try {
       const res = await axios.post(`${baseUrlAuth}/register`, formData);
+      const response = await res.data;
       if (user && user?.token) {
         dispatch(preloadModalAction({ preloadOpen: 0 }));
         navigate("/main");
       } else {
         try {
           const userRes = await axios.post(`${baseUrlAuth}/login`, {
-            email: res.email,
+            email: response.email,
           });
           dispatch(userDataAction({ user: userRes.data }));
           dispatch(preloadModalAction({ preloadOpen: 0 }));

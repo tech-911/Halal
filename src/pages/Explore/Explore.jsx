@@ -362,7 +362,7 @@ const Explore = () => {
               toggle ? "" : "exploremob_toggle1_active"
             }`}
           >
-            Liked me
+            Liked m
           </div>
           <div
             onClick={() => {

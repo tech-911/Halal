@@ -9,6 +9,7 @@ import profileDefault from "../../assets/png/profileDefault.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import ExploreSide from "../exploreSide/ExploreSide";
 import EditSide from "../../components/editSide/EditSide";
+import Message from "../../components/message/MessageSide";
 const DesktopSideMenu = () => {
   const { user } = useSelector((state) => state.userDataSlice);
   const [photo, setPhoto] = useState(profileDefault);
@@ -42,7 +43,7 @@ const DesktopSideMenu = () => {
         <div className="deskside_consel">
           <TiUser className="deskside_consel_icon" />
         </div>
-        <div className="deskside_chat">
+        <div className="deskside_chat"  onClick={()=> navigate("/main/message")}>
           <BsFillChatRightFill className="deskside_chat_icon" />
         </div>
       </div>
@@ -56,6 +57,8 @@ const DesktopSideMenu = () => {
           location.pathname === "/main/home") && <Matches />}
         {location.pathname.includes(`/main/explore`) && <ExploreSide />}
         {location.pathname === `/main/edit` && <EditSide />}
+        {location.pathname === `/main/message` && <Message />}
+        
       </div>
     </div>
   );
