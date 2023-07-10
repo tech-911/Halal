@@ -6,6 +6,7 @@ import { baseUrlAuth } from "../../BaseUrls/base";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import Preloader from "../../components/preLoader/Preloader";
 import { preloadModalAction } from "../../redux/slices/preloadModalSlice";
 import { registerDataAction } from "../../redux/slices/registerDataSlice";
 import { userDataAction } from "../../redux/slices/userDataSlice";
@@ -77,7 +78,7 @@ const Edit = ({ isEdit }) => {
   } = data;
 
   const handleUpdate = async () => {
-
+    dispatch(preloadModalAction({ preloadOpen: 1 }));
     setDisabled(1);
     // let formData = new FormData();
     let imaga = []
@@ -95,12 +96,13 @@ const Edit = ({ isEdit }) => {
 
       console.log(response)
 
-      toast.success(`updated successfully !`, {
+      toast.success(`updated successfully 🎉!`, {
         position: toast.POSITION.TOP_RIGHT,
+        // autoClose: 2000
       });
 
-      // dispatch(userDataAction({ user: userRes.data }));
-      // dispatch(preloadModalAction({ preloadOpen: 0 }));
+      dispatch(userDataAction({ user: response }));
+      dispatch(preloadModalAction({ preloadOpen: 0 }));
       // navigate("/main");
 
       // setDisabled(0);
@@ -123,6 +125,7 @@ const Edit = ({ isEdit }) => {
     >
       <PhotoInput photo={photo} setPhoto={setPhoto} />
       <ToastContainer />
+      {preloadOpen ? <Preloader /> : ""}
       <div className="my-5  text-[#1E1E1E] w-full flex flex-col">
         <div className="font-[roboto] font-bold text-[20px] text-[#000000] md:text-[17px]">
           About me

@@ -4,11 +4,11 @@ const Message = () => {
 
   return (
 
-   <>
-   <div className="-mt-[35px] -ml-[300px]">
-   <img src={Empty2} alt="" className="w-[2400px]"/>
-   </div>
-   </>
+    <>
+      <div className="-mt-[80px] -ml-[300px]">
+        <img src={Empty2} alt="" className="w-[2400px]" />
+      </div>
+    </>
   )
 }
 

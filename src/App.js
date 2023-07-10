@@ -80,6 +80,14 @@ const App = () => {
               }
             />
             <Route
+              path="/main/message"
+              element={
+                <Private_route link={"/"}>
+                  <Message />
+                </Private_route>
+              }
+            />
+            <Route
               path="/main/explore/:id"
               element={
                 <Private_route link={"/"}>
