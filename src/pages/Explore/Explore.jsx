@@ -177,9 +177,8 @@ const Explore = () => {
         <div className="explore_arrow_wrap">
           <MdKeyboardArrowLeft
             onClick={Prev}
-            className={`explore_arrowleft ${
-              arrow ? "" : "explore_arrowleft_off"
-            }`}
+            className={`explore_arrowleft ${arrow ? "" : "explore_arrowleft_off"
+              }`}
           />
 
           <MdKeyboardArrowRight
@@ -242,9 +241,8 @@ const Explore = () => {
         )}
       </div>
       <div
-        className={`explore_drop ${
-          !drop ? "explore_drop_close" : "explore_drop_open"
-        }`}
+        className={`explore_drop ${!drop ? "explore_drop_close" : "explore_drop_open"
+          }`}
       >
         <h1 className="expdrop_name">{data[position]?.name.split(" ")[0]}</h1>
         <div className="expdrop_about">
@@ -358,9 +356,8 @@ const Explore = () => {
             onClick={() => {
               setToggle(0);
             }}
-            className={`exploremob_toggle1 ${
-              toggle ? "" : "exploremob_toggle1_active"
-            }`}
+            className={`exploremob_toggle1 ${toggle ? "" : "exploremob_toggle1_active"
+              }`}
           >
             Liked me
           </div>
@@ -368,20 +365,18 @@ const Explore = () => {
             onClick={() => {
               setToggle(1);
             }}
-            className={`exploremob_toggle2 ${
-              toggle ? "exploremob_toggle2_active" : ""
-            }`}
+            className={`exploremob_toggle2 ${toggle ? "exploremob_toggle2_active" : ""
+              }`}
           >
             I Liked
           </div>
         </div>
         <div className="exploremob_body_content_wrapper">
           <div
-            className={`${
-              exploreData.length === 0
-                ? "exploremob_body_content_empty"
-                : "exploremob_body_content"
-            }`}
+            className={`${exploreData.length === 0
+              ? "exploremob_body_content_empty"
+              : "exploremob_body_content"
+              }`}
           >
             {exploreData.length === 0 ? (
               <div className="exploremob_emptyState_wrap">

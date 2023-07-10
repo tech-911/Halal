@@ -1,4 +1,5 @@
-import "./App.scss";
+import React, { useState, createContext } from "react";
+import "./App.css";
 // import { useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
@@ -17,81 +18,87 @@ import Explore from "./pages/Explore/Explore";
 import EditPreview from "./components/editandpreview/EditPreview";
 import ExploreDetailMobile from "./pages/Explore/ExploreDetailMobile";
 import Profile from "./pages/Profile/Profile";
-
+import Message from "./pages/Message/Message";
+export const StyleContext = createContext()
 const App = () => {
   const { user } = useSelector((state) => state.userDataSlice);
+  const [isHidden, setHidden] = useState(true)
   // console.log(user);
   return (
     <div className="App">
-      <Routes>
-        <Route path="/home" element={<Landing />} />
-        <Route path="/" element={<Landing />} />
-        <Route path="/signup" element={<MobileSignup />} />
-        <Route path="/signin" element={<MobileSignin />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/register2" element={<RegisterMobile2 />} />
-        <Route path="/register3" element={<RegisterMobile3 />} />
-        <Route path="/terms" element={<Terms />} />
+
+
+      <StyleContext.Provider value={{ isHidden, setHidden }}>
+        <Routes>
+          <Route path="/home" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/signup" element={<MobileSignup />} />
+          <Route path="/signin" element={<MobileSignin />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/register2" element={<RegisterMobile2 />} />
+          <Route path="/register3" element={<RegisterMobile3 />} />
+          <Route path="/terms" element={<Terms />} />
         //--------------------Protected Routes-----------------------------↓
-        <Route
-          path="/main"
-          element={
-            <Private_route link={"/"}>
-              <User />
-            </Private_route>
-          }
-        >
           <Route
-            index
+            path="/main"
             element={
               <Private_route link={"/"}>
-                <UserHome />
+                <User />
               </Private_route>
             }
-          />
-          <Route
-            path="/main/home"
-            element={
-              <Private_route link={"/"}>
-                <UserHome />
-              </Private_route>
-            }
-          />
-          <Route
-            path="/main/profile"
-            element={
-              <Private_route link={"/"}>
-                <Profile />
-              </Private_route>
-            }
-          />
-          <Route
-            path="/main/edit"
-            element={
-              <Private_route link={"/"}>
-                <EditPreview />
-              </Private_route>
-            }
-          />
-          <Route
-            path="/main/explore/:id"
-            element={
-              <Private_route link={"/"}>
-                <Explore />
-              </Private_route>
-            }
-          />
-          <Route
-            path="/main/exploremob/:mobid"
-            element={
-              <Private_route link={"/"}>
-                <ExploreDetailMobile />
-              </Private_route>
-            }
-          />
-        </Route>
+          >
+            <Route
+              index
+              element={
+                <Private_route link={"/"}>
+                  <UserHome />
+                </Private_route>
+              }
+            />
+            <Route
+              path="/main/home"
+              element={
+                <Private_route link={"/"}>
+                  <UserHome />
+                </Private_route>
+              }
+            />
+            <Route
+              path="/main/profile"
+              element={
+                <Private_route link={"/"}>
+                  <Profile />
+                </Private_route>
+              }
+            />
+            <Route
+              path="/main/edit"
+              element={
+                <Private_route link={"/"}>
+                  <EditPreview />
+                </Private_route>
+              }
+            />
+            <Route
+              path="/main/explore/:id"
+              element={
+                <Private_route link={"/"}>
+                  <Explore />
+                </Private_route>
+              }
+            />
+            <Route
+              path="/main/exploremob/:mobid"
+              element={
+                <Private_route link={"/"}>
+                  <ExploreDetailMobile />
+                </Private_route>
+              }
+            />
+          </Route>
         //--------------------Protected Routes-----------------------------↑
-      </Routes>
+        </Routes>
+      </StyleContext.Provider>
     </div>
   );
 };

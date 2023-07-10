@@ -178,9 +178,8 @@ const UserHome = () => {
         <div className="userhome_arrow_wrap">
           <MdKeyboardArrowLeft
             onClick={Prev}
-            className={`userhome_arrowleft ${
-              arrow ? "" : "userhome_arrowleft_off"
-            }`}
+            className={`userhome_arrowleft ${arrow ? "" : "userhome_arrowleft_off"
+              }`}
           />
 
           <MdKeyboardArrowRight
@@ -250,9 +249,8 @@ const UserHome = () => {
         )}
       </div>
       <div
-        className={`userhome_drop ${
-          !drop ? "userhome_drop_close" : "userhome_drop_open"
-        }`}
+        className={`userhome_drop ${!drop ? "userhome_drop_close" : "userhome_drop_open"
+          }`}
       >
         <h1 className="udrop_name">{data[position]?.name.split(" ")[0]}</h1>
         <div className="udrop_about">

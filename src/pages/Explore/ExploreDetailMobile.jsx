@@ -136,9 +136,8 @@ const ExploreDetailMobile = () => {
         <div className="exploredetmob_arrow_wrap">
           <MdKeyboardArrowLeft
             onClick={Prev}
-            className={`exploredetmob_arrowleft ${
-              arrow ? "" : "exploredetmob_arrowleft_off"
-            }`}
+            className={`exploredetmob_arrowleft ${arrow ? "" : "exploredetmob_arrowleft_off"
+              }`}
           />
 
           <MdKeyboardArrowRight
@@ -208,9 +207,8 @@ const ExploreDetailMobile = () => {
         )}
       </div>
       <div
-        className={`exploredetmob_drop ${
-          !drop ? "exploredetmob_drop_close" : "exploredetmob_drop_open"
-        }`}
+        className={`exploredetmob_drop ${!drop ? "exploredetmob_drop_close" : "exploredetmob_drop_open"
+          }`}
       >
         <h1 className="expdetdropmob_name">
           {data[position]?.name.split(" ")[0]}

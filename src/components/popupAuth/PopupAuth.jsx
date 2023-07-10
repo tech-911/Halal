@@ -37,7 +37,6 @@ const PopupAuth = () => {
           }}
           className="popauth_close"
         />
-
         <img
           onClick={() => {
             navigate("/");

@@ -9,6 +9,7 @@ import profileDefault from "../../assets/png/profileDefault.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import ExploreSide from "../exploreSide/ExploreSide";
 import EditSide from "../../components/editSide/EditSide";
+import Message from "../../components/message/MessageSide";
 const DesktopSideMenu = () => {
   const { user } = useSelector((state) => state.userDataSlice);
   const [photo, setPhoto] = useState(profileDefault);
@@ -55,6 +56,8 @@ const DesktopSideMenu = () => {
           location.pathname === "/main/home") && <Matches />}
         {location.pathname.includes(`/main/explore`) && <ExploreSide />}
         {location.pathname === `/main/edit` && <EditSide />}
+        {location.pathname === `/main/message` && <Message />}
+
       </div>
     </div>
   );

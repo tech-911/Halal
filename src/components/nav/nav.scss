@@ -1,6 +1,7 @@
 .nav_border {
   border-bottom: 1px solid rgba(180, 173, 216, 0.2);
 }
+
 .nav_wrapper {
   z-index: 2;
   display: flex;
@@ -8,22 +9,28 @@
   align-items: center;
   justify-content: space-between;
   padding: 2rem 6rem;
+
   @media screen and (max-width: 855px) {
     padding: 2rem 2rem;
   }
+
   .nav_left {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1.5rem;
+
     @media screen and (max-width: 710px) {
       gap: 0.8rem;
     }
+
     .nav_logo {
       cursor: pointer;
     }
+
     .nav_navLinks {
       cursor: pointer;
+
       * {
         font-family: "Roboto";
         font-style: normal;
@@ -33,25 +40,30 @@
         color: #ffffff;
         text-decoration: none;
         transition: color 0.2s ease-in-out;
+
         &:hover {
           color: #ff0020;
         }
       }
     }
+
     .nav_navLinks_black {
       * {
         color: black;
       }
     }
   }
+
   .nav_right {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1.5rem;
+
     @media screen and (max-width: 710px) {
       gap: 0.8rem;
     }
+
     .nav_signin {
       display: flex;
       flex-direction: row;
@@ -70,14 +82,17 @@
       cursor: pointer;
       background-color: unset;
       transition: font-size 0.2s ease-in-out;
+
       &:hover {
         font-size: 17px;
       }
     }
+
     .nav_sigin_red {
       border: 2px solid #ff0020 !important;
       color: #ff0020 !important;
     }
+
     .nav_signup {
       display: flex;
       flex-direction: row;
@@ -97,11 +112,13 @@
       cursor: pointer;
       background-color: unset;
       transition: font-size 0.2s ease-in-out;
+
       &:hover {
         font-size: 17px;
       }
     }
   }
+
   .nav_profile_route {
     display: flex;
     flex-direction: row;
@@ -115,11 +132,13 @@
     background: #1e1e1e;
     padding: 0rem 0.7rem 0rem;
     cursor: pointer;
+
     .nav_profile_img {
       width: 36px;
       height: 36px;
       border-radius: 50%;
     }
+
     .nav_profile_name {
       font-family: "Roboto";
       font-style: normal;
@@ -131,6 +150,7 @@
       white-space: nowrap;
       max-width: 130px;
       overflow: scroll;
+
       &::-webkit-scrollbar {
         display: none;
       }

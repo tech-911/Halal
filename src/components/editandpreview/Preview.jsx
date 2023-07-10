@@ -129,9 +129,8 @@ const Preview = ({ ismore, setismore, isEdit }) => {
             return (
               <div
                 key={index}
-                className={`w-full h-1 rounded-md ${
-                  index === imgId ? "bg-white" : "bg-gray-300"
-                } `}
+                className={`w-full h-1 rounded-md ${index === imgId ? "bg-white" : "bg-gray-300"
+                  } `}
               ></div>
             );
           })}
@@ -142,9 +141,8 @@ const Preview = ({ ismore, setismore, isEdit }) => {
             onClick={() => {
               setismore(!ismore);
             }}
-            className={`bg-[#FF0020] absolute right-6 w-fit  ${
-              ismore ? "bottom-[40px]" : "bottom-[95px] "
-            } text-white py-2 px-3 rounded-2xl`}
+            className={`bg-[#FF0020] absolute right-6 w-fit  ${ismore ? "bottom-[40px]" : "bottom-[95px] "
+              } text-white py-2 px-3 rounded-2xl`}
           >
             {`${ismore ? "back" : "view"}`}
           </button>

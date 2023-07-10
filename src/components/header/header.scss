@@ -4,9 +4,11 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
   @media screen and (max-width: 664px) {
     display: none;
   }
+
   .header_carousel {
     position: absolute;
     top: 0;
@@ -14,25 +16,31 @@
     width: 1500px;
     height: 950px;
     z-index: 1;
+
     @media screen and (min-width: 1507px) {
       width: 2000px;
       height: 1000px !important;
     }
+
     @media screen and (max-width: 830px) {
       width: 1500px;
       height: 1000px !important;
     }
   }
+
   .header_nav {
     z-index: 1;
   }
+
   .header_section2 {
     z-index: 1;
     padding: 3rem 6rem;
+
     @media screen and (max-width: 855px) {
       padding: 2rem 2rem;
     }
   }
+
   .header_section3 {
     z-index: 1;
     margin-left: 6rem;
@@ -43,10 +51,12 @@
     font-size: 62.9158px;
     line-height: 82px;
     color: #ffffff;
+
     @media screen and (max-width: 855px) {
       margin-left: 2rem;
     }
   }
+
   .header_section4 {
     display: flex;
     flex-direction: column;
@@ -55,6 +65,7 @@
     z-index: 1;
     margin-left: 6rem;
     margin-top: 1.5rem;
+
     @media screen and (max-width: 855px) {
       margin-left: 2rem;
     }
@@ -68,18 +79,22 @@
       letter-spacing: -2.73547px;
       color: #ffffff;
     }
+
     .header_download_wrap {
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 1.5rem;
+
       .header_google {
         cursor: pointer;
       }
+
       .header_apple {
         cursor: pointer;
       }
     }
+
     .header_create_account {
       display: flex;
       flex-direction: row;

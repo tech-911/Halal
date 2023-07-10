@@ -25,8 +25,8 @@ const EditPreview = () => {
             setisEdit(true);
           }}
           className={` w-full flex cursor-pointer justify-center items-center py-3 font-medium border-b-2 ${isEdit
-              ? "border-[#FF0020] text-[#FF0020]"
-              : "border-[#B4B4B4] text-gray-300"
+            ? "border-[#FF0020] text-[#FF0020]"
+            : "border-[#B4B4B4] text-gray-300"
             }`}
         >
           Edit
@@ -36,8 +36,8 @@ const EditPreview = () => {
             setisEdit(false);
           }}
           className={` w-full flex cursor-pointer justify-center items-center py-3 font-medium border-b-2 ${isEdit
-              ? "border-[#B4B4B4] text-gray-300"
-              : " border-[#FF0020] text-[#FF0020]"
+            ? "border-[#B4B4B4] text-gray-300"
+            : " border-[#FF0020] text-[#FF0020]"
             }`}
         >
           Preview

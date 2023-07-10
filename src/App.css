@@ -1,0 +1,48 @@
+.App {
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: auto;
+}
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.slick-list {
+  height:100%;
+ 
+  }
+
+
+.slick-track {
+  height:100%;
+}
+
+.slick-track div {
+  height:100%;
+}
+
+.right {
+  width:100%;
+}
+@media screen and (min-width:800px) {
+  .right {
+    width:calc(100% - 330px);
+  }
+}
+.gradient-bg {
+  background: linear-gradient(
+    180deg,
+    rgba(30, 30, 30, 0) 0%,
+    #1e1e1e 93.23%
+  );
+}
+.font-style {
+  font-family: "Roboto"; 
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

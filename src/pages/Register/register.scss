@@ -8,6 +8,7 @@
   letter-spacing: 1px;
   color: #1e1e1e;
 }
+
 @mixin reg_input {
   border: 2px solid #b4b4b4;
   border-radius: 100px;
@@ -21,6 +22,7 @@
   color: #696969;
   height: 57px;
   width: 100%;
+
   @media screen and (min-width: 1327px) {
     width: 519px;
   }
@@ -36,8 +38,10 @@
     color: #696969;
   }
 }
+
 .reg_wrapper {
   position: relative;
+
   @media screen and (max-width: 830px) {
     display: flex;
     flex-direction: column;
@@ -47,10 +51,12 @@
 
   .reg_nav {
     width: 100%;
+
     @media screen and (max-width: 830px) {
       display: none;
     }
   }
+
   .reg_back {
     font-size: 25px;
     color: #1e1e1e;
@@ -58,6 +64,7 @@
     top: 55px;
     left: 30px;
     cursor: pointer;
+
     @media screen and (min-width: 831px) {
       display: none;
     }
@@ -65,21 +72,27 @@
 
   .reg_image_head {
     margin: 3rem 0rem 2rem;
+
     @media screen and (min-width: 831px) {
       display: none;
     }
+
     // cursor: pointer;
   }
+
   .reg_body {
     display: flex;
     flex-direction: column;
     padding: 2rem 6rem;
+
     @media screen and (max-width: 884px) {
       padding: 2rem 2rem;
     }
+
     @media screen and (max-width: 830px) {
       width: 100%;
     }
+
     .reg_head {
       font-family: "Roboto";
       font-style: normal;
@@ -92,22 +105,26 @@
       width: 100%;
       margin-top: 2rem;
       margin-bottom: 1rem;
+
       @media screen and (max-width: 830px) {
         display: none;
       }
     }
+
     .reg_sub_body {
       display: flex;
       flex-direction: row;
       align-items: flex-end;
       gap: 5rem;
       width: 100%;
+
       .reg_left {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
         width: 100%;
+
         .reg_input_name_wrap {
           position: relative;
           display: flex;
@@ -115,14 +132,17 @@
           align-items: flex-start;
           gap: 0.8rem;
           width: 100%;
+
           .reg_name_label {
             @include reg_labels;
           }
+
           .reg_name_input {
             @include reg_input;
             padding-left: 3.5rem;
             padding-right: 2rem;
           }
+
           .reg_name_icon {
             position: absolute;
             top: 50px;
@@ -131,6 +151,7 @@
             font-size: 22px;
           }
         }
+
         .reg_input_dob_wrap {
           position: relative;
           display: flex;
@@ -138,14 +159,17 @@
           align-items: flex-start;
           gap: 0.8rem;
           width: 100%;
+
           .reg_dob_label {
             @include reg_labels;
           }
+
           .reg_dob_input {
             @include reg_input;
             padding-left: 3.5rem;
             padding-right: 2rem;
           }
+
           .reg_dob_icon {
             position: absolute;
             top: 50px;
@@ -154,6 +178,7 @@
             font-size: 22px;
           }
         }
+
         .reg_input_gender_wrap {
           position: relative;
           display: flex;
@@ -161,14 +186,17 @@
           align-items: flex-start;
           gap: 0.8rem;
           width: 100%;
+
           .reg_gender_label {
             @include reg_labels;
           }
+
           .reg_gender_wrap {
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 0.8rem;
+
             .reg_male,
             .reg_female {
               border: 2px solid #b4b4b4;
@@ -190,12 +218,14 @@
               justify-content: center;
               cursor: pointer;
               transition: background 0.3s ease-in-out;
+
               &:hover {
                 background: #ff0020;
                 color: white;
                 border: none;
               }
             }
+
             .reg_gender_active {
               background: #ff0020 !important;
               color: white !important;
@@ -203,21 +233,25 @@
             }
           }
         }
+
         .reg_input_height_wrap {
           width: 100%;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           gap: 0.8rem;
+
           .reg_height_label {
             @include reg_labels;
           }
+
           .reg_height_input {
             @include reg_input;
             padding-left: 1.5rem;
             padding-right: 1.5rem;
           }
         }
+
         .reg_input_marstatus_wrap {
           display: flex;
           flex-direction: column;
@@ -228,42 +262,51 @@
           .reg_marstatus_label {
             @include reg_labels;
           }
+
           .reg_marstatus_input {
             @include reg_input;
             padding-left: 1.5rem;
             padding-right: 1.5rem;
           }
         }
+
         .reg_input_location_wrap {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           gap: 0.8rem;
           width: 100%;
+
           @media screen and (max-width: 830px) {
             display: none;
           }
+
           .reg_location_label {
             @include reg_labels;
           }
+
           .reg_location_input {
             @include reg_input;
             padding-left: 1.5rem;
             padding-right: 1.5rem;
           }
         }
+
         .reg_input_profession_wrap {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           gap: 0.8rem;
           width: 100%;
+
           @media screen and (max-width: 830px) {
             display: none;
           }
+
           .reg_profession_label {
             @include reg_labels;
           }
+
           .reg_profession_input {
             @include reg_input;
             padding-left: 1.5rem;
@@ -271,17 +314,21 @@
           }
         }
       }
+
       .reg_right {
         display: flex;
         flex-direction: column;
         gap: 1rem;
         width: 100%;
+
         @media screen and (max-width: 830px) {
           display: none;
         }
+
         .reg_photos_wrap {
           margin-bottom: 1rem;
         }
+
         .reg_input_email_wrap {
           position: relative;
           display: flex;
@@ -293,11 +340,13 @@
           .reg_email_label {
             @include reg_labels;
           }
+
           .reg_email_input {
             @include reg_input;
             padding-left: 3.5rem;
             padding-right: 2rem;
           }
+
           .reg_email_icon {
             position: absolute;
             top: 50px;
@@ -306,6 +355,7 @@
             font-size: 22px;
           }
         }
+
         .reg_input_phone_wrap {
           position: relative;
           display: flex;
@@ -317,11 +367,13 @@
           .reg_phone_label {
             @include reg_labels;
           }
+
           .reg_phone_input {
             @include reg_input;
             padding-left: 3.5rem;
             padding-right: 2rem;
           }
+
           .reg_phone_icon {
             position: absolute;
             top: 50px;
@@ -332,15 +384,18 @@
         }
       }
     }
+
     .reg_button_wrap {
       width: 60%;
       height: 50px;
       margin-bottom: 2rem;
       align-self: center;
       margin-top: 4rem;
+
       @media screen and (max-width: 830px) {
         display: none;
       }
+
       .reg_button {
         border-radius: 22px;
         width: 100%;
@@ -362,24 +417,29 @@
         border: none;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
+
         &:hover {
           transform: scale(1.1);
         }
       }
+
       .reg_button_inactive {
         color: #7c8591;
         background: #e9ebee;
       }
     }
+
     .reg_button_wrap_mobile {
       width: 100%;
       height: 50px;
       margin-bottom: 2rem;
       align-self: center;
       margin-top: 4rem;
+
       @media screen and (min-width: 831px) {
         display: none;
       }
+
       .reg_button_mobile {
         background: #e9ebee;
         border-radius: 22px;
@@ -401,12 +461,14 @@
         border: none;
         cursor: pointer;
         transition: background 0.2s ease-in-out;
+
         &:hover {
           background: #ff0020;
           color: white;
         }
       }
     }
+
     .reg_login {
       display: flex;
       flex-direction: row;
@@ -420,9 +482,11 @@
       line-height: 36px;
       text-align: center;
       color: #1e1e1e;
+
       @media screen and (max-width: 830px) {
         display: none;
       }
+
       span {
         font-family: "Roboto";
         font-style: normal;
