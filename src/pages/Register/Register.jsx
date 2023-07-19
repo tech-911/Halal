@@ -19,6 +19,7 @@ import Preloader from "../../components/preLoader/Preloader";
 import { preloadModalAction } from "../../redux/slices/preloadModalSlice";
 import { registerDataAction } from "../../redux/slices/registerDataSlice";
 import axios from "axios";
+
 const Register = () => {
   const [genderState, setGenderState] = useState("");
   const [disabled, setDisabled] = useState(0);

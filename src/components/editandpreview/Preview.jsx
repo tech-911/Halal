@@ -204,12 +204,12 @@ const Preview = ({ ismore, setismore, isEdit }) => {
               Icon={<GiBigDiamondRing className="text-[15px] md:text-[20px]" />}
               text={user?.marital_status}
             />
-            <InfoWidget img={child} text={user?.related.children} />
+            <InfoWidget img={child} text={user?.related?.children} />
             <InfoWidget
               Icon={<MdDateRange className="text-[15px] md:text-[20px]" />}
               text={parseInt(calculateAge(user?.dob))}
             />
-            <InfoWidget img={relation} text={user?.related.relationship} />
+            <InfoWidget img={relation} text={user?.related?.relationship} />
           </div>
 
           <div className="">
@@ -217,7 +217,7 @@ const Preview = ({ ismore, setismore, isEdit }) => {
               Describe the person you want
             </div>
             <div className="p-2 bg-[#e9e9e9] text-sm md:text-sm  leading-6 md:leading-6  rounded-md overflow-hidden text-black">
-              "{user?.related.description}"
+              "{user?.related?.description}"
             </div>
           </div>
 
@@ -226,9 +226,9 @@ const Preview = ({ ismore, setismore, isEdit }) => {
               Health/Appearance
             </div>
             <div className="flex gap-2 flex-wrap w-full">
-              <InfoWidget img={bloodgroup} text={`Blood Group: ${user?.related.blood}`} />
-              <InfoWidget img={genoType} text={`Genotype: ${user?.related.genotype}`} />
-              <InfoWidget img={skinColor} text={`Skin Color: ${user?.related.skin}`} />
+              <InfoWidget img={bloodgroup} text={`Blood Group: ${user?.related?.blood}`} />
+              <InfoWidget img={genoType} text={`Genotype: ${user?.related?.genotype}`} />
+              <InfoWidget img={skinColor} text={`Skin Color: ${user?.related?.skin}`} />
             </div>
           </div>
 
@@ -237,10 +237,10 @@ const Preview = ({ ismore, setismore, isEdit }) => {
               Religiosity
             </h2>
             <div className="flex gap-2 flex-wrap w-full">
-              <InfoWidget img={Religiosity} text={`practicing: ${user?.related.religion}`} />
-              <InfoWidget img={prayStatus} text={`pray: ${user?.related.pray}`} />
-              <InfoWidget img={drinkStatus} text={user?.related.alcohol === "no" ? "I don't drink" : "I drink"} />
-              <InfoWidget img={smokeStatus} text={user?.related.smoke === "no" ? "I don't smoke" : "I smoke"} />
+              <InfoWidget img={Religiosity} text={`practicing: ${user?.related?.religion}`} />
+              <InfoWidget img={prayStatus} text={`pray: ${user?.related?.pray}`} />
+              <InfoWidget img={drinkStatus} text={user?.related?.alcohol === "no" ? "I don't drink" : "I drink"} />
+              <InfoWidget img={smokeStatus} text={user?.related?.smoke === "no" ? "I don't smoke" : "I smoke"} />
             </div>
           </div>
           <div className="">
@@ -248,7 +248,7 @@ const Preview = ({ ismore, setismore, isEdit }) => {
               Education/Profession
             </h2>
             <div className="flex gap-2 flex-wrap w-full">
-              <InfoWidget img={education} text={user?.related.education} />
+              <InfoWidget img={education} text={user?.related?.education} />
               <InfoWidget img={work} text={user?.profession} />
             </div>
           </div>
@@ -257,7 +257,7 @@ const Preview = ({ ismore, setismore, isEdit }) => {
               Personality
             </h2>
             <div className="flex gap-2 flex-wrap w-full">
-              <InfoWidget img={listen} text={user?.related.personality} />
+              <InfoWidget img={listen} text={user?.related?.personality} />
               {/* <InfoWidget img={create} text={"Creative"} />
               <InfoWidget img={fun} text={"Funny"} /> */}
             </div>
@@ -265,7 +265,7 @@ const Preview = ({ ismore, setismore, isEdit }) => {
           <div className="">
             <h2 className="text-sm md:text-[15px] font-medium py-2">Interest</h2>
             <div className="flex gap-2 flex-wrap w-full">
-              <InfoWidget img={listen} text={user?.related.interest} />
+              <InfoWidget img={listen} text={user?.related?.interest} />
               {/* <InfoWidget img={create} text={"Design"} />
               <InfoWidget img={coffee} text={"Coffee"} /> */}
             </div>
@@ -275,8 +275,8 @@ const Preview = ({ ismore, setismore, isEdit }) => {
               Language and Ethnicity
             </h2>
             <div className="flex gap-2 flex-wrap w-full">
-              <InfoWidget img={flag} text={user?.related.ethnicity} />
-              <InfoWidget img={lang} text={user?.related.language} />
+              <InfoWidget img={flag} text={user?.related?.ethnicity} />
+              <InfoWidget img={lang} text={user?.related?.language} />
             </div>
           </div>
         </>

@@ -12,8 +12,16 @@ import { BsFillChatRightFill } from "react-icons/bs";
 import { ImUser } from "react-icons/im";
 import { IoNotifications } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import { userDataAction } from "../../redux/slices/userDataSlice";
 
 const EditDesktopNav = () => {
+  const dispatch = useDispatch();
+
+  function logOut() {
+    dispatch(userDataAction({ user: null }));
+  }
+
   return (
     <div className="w-full font bg-white shadow-lg h-full">
       {/* <div className="flex bg-[#FF0020] sm:p-2 lg:p-2 w-full justify-around">
@@ -96,12 +104,14 @@ const EditDesktopNav = () => {
       </div>
 
       <div className="w-full p-3 lg:p-4 border-b border-[#D2D2D2] flex justify-between items-center">
-        <div className="group space-x-2 flex items-center justify-start">
+
+        <div className="group space-x-2 flex items-center justify-start cursor-pointer" onClick={logOut}>
           <FiLogOut className="group-hover:text-[#FF0020] text-[20px]  text-zinc-700 font-medium" />
           <span className="text-sm font-medium group-hover:text-[#FF0020] ">
             Log out
           </span>
         </div>
+
         <MdNavigateNext className="text-[20px]  text-zinc-700 font-medium" />
       </div>
     </div>

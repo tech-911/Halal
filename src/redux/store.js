@@ -13,6 +13,7 @@ import authDataSlice from "./slices/authDataSlice";
 import registerDataSlice from "./slices/registerDataSlice";
 import userDataSlice from "./slices/userDataSlice";
 import exploreDataSlice from "./slices/exploreDataSlice";
+import messageSlice from "./slices/messageSlice";
 
 const reducers = combineReducers({
   authModalSlice,
@@ -24,6 +25,7 @@ const reducers = combineReducers({
   registerDataSlice,
   userDataSlice,
   exploreDataSlice,
+  messageSlice
 });
 
 const persistConfig = {
