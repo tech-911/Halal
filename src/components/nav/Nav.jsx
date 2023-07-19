@@ -51,13 +51,13 @@ const Nav = ({ border, theme }) => {
         >
           <a href="/home">Premium</a>
         </p>
-        <p
+        {/* <p
           className={`nav_navLinks ${
             theme === "black" ? "nav_navLinks_black" : ""
           }`}
         >
           <a href="/home">Counseling</a>
-        </p>
+        </p> */}
       </div>
       {!user?.token ? (
         <div className="nav_right">
