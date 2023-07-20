@@ -3,9 +3,15 @@ export const cloudinary =
 
 // export const baseUrlAuth = "https://halal.onrender.com/api/auth";
 
+// export const baseUrlAuth = "http://localhost:4000/api/auth";
+// export const baseUrlUserActions = "http://localhost:4000/api/useraction";
+// export const messageUrlActions = "http://localhost:4000/api/chat"
+
 export const baseUrlAuth = "https://halal.onrender.com/api/auth";
 export const baseUrlUserActions = "https://halal.onrender.com/api/useraction";
 export const messageUrlActions = "https://halal.onrender.com/api/chat"
+
+
 
 // export const baseUrlUserActions = "https://halal.onrender.com/api/useraction";
 

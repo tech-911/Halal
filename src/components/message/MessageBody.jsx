@@ -26,14 +26,16 @@ const MessageBody = () => {
           `${messageUrlActions}/conversation/${user?._id}/${userData?._id}`);
         console.log(res.data);
         settheData(res.data)
-
+        setConversation(res.data)
       } catch (err) {
         console.log(err);
+        settheData({ messages: [] })
+        setConversation({ messages: [] })
       }
     };
     getiliked();
 
-  }, []);
+  }, [userData]);
 
 
 
@@ -69,7 +71,7 @@ const MessageBody = () => {
       // });
 
       setNewMessage('');
-
+      console.log(conversation)
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -82,11 +84,11 @@ const MessageBody = () => {
           <p className="text-[#8E8E93] text-[14px]">Today</p>
         </div>
 
-        {theData ? (
+        {conversation ? (
           <>
-            {theData.messages.map((msgg, i) => (
+            {conversation.messages.length > 0 && conversation.messages.map((msgg, i) => (
               <>
-                {msgg.sender.email === user?.email ? (
+                {(msgg.sender.email === user?.email) || (msgg.sender === user?._id) ? (
                   <div className="flex justify-end">
                     <div className="p-2 rounded-md bg-black text-white w-5/12 mt-2">
                       <p className="text-[12px]">{msgg.content}</p>
