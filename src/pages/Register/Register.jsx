@@ -35,6 +35,7 @@ const Register = () => {
     height: "",
     marital_status: "",
     location: "",
+    current_location: "",
     profession: "",
     email: "",
     phone_number: "",
@@ -74,6 +75,7 @@ const Register = () => {
     height,
     marital_status,
     location,
+    current_location,
     profession,
     email,
     phone_number,
@@ -87,6 +89,7 @@ const Register = () => {
       height === "" ||
       marital_status === "" ||
       location === "" ||
+      current_location === "" ||
       profession === "" ||
       email === "" ||
       phone_number === "" ||
@@ -109,6 +112,7 @@ const Register = () => {
     formData.append("height", height);
     formData.append("marital_status", marital_status);
     formData.append("location", location);
+    formData.append("current_location", current_location);
     formData.append("profession", profession);
     formData.append("email", email);
     formData.append("phone_no", phone_number);
@@ -266,17 +270,13 @@ const Register = () => {
               <label className="reg_marstatus_label" htmlFor="marstatus">
                 Marital status
               </label>
-              <input
-                placeholder="Never married"
-                type="text"
-                id="marital_status"
-                className="reg_marstatus_input"
-                required
-                value={marital_status}
-                onChange={(e) => {
+               <select  className="reg_marstatus_input" id="marital_status" value={marital_status}  required onChange={(e) => {
                   handleInput(e);
-                }}
-              />
+                }}>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+              </select>
             </div>
             <div className="reg_input_location_wrap">
               <label className="reg_location_label" htmlFor="location">
@@ -289,6 +289,22 @@ const Register = () => {
                 className="reg_location_input"
                 required
                 value={location}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+              />
+            </div>
+            <div className="reg_input_location_wrap">
+              <label className="reg_location_label" htmlFor="location">
+               Current Location
+              </label>
+              <input
+                placeholder="Niger, Nigeria"
+                type="text"
+                id="current_location"
+                className="reg_location_input"
+                required
+                value={current_location}
                 onChange={(e) => {
                   handleInput(e);
                 }}

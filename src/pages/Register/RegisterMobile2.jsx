@@ -21,6 +21,7 @@ const RegisterMobile2 = () => {
   };
   let [data, setData] = useState({
     location: "",
+    current_location: "",
     profession: "",
     email: "",
     phone_number: "",
@@ -33,11 +34,12 @@ const RegisterMobile2 = () => {
     console.log(newData);
   };
 
-  let { location, profession, email, phone_number } = data;
+  let { location, current_location, profession, email, phone_number } = data;
 
   const handleMobNext = () => {
     if (
       location === "" &&
+      current_location === "" &&
       profession === "" &&
       email === "" &&
       phone_number === ""
@@ -50,6 +52,7 @@ const RegisterMobile2 = () => {
     dispatch(
       registerDataAction({
         location: data.location,
+        current_location: data.current_location,
         profession: data.profession,
         email: data.email,
         phone_number: data.phone_number,
@@ -85,6 +88,22 @@ const RegisterMobile2 = () => {
                 className="regmob2_location_input"
                 required
                 value={location}
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+              />
+            </div>
+            <div className="regmob2_input_location_wrap">
+              <label className="reg_location_label" htmlFor="current_location">
+               Current Location
+              </label>
+              <input
+                placeholder="Niger, Nigeria"
+                type="text"
+                id="current_location"
+                className="regmob2_location_input"
+                required
+                value={current_location}
                 onChange={(e) => {
                   handleInput(e);
                 }}

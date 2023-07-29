@@ -35,6 +35,7 @@ const RegisterMobile3 = () => {
     height,
     marital_status,
     location,
+    current_location,
     profession,
     email,
     phone_number,
@@ -60,6 +61,7 @@ const RegisterMobile3 = () => {
     formData.append("height", height);
     formData.append("marital_status", marital_status);
     formData.append("location", location);
+    formData.append("current_location", current_location);
     formData.append("profession", profession);
     formData.append("email", email);
     formData.append("phone_no", phone_number);

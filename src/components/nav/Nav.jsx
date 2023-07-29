@@ -44,13 +44,13 @@ const Nav = ({ border, theme }) => {
         >
           <a href="/home">Help</a>
         </p>
-        <p
+        {/* <p
           className={`nav_navLinks ${
             theme === "black" ? "nav_navLinks_black" : ""
           }`}
         >
           <a href="/home">Premium</a>
-        </p>
+        </p> */}
         {/* <p
           className={`nav_navLinks ${
             theme === "black" ? "nav_navLinks_black" : ""
