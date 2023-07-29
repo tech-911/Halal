@@ -104,7 +104,18 @@
         display: none;
       }
     }
-
+    .explore_filter{
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      padding: 0rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg,
+          rgba(30, 30, 30, 0) 0%,
+          #1e1e1e 93.23%);
+    }
     .explore_body {
       position: absolute;
       bottom: 0px;
