@@ -16,26 +16,28 @@ import { userDataAction } from "../../redux/slices/userDataSlice";
 
 const GoogleButton = ({ option }) => {
   const [googleSize, setGoogleSize] = useState(() => {
-    return window.innerWidth > 438 ? "400" : "300";
+    return window.innerWidth > 438 ? 400 : 300;
   });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_GOOGLE_APP_ID)
     const googlesizesetter = () => {
       if (window.innerWidth < 438 && window.innerWidth >= 350) {
-        setGoogleSize("300");
+        setGoogleSize(300);
       } else if (window.innerWidth < 350) {
-        setGoogleSize("200");
+        setGoogleSize(200);
       } else {
-        setGoogleSize("400");
+        setGoogleSize(400);
       }
     };
 
     window.addEventListener("resize", googlesizesetter);
     return () => window.removeEventListener("resize", googlesizesetter);
   }, []);
+
   return (
     <div className="google_wrapper">
       <ToastContainer />
