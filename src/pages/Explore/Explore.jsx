@@ -2,6 +2,7 @@ import ExploreWidget from "../../components/exploreWidget/ExploreWidget";
 import { useDispatch, useSelector } from "react-redux";
 import { exploreDataAction } from "../../redux/slices/exploreDataSlice";
 import { useNavigate } from "react-router-dom";
+import { Button, Modal,RangeSlider } from 'flowbite-react';
 import Empty1 from "../../assets/png/emptyStatesImg/Fashion blogging-cuate.png";
 import Empty2 from "../../assets/png/emptyStatesImg/Popcorns-amico.png";
 import React, { useEffect, useRef, useState } from "react";
@@ -25,7 +26,7 @@ import {
 import { FiHeart } from "react-icons/fi";
 import { RiShoppingBagFill, RiFlagLine } from "react-icons/ri";
 import { AiTwotoneHeart } from "react-icons/ai";
-import { BsFillChatRightFill } from "react-icons/bs";
+import { BsFillChatRightFill, BsFilter } from "react-icons/bs";
 import { CgClose } from "react-icons/cg";
 import child from "../../assets/png/profileIcons/child.png";
 import relation from "../../assets/png/profileIcons/relation.png";
@@ -47,6 +48,7 @@ import lang from "../../assets/png/profileIcons/language.png";
 import InfoWidget from "../../components/infoWidget/InfoWidget";
 import { useParams } from "react-router-dom";
 const Explore = () => {
+  
   const slickRef = useRef(null);
   const exploreData = useSelector((state) => state.exploreDataSlice);
   const { id: paramsid } = useParams();
@@ -57,6 +59,8 @@ const Explore = () => {
   const { user } = useSelector((state) => state.userDataSlice);
   const [position, setPosition] = useState(paramsid);
   const [toggle, setToggle] = useState(0);
+  const [openModal, setOpenModal] = useState("");
+  const props = { openModal, setOpenModal };
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -174,6 +178,36 @@ const Explore = () => {
             );
           })}
         </Slider>
+        <div className="explore_filter">
+        <Button onClick={() => props.setOpenModal('default')} className="explore-btn"><BsFilter size={25}/></Button>
+      <Modal show={props.openModal === 'default'} onClose={() => props.setOpenModal(undefined)}>
+        <Modal.Header>Filter</Modal.Header>
+        <Modal.Body>
+          <div className="mb-1 flex justify-between">
+          <small>By age range</small>
+          <small>18-19</small>
+        </div>
+        <RangeSlider
+          id="md-range"
+          sizing="md"
+        />
+
+        <div className="mt-2">
+          <h5>By location</h5>
+          <div className="mt-2">
+            <p className="text-sm">Distance</p>
+
+          </div>
+        </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+          <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+            Decline
+          </Button>
+        </Modal.Footer>
+      </Modal>
+        </div>
         <div className="explore_arrow_wrap">
           <MdKeyboardArrowLeft
             onClick={Prev}

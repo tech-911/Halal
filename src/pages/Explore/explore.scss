@@ -106,15 +106,37 @@
     }
     .explore_filter{
       position: absolute;
-      bottom: 0px;
+      top: 0px;
       left: 0px;
       width: 100%;
-      padding: 0rem 1rem 1rem;
+      padding: 1rem 1rem 1rem;
       display: flex;
-      flex-direction: column;
-      background: linear-gradient(180deg,
-          rgba(30, 30, 30, 0) 0%,
-          #1e1e1e 93.23%); 
+      justify-content: left;
+      // background: linear-gradient(180deg,
+      //     rgba(30, 30, 30, 0) 0%,
+      //     #1e1e1e 93.23%); 
+    }
+
+    .explore-btn{
+      background-color: #000000;
+      color: #ffffff;
+      // font-weight: 900;
+      box-shadow: none;
+      outline: none;
+    }
+
+    .explore-btn1{
+      background-color: #ff0020;
+      color: #ffffff;
+      padding: 7px 8px;
+      outline: none;
+    }
+
+    .explore-btn-outline{
+      border: 1px solid #ff0020;
+      color: #ff0020;
+      padding: 7px 8px;
+      outline: none;
     }
     .explore_body {
       position: absolute;
