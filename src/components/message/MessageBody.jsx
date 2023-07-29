@@ -40,7 +40,9 @@ const MessageBody = () => {
 
 
   useEffect(() => {
-    const newSocket = io('https://halal.onrender.com');
+    // const newSocket = io('https://halal.onrender.com');
+    const newSocket = io('http://localhost:4000');
+
     setSocket(newSocket);
 
     return () => {
