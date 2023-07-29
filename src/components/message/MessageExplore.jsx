@@ -40,7 +40,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../pages/Explore/explore.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { baseUrlUserActions } from "../../BaseUrls/base";
+import { baseUrlUserActions, calculateAge } from "../../BaseUrls/base";
 import { exploreDataAction } from "../../redux/slices/exploreDataSlice";
 
 const MessageExplore = () => {
@@ -59,40 +59,9 @@ const MessageExplore = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(userData)
 
-
-    console.log(user.token)
-    const getlikedme = async () => {
-      try {
-        const res = await axios.post(
-          `${baseUrlUserActions}/likedme`,
-          { email: user.email },
-          { headers: { "auth-token": user.token } }
-        );
-        dispatch(exploreDataAction(res.data));
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    const getiliked = async () => {
-      try {
-        const res = await axios.post(
-          `${baseUrlUserActions}/iliked`,
-          { email: user.email },
-          { headers: { "auth-token": user.token } }
-        );
-        console.log(res.data);
-        dispatch(exploreDataAction(res.data));
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    if (toggle === 0) {
-      getlikedme();
-    } else if (toggle === 1) {
-      getiliked();
-    }
-  }, [toggle]);
+  }, []);
 
   const settings = {
     dots: false,
@@ -204,20 +173,7 @@ const MessageExplore = () => {
               </p>
             </div>
           </div>
-          <div className="explore_actions_wrap">
-            <div onClick={() => handleReact("like")} className="explore_like">
-              <AiTwotoneHeart className="explore_likeicon" />
-            </div>
-            <div className="explore_chat">
-              <BsFillChatRightFill className="explore_chaticon" />
-            </div>
-            <div
-              onClick={() => handleReact("unlike")}
-              className="explore_reject"
-            >
-              <CgClose className="explore_rejecticon" />
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -229,87 +185,77 @@ const MessageExplore = () => {
           <div className="expdrop_about_items">
             <InfoWidget
               Icon={<GiBodyHeight className="infowid_icon" />}
-              text={"226cm (7'5)"}
+              text={userData?.height}
             />
             <InfoWidget
               Icon={<GiBigDiamondRing className="infowid_icon" />}
-              text={"Single"}
+              text={userData?.marital_status}
             />
             {/* <InfoWidget img={child} text={"Children"} /> */}
             <InfoWidget
               Icon={<MdDateRange className="infowid_icon" />}
-              text={userData?.marital_status}
+              text={calculateAge(userData?.dob)}
             />
-            <InfoWidget img={relation} text={"Relationship"} />
+            <InfoWidget img={relation} text={userData?.relation?.relationship} />
           </div>
         </div>
         <div className="expdrop_bio w-[380px]">
           <h2 className="expdrop_bio_head">Bio</h2>
-          <div className="expdrop_bio_items">
-            "Divorcee, single mom, and product manager looking for someone who
-            understands the complexities of life and is ready for something
-            serious. I'm a 24-year-old woman who's driven and ambitious, but
-            also looking for someone who can accept me for who I am. Let's build
-            something real together."
-          </div>
+          <div className="expdrop_bio_items">{userData?.relation?.biography}</div>
         </div>
         <div className="expdrop_describe w-[380px]">
           <h2 className="expdrop_describe_head">
             Describe the person you want
           </h2>
-          <div className="expdrop_describe_items">
-            "product manager looking for someone who
-            understands the complexities of life and is ready for something
-            serious. I'm a 24-year-old woman who's driven and ambitious, but
-            also looking for someone who can accept me for who I am. Let's build
-            something real together."
-          </div>
+          <div className="expdrop_describe_items">{userData?.relation?.description}</div>
         </div>
         <div className="expdrop_health">
           <h2 className="expdrop_health_head">Health/Appearance</h2>
           <div className="expdrop_health_items">
-            <InfoWidget img={bloodgroup} text={"Blood Group B"} />
-            <InfoWidget img={genoType} text={"Genotype: AA"} />
-            <InfoWidget img={skinColor} text={"Skin Color: Fair skin"} />
+            <InfoWidget img={bloodgroup} text={`Blood Group ${userData?.relation?.blood}`} />
+            <InfoWidget img={genoType} text={`Genotype: ${userData?.relation?.blood}`} />
+            <InfoWidget img={skinColor} text={`Skin Color: ${userData?.relation?.skin}`} />
           </div>
         </div>
         <div className="expdrop_religion">
           <h2 className="expdrop_religion_head">Religiosity</h2>
           <div className="expdrop_religion_items">
-            <InfoWidget img={Religiosity} text={"Very practicing"} />
-            <InfoWidget img={prayStatus} text={"Always pray"} />
-            <InfoWidget img={drinkStatus} text={"I don't drink"} />
-            <InfoWidget img={smokeStatus} text={"I don't smoke"} />
+            <InfoWidget img={Religiosity} text={userData?.relation?.religion} />
+            <InfoWidget img={prayStatus} text={userData?.relation?.pray} />
+            <InfoWidget img={drinkStatus} text={userData?.relation?.alcohol} />
+            <InfoWidget img={smokeStatus} text={userData?.relation?.smoke} />
           </div>
         </div>
         <div className="expdrop_education">
           <h2 className="expdrop_education_head">Education/Profession</h2>
           <div className="expdrop_education_items">
-            <InfoWidget img={education} text={"Doctorate"} />
-            <InfoWidget img={work} text={"Product Manager"} />
+            <InfoWidget img={education} text={userData?.relation?.education} />
+            <InfoWidget img={work} text={userData?.profession} />
           </div>
         </div>
         <div className="expdrop_personality">
           <h2 className="expdrop_personality_head">Personality</h2>
           <div className="expdrop_personality_items">
-            <InfoWidget img={listen} text={"Active Listener"} />
-            <InfoWidget img={create} text={"Creative"} />
-            <InfoWidget img={fun} text={"Funny"} />
+            <InfoWidget img={listen} text={userData?.relation?.personality} />
+            {/* <InfoWidget img={create} text={"Creative"} />
+            <InfoWidget img={fun} text={"Funny"} /> */}
           </div>
         </div>
-        <div className="expdrop_interest">
+        
+        {/* <div className="expdrop_interest">
           <h2 className="expdrop_interest_head">Interest</h2>
           <div className="expdrop_interest_items">
             <InfoWidget img={listen} text={"Films & Cinema"} />
             <InfoWidget img={create} text={"Design"} />
             <InfoWidget img={coffee} text={"Coffee"} />
           </div>
-        </div>
+        </div> */}
+
         <div className="expdrop_language">
           <h2 className="expdrop_language_head">Language and Ethnicity</h2>
           <div className="expdrop_language_items">
-            <InfoWidget img={flag} text={"Nigerian West Africa"} />
-            <InfoWidget img={lang} text={"English"} />
+            <InfoWidget img={flag} text={userData?.relation?.ethnicity} />
+            <InfoWidget img={lang} text={userData?.relation?.language} />
           </div>
         </div>
         <div className="expdrop_action_wrap">
